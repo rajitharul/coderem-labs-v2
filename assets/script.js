@@ -161,6 +161,38 @@
     });
   });
 
+  // "What we do" — pinned deck: cards stack and reveal one at a time on scroll.
+  // (desktop only; on mobile the cards just stack in normal flow)
+  var svcPin = document.querySelector("[data-svc-pin]");
+  if (svcPin && typeof gsap.matchMedia === "function") {
+    var svcCards = gsap.utils.toArray(svcPin.querySelectorAll("[data-card]"));
+    if (svcCards.length > 1) {
+      gsap.matchMedia().add("(min-width: 901px)", function () {
+        var deck = svcPin.querySelector(".svc-deck");
+        var stage = svcPin.querySelector(".svc-pin-stage");
+        var maxH = svcCards.reduce(function (m, c) { return Math.max(m, c.offsetHeight); }, 0);
+        gsap.set(deck, { height: maxH });
+        gsap.set(svcCards, {
+          position: "absolute", top: 0, left: 0, width: "100%",
+          yPercent: function (i) { return i === 0 ? 0 : 100; },
+          zIndex: function (i) { return i + 1; }
+        });
+        var tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: stage, start: "top top",
+            end: "+=" + (svcCards.length * 72) + "%",
+            pin: true, scrub: 0.7, anticipatePin: 1
+          }
+        });
+        for (var i = 1; i < svcCards.length; i++) {
+          tl.to(svcCards[i - 1], { yPercent: -4, scale: 0.96, ease: "none", duration: 1 }, i - 1)
+            .to(svcCards[i], { yPercent: 0, ease: "none", duration: 1 }, i - 1);
+        }
+        ST.refresh();
+      });
+    }
+  }
+
   // Scrub-fill headline (.scroll-text) — words fill from muted to bright on scroll
   document.querySelectorAll("[data-scroll-fill]").forEach(function (el) {
     var ins = splitWords(el);
@@ -195,6 +227,38 @@
             var idx = Math.min(panels.length - 1, Math.floor(self.progress * panels.length));
             dots.forEach(function (d, di) { d.classList.toggle("on", di === idx); });
           }});
+      });
+    }
+  }
+
+  // "The CodeREM process" — pinned deck, cards reveal one at a time sliding
+  // in HORIZONTALLY (from the right). Same stacking idea as "What we do".
+  var hdeck = document.querySelector("[data-hdeck]");
+  if (hdeck && typeof gsap.matchMedia === "function") {
+    var hCards = gsap.utils.toArray(hdeck.querySelectorAll("[data-card]"));
+    if (hCards.length > 1) {
+      gsap.matchMedia().add("(min-width: 901px)", function () {
+        var deck = hdeck.querySelector(".svc-deck");
+        var stage = hdeck.querySelector(".svc-pin-stage");
+        var maxH = hCards.reduce(function (m, c) { return Math.max(m, c.offsetHeight); }, 0);
+        gsap.set(deck, { height: maxH });
+        gsap.set(hCards, {
+          position: "absolute", top: 0, left: 0, width: "100%",
+          xPercent: function (i) { return i === 0 ? 0 : 100; },
+          zIndex: function (i) { return i + 1; }
+        });
+        var tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: stage, start: "top top",
+            end: "+=" + (hCards.length * 72) + "%",
+            pin: true, scrub: 0.7, anticipatePin: 1
+          }
+        });
+        for (var i = 1; i < hCards.length; i++) {
+          tl.to(hCards[i - 1], { xPercent: -6, scale: 0.96, opacity: 0.4, ease: "none", duration: 1 }, i - 1)
+            .to(hCards[i], { xPercent: 0, ease: "none", duration: 1 }, i - 1);
+        }
+        ST.refresh();
       });
     }
   }

@@ -52,7 +52,6 @@
           <div class="m"><div class="v">24h</div><div class="k">Response time, every inquiry</div></div>
         </div>
       </div>
-      <div class="scroll-hint">Scroll</div>
     </section>
 
     <!-- SCRUB STATEMENT -->
@@ -71,64 +70,229 @@
       </div>
     </div>
 
-    <!-- PINNED SERVICES (sohub signature scroll) -->
-    <section class="pin-section" data-pin>
-      <div class="pin-stage">
+    <!-- WHAT WE DO — full-width rows with animated macOS windows -->
+    <section class="svc-pin" data-svc-pin>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What we do</p>
+          <h2>Maximize results while <span class="h-word">minimizing work.</span></h2>
+          <p>Three primary offerings — consultation, software and automation — engineered with the discipline of medicine and the speed of motorsport.</p>
+        </div>
+      </div>
+      <div class="svc-pin-stage">
+        <span class="svc-scroll">Scroll</span>
         <div class="container">
-          <div class="pin-left">
-            <p class="eyebrow">What we do</p>
-            <h2>Maximize results while <span class="h-word">minimizing work.</span></h2>
-            <p class="muted">Three primary offerings — consultation, software and automation — engineered with the discipline of medicine and the speed of motorsport.</p>
-            <div class="pin-dots">
-              <div class="dot-row on" data-dot><span class="bar"></span>Enterprise Solutions</div>
-              <div class="dot-row" data-dot><span class="bar"></span>AI Automations</div>
-              <div class="dot-row" data-dot><span class="bar"></span>AI Innovations</div>
-              <div class="dot-row" data-dot><span class="bar"></span>Discovery &amp; Analysis</div>
-            </div>
-          </div>
-          <div class="panels">
-            <article class="panel" data-panel>
-              <div class="pnum">01</div>
+          <div class="svc-deck">
+
+          <!-- 01 Enterprise Solutions -->
+          <article class="svc-row svc-card" data-card>
+            <div class="svc-text">
+              <span class="svc-idx">01</span>
               <h3>Enterprise Solutions</h3>
               <p>Complete 0 to 100 — from ideation to production-ready systems. Scalable, secure architecture designed for millions of users, with full ownership from architecture to deployment.</p>
               <div class="chips"><span class="chip">Full-Stack Dev</span><span class="chip">Cloud Native</span><span class="chip">Security First</span><span class="chip">CI/CD</span></div>
-            </article>
-            <article class="panel" data-panel>
-              <div class="pnum">02</div>
+            </div>
+            <div class="svc-demo">
+              <div class="mac-window">
+                <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">app.coderemlabs.com</span></div>
+                <div class="mac-body sc-dash">
+                  <div class="dash-side"><span></span><span class="on"></span><span></span><span></span></div>
+                  <div class="dash-main">
+                    <div class="dash-kpis">
+                      <div class="kpi"><b>1.2M</b><i>users</i></div>
+                      <div class="kpi"><b>99.8%</b><i>uptime</i></div>
+                      <div class="kpi"><b>4.9★</b><i>rating</i></div>
+                    </div>
+                    <div class="dash-chart">
+                      <span style="--d:0; --peak:62%"></span><span style="--d:1; --peak:84%"></span><span style="--d:2; --peak:48%"></span><span style="--d:3; --peak:92%"></span><span style="--d:4; --peak:70%"></span><span style="--d:5; --peak:55%"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02 AI Automations -->
+          <article class="svc-row svc-card" data-card>
+            <div class="svc-text">
+              <span class="svc-idx">02</span>
               <h3>AI Automations</h3>
               <p>Automate repetitive tasks and workflows with intelligent AI systems. Dramatic reduction in manual work and human error — minutes instead of hours, 24/7, without additional headcount.</p>
               <div class="chips"><span class="chip">Process Automation</span><span class="chip">Document AI</span><span class="chip">Workflow AI</span><span class="chip">Data Pipelines</span></div>
-            </article>
-            <article class="panel" data-panel>
-              <div class="pnum">03</div>
+            </div>
+            <div class="svc-demo">
+              <div class="mac-window">
+                <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">Automation · running</span></div>
+                <div class="mac-body sc-flow">
+                  <div class="task" style="--d:0"><span class="check"></span>Extract invoice data</div>
+                  <div class="task" style="--d:1"><span class="check"></span>Validate against policy</div>
+                  <div class="task" style="--d:2"><span class="check"></span>Post to ledger</div>
+                  <div class="task" style="--d:3"><span class="check"></span>Notify the team</div>
+                  <div class="flow-bar"><i></i></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03 AI Innovations -->
+          <article class="svc-row svc-card" data-card>
+            <div class="svc-text">
+              <span class="svc-idx">03</span>
               <h3>AI Innovations</h3>
               <p>We don't just use AI that's out there — we build AI that keeps you ahead of your competition. Custom models, RAG systems and agents tailored to your domain.</p>
               <div class="chips"><span class="chip">LLM &amp; GPT</span><span class="chip">RAG Systems</span><span class="chip">AI Agents</span><span class="chip">Generative AI</span></div>
-            </article>
-            <article class="panel" data-panel>
-              <div class="pnum">04</div>
+            </div>
+            <div class="svc-demo">
+              <div class="mac-window">
+                <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">ClaimBrain · assistant</span></div>
+                <div class="mac-body sc-chat">
+                  <div class="msg user">Summarise this 9-page claim</div>
+                  <div class="msg ai"><span class="dots"><i></i><i></i><i></i></span><span class="ai-text">Extracted 14 fields · 97% confidence. Flagged 1 edge case for human review.</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04 Discovery & Analysis -->
+          <article class="svc-row svc-card" data-card>
+            <div class="svc-text">
+              <span class="svc-idx">04</span>
               <h3>Discovery &amp; Analysis</h3>
               <p>Before we build, we understand. Deep research and precise analysis to identify pain points and map out the optimal solution — so you never build the wrong product.</p>
               <div class="chips"><span class="chip">Workflow Mapping</span><span class="chip">Requirements</span><span class="chip">Architecture</span><span class="chip">Strategy</span></div>
-            </article>
+            </div>
+            <div class="svc-demo">
+              <div class="mac-window">
+                <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">Discovery · analysis</span></div>
+                <div class="mac-body sc-analysis">
+                  <svg class="ana-chart" viewBox="0 0 300 130" preserveAspectRatio="none">
+                    <polygon class="ana-area" points="12,118 12,92 70,74 128,86 186,50 244,60 288,28 288,118"></polygon>
+                    <polyline class="ana-line" points="12,92 70,74 128,86 186,50 244,60 288,28"></polyline>
+                  </svg>
+                  <div class="ana-list">
+                    <div class="ana-item" style="--d:0">Goals mapped</div>
+                    <div class="ana-item" style="--d:1">Pain points found</div>
+                    <div class="ana-item" style="--d:2">Scope defined</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <!-- PROCESS — pinned deck, cards reveal horizontally -->
+    <section class="svc-pin proc-pin" data-hdeck>
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">The CodeREM process</p>
           <h2>There's no <span class="h-word">magic</span> here.</h2>
-          <p>Understanding a problem correctly is equivalent to solving 80% of it. We put true effort into determining optimal solutions — not just building something that works for now.</p>
+          <p>Understanding a problem correctly is equivalent to solving 80% of it — so we put real effort into finding the optimal solution.</p>
         </div>
-        <div class="steps" data-stagger>
-          <div class="step"><div class="num">01</div><span class="role">Discovery</span><h3>Analytical Precision</h3><p>Deep-dive sessions and zero-ambiguity requirements.</p></div>
-          <div class="step"><div class="num">02</div><span class="role">Build</span><h3>Speed to Market</h3><p>A working prototype within 14 days, at zero cost.</p></div>
-          <div class="step"><div class="num">03</div><span class="role">Launch</span><h3>Engineering Excellence</h3><p>Scalable, secure systems architected for growth.</p></div>
-          <div class="step"><div class="num">04</div><span class="role">Improve</span><h3>Quality Assurance</h3><p>Quality woven into every line of code.</p></div>
+      </div>
+      <div class="svc-pin-stage">
+        <span class="svc-scroll">Scroll</span>
+        <div class="container">
+          <div class="svc-deck">
+
+            <article class="svc-row svc-card" data-card>
+              <div class="svc-text">
+                <span class="svc-idx">01 · Discovery</span>
+                <h3>Analytical Precision</h3>
+                <p>Requirements gathered with deep analysis, then broken down into clear, prioritised work items.</p>
+              </div>
+              <div class="svc-demo">
+                <div class="mac-window">
+                  <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">Discovery · breakdown</span></div>
+                  <div class="mac-body pr-discovery">
+                    <div class="pr-brief">
+                      <span class="pr-scan"></span>
+                      <span class="pr-l w2"></span><span class="pr-l w1"></span><span class="pr-l w3"></span><span class="pr-l w2"></span><span class="pr-l w1"></span>
+                    </div>
+                    <div class="pr-flow">→</div>
+                    <div class="pr-backlog">
+                      <div class="pr-item" style="--d:0"><i></i><span></span></div>
+                      <div class="pr-item" style="--d:1"><i></i><span></span></div>
+                      <div class="pr-item" style="--d:2"><i></i><span></span></div>
+                      <div class="pr-item" style="--d:3"><i></i><span></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="svc-row svc-card" data-card>
+              <div class="svc-text">
+                <span class="svc-idx">02 · Build</span>
+                <h3>Speed to Market</h3>
+                <p>A working prototype in 14 days, at zero cost — something you can see, click and reshape before committing.</p>
+              </div>
+              <div class="svc-demo">
+                <div class="mac-window">
+                  <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">Prototype · live</span></div>
+                  <div class="mac-body pr-build">
+                    <div class="pr-app">
+                      <span class="pr-bk head" style="--d:0"></span>
+                      <span class="pr-bk side" style="--d:1"></span>
+                      <span class="pr-bk c1" style="--d:2"></span>
+                      <span class="pr-bk c2" style="--d:3"></span>
+                    </div>
+                    <span class="pr-cursor"></span>
+                    <span class="pr-badge">14 days</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="svc-row svc-card" data-card>
+              <div class="svc-text">
+                <span class="svc-idx">03 · Launch</span>
+                <h3>Engineering Excellence</h3>
+                <p>Security baked into every layer, architected to scale to millions, and hardened to stay reliable under load.</p>
+              </div>
+              <div class="svc-demo">
+                <div class="mac-window">
+                  <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">Launch · health</span></div>
+                  <div class="mac-body pr-launch">
+                    <div class="pr-stat" style="--d:0"><span class="dot"></span><b>Security hardened</b><em>✓ passed</em></div>
+                    <div class="pr-stat" style="--d:1"><span class="dot"></span><b>Scaled · 10k rps</b><em>✓ passed</em></div>
+                    <div class="pr-stat" style="--d:2"><span class="dot"></span><b>Uptime · 99.99%</b><em>✓ passed</em></div>
+                    <div class="pr-scale"><span style="--d:0; --peak:50%"></span><span style="--d:1; --peak:72%"></span><span style="--d:2; --peak:90%"></span><span style="--d:3; --peak:100%"></span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="svc-row svc-card" data-card>
+              <div class="svc-text">
+                <span class="svc-idx">04 · Improve</span>
+                <h3>Quality Assurance</h3>
+                <p>Automated and manual testing at every stage — then we enable your teams to own and run what we built.</p>
+              </div>
+              <div class="svc-demo">
+                <div class="mac-window">
+                  <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">QA · test suite</span></div>
+                  <div class="mac-body pr-improve">
+                    <div class="pr-suite">
+                      <div class="pr-suite-head"><span>Running tests</span><span class="pr-count">248 / 248 passed</span></div>
+                      <div class="pr-trow" style="--d:0"><i></i><b></b></div>
+                      <div class="pr-trow" style="--d:1"><i></i><b></b></div>
+                      <div class="pr-trow" style="--d:2"><i></i><b></b></div>
+                      <div class="pr-progress"><span></span></div>
+                    </div>
+                    <div class="pr-handover">
+                      <div class="pr-avatars"><i style="--d:0"></i><i style="--d:1"></i><i style="--d:2"></i></div>
+                      <span class="pr-handtext">Team onboarded</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
         </div>
       </div>
     </section>

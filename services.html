@@ -45,60 +45,123 @@
 
     <section style="padding-top:10px;">
       <div class="container">
-        <div class="grid cols-2" data-stagger>
+        <div class="svc-list">
 
-          <div class="card">
-            <div class="icon">⬡</div>
-            <h3>Enterprise Solutions</h3>
-            <p>You might be dreaming of a big business. Scaling makes businesses vulnerable unless they are established on strong cornerstones.</p>
-            <h4 style="font-size:.85rem;margin:22px 0 6px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase;">Expected outcomes</h4>
-            <ul class="feature-list">
-              <li>Production-ready applications with enterprise-grade security</li>
-              <li>Scalable architecture designed for millions of users</li>
-              <li>Full ownership — from architecture to deployment</li>
-              <li>Future-proof systems built for continuous improvement</li>
-            </ul>
-            <div class="chips"><span class="chip">Full-Stack Dev</span><span class="chip">Cloud Native</span><span class="chip">Scalable Architecture</span><span class="chip">Security First</span><span class="chip">CI/CD Pipelines</span></div>
-            <p class="muted" style="margin-top:18px;font-size:.9rem;">Timeline: 12–24 weeks for full enterprise deployment</p>
-          </div>
+          <!-- 01 Enterprise Solutions — demo right -->
+          <article class="svc-row reveal">
+            <div class="svc-text">
+              <h3>Enterprise Solutions</h3>
+              <p>You might be dreaming of a big business. Scaling makes businesses vulnerable unless they are established on strong cornerstones.</p>
+              <h4 style="font-size:.95rem;margin:22px 0 6px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase;">Expected outcomes</h4>
+              <ul class="feature-list">
+                <li>Production-ready applications with enterprise-grade security</li>
+                <li>Scalable architecture designed for millions of users</li>
+                <li>Full ownership — from architecture to deployment</li>
+                <li>Future-proof systems built for continuous improvement</li>
+              </ul>
+              <div class="chips"><span class="chip">Full-Stack Dev</span><span class="chip">Cloud Native</span><span class="chip">Scalable Architecture</span><span class="chip">Security First</span><span class="chip">CI/CD Pipelines</span></div>
+              <p class="muted" style="margin-top:18px;">Timeline: 12–24 weeks for full enterprise deployment</p>
+            </div>
+            <div class="svc-demo">
+              <div class="mac-window">
+                <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">app.coderemlabs.com</span></div>
+                <div class="mac-body sc-dash">
+                  <div class="dash-side"><span></span><span class="on"></span><span></span><span></span></div>
+                  <div class="dash-main">
+                    <div class="dash-kpis">
+                      <div class="kpi"><b>1.2M</b><i>users</i></div>
+                      <div class="kpi"><b>99.8%</b><i>uptime</i></div>
+                      <div class="kpi"><b>4.9★</b><i>rating</i></div>
+                    </div>
+                    <div class="dash-chart">
+                      <span style="--d:0; --peak:62%"></span><span style="--d:1; --peak:84%"></span><span style="--d:2; --peak:48%"></span><span style="--d:3; --peak:92%"></span><span style="--d:4; --peak:70%"></span><span style="--d:5; --peak:55%"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
-          <div class="card">
-            <div class="icon">⚡</div>
-            <h3>AI Automations</h3>
-            <p>We are at that age where human intelligence is utilized actually where it matters — such as handling finances, handling secure data and making key decisions.</p>
-            <h4 style="font-size:.85rem;margin:22px 0 6px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase;">Expected outcomes</h4>
-            <ul class="feature-list">
-              <li>Dramatic reduction in manual work and human error</li>
-              <li>Faster processing times — minutes instead of hours</li>
-              <li>Cost savings through intelligent automation</li>
-              <li>24/7 operations without additional headcount</li>
-            </ul>
-            <div class="chips"><span class="chip">Process Automation</span><span class="chip">Document AI</span><span class="chip">Smart Chatbots</span><span class="chip">Workflow AI</span><span class="chip">Data Pipelines</span></div>
-            <p class="muted" style="margin-top:18px;font-size:.9rem;">Timeline: 4–10 weeks for initial automation deployment</p>
-          </div>
+          <!-- 02 AI Automations — demo left -->
+          <article class="svc-row rev reveal">
+            <div class="svc-text">
+              <h3>AI Automations</h3>
+              <p>We are at that age where human intelligence is utilized actually where it matters — such as handling finances, handling secure data and making key decisions.</p>
+              <h4 style="font-size:.95rem;margin:22px 0 6px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase;">Expected outcomes</h4>
+              <ul class="feature-list">
+                <li>Dramatic reduction in manual work and human error</li>
+                <li>Faster processing times — minutes instead of hours</li>
+                <li>Cost savings through intelligent automation</li>
+                <li>24/7 operations without additional headcount</li>
+              </ul>
+              <div class="chips"><span class="chip">Process Automation</span><span class="chip">Document AI</span><span class="chip">Smart Chatbots</span><span class="chip">Workflow AI</span><span class="chip">Data Pipelines</span></div>
+              <p class="muted" style="margin-top:18px;">Timeline: 4–10 weeks for initial automation deployment</p>
+            </div>
+            <div class="svc-demo">
+              <div class="mac-window">
+                <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">Automation · running</span></div>
+                <div class="mac-body sc-flow">
+                  <div class="task" style="--d:0"><span class="check"></span>Extract invoice data</div>
+                  <div class="task" style="--d:1"><span class="check"></span>Validate against policy</div>
+                  <div class="task" style="--d:2"><span class="check"></span>Post to ledger</div>
+                  <div class="task" style="--d:3"><span class="check"></span>Notify the team</div>
+                  <div class="flow-bar"><i></i></div>
+                </div>
+              </div>
+            </div>
+          </article>
 
-          <div class="card">
-            <div class="icon">✦</div>
-            <h3>AI Innovations</h3>
-            <p>We are a team of AI Engineers. We don't just use AI that's out there in the market — we build AI that will help you stay way ahead of your competition.</p>
-            <div class="chips" style="margin-top:22px;"><span class="chip">LLM &amp; GPT</span><span class="chip">RAG Systems</span><span class="chip">AI Agents</span><span class="chip">Predictive ML</span><span class="chip">Generative AI</span></div>
-            <p class="muted" style="margin-top:18px;font-size:.9rem;">Timeline: 6–16 weeks depending on complexity</p>
-          </div>
+          <!-- 03 AI Innovations — demo right -->
+          <article class="svc-row reveal">
+            <div class="svc-text">
+              <h3>AI Innovations</h3>
+              <p>We are a team of AI Engineers. We don't just use AI that's out there in the market — we build AI that will help you stay way ahead of your competition.</p>
+              <div class="chips" style="margin-top:22px;"><span class="chip">LLM &amp; GPT</span><span class="chip">RAG Systems</span><span class="chip">AI Agents</span><span class="chip">Predictive ML</span><span class="chip">Generative AI</span></div>
+              <p class="muted" style="margin-top:18px;">Timeline: 6–16 weeks depending on complexity</p>
+            </div>
+            <div class="svc-demo">
+              <div class="mac-window">
+                <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">ClaimBrain · assistant</span></div>
+                <div class="mac-body sc-chat">
+                  <div class="msg user">Summarise this 9-page claim</div>
+                  <div class="msg ai"><span class="dots"><i></i><i></i><i></i></span><span class="ai-text">Extracted 14 fields · 97% confidence. Flagged 1 edge case for human review.</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
 
-          <div class="card">
-            <div class="icon">◎</div>
-            <h3>Discovery &amp; Analysis</h3>
-            <p>Before we build, we understand. We dive deep into your business processes, identify pain points, and map out the optimal solution.</p>
-            <h4 style="font-size:.85rem;margin:22px 0 6px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase;">Typical deliverables</h4>
-            <ul class="feature-list">
-              <li>Custom ERP &amp; business platforms</li>
-              <li>Full-stack web &amp; mobile applications</li>
-              <li>Cloud infrastructure &amp; DevOps setup</li>
-              <li>API development &amp; third-party integrations</li>
-              <li>Ongoing maintenance &amp; support</li>
-            </ul>
-            <p class="muted" style="margin-top:18px;font-size:.9rem;">Timeline: 2–4 weeks for comprehensive analysis</p>
-          </div>
+          <!-- 04 Discovery & Analysis — demo left -->
+          <article class="svc-row rev reveal">
+            <div class="svc-text">
+              <h3>Discovery &amp; Analysis</h3>
+              <p>Before we build, we understand. We dive deep into your business processes, identify pain points, and map out the optimal solution.</p>
+              <h4 style="font-size:.95rem;margin:22px 0 6px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase;">Typical deliverables</h4>
+              <ul class="feature-list">
+                <li>Custom ERP &amp; business platforms</li>
+                <li>Full-stack web &amp; mobile applications</li>
+                <li>Cloud infrastructure &amp; DevOps setup</li>
+                <li>API development &amp; third-party integrations</li>
+                <li>Ongoing maintenance &amp; support</li>
+              </ul>
+              <p class="muted" style="margin-top:18px;">Timeline: 2–4 weeks for comprehensive analysis</p>
+            </div>
+            <div class="svc-demo">
+              <div class="mac-window">
+                <div class="mac-bar"><span class="mac-dots"><i></i><i></i><i></i></span><span class="mac-title">Discovery · analysis</span></div>
+                <div class="mac-body sc-analysis">
+                  <svg class="ana-chart" viewBox="0 0 300 130" preserveAspectRatio="none">
+                    <polygon class="ana-area" points="12,118 12,92 70,74 128,86 186,50 244,60 288,28 288,118"></polygon>
+                    <polyline class="ana-line" points="12,92 70,74 128,86 186,50 244,60 288,28"></polyline>
+                  </svg>
+                  <div class="ana-list">
+                    <div class="ana-item" style="--d:0">Goals mapped</div>
+                    <div class="ana-item" style="--d:1">Pain points found</div>
+                    <div class="ana-item" style="--d:2">Scope defined</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
         </div>
       </div>
