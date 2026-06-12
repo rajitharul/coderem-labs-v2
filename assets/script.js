@@ -167,7 +167,7 @@
   if (svcPin && typeof gsap.matchMedia === "function") {
     var svcCards = gsap.utils.toArray(svcPin.querySelectorAll("[data-card]"));
     if (svcCards.length > 1) {
-      gsap.matchMedia().add("(min-width: 901px)", function () {
+      gsap.matchMedia().add("(min-width: 981px)", function () {
         var deck = svcPin.querySelector(".svc-deck");
         var stage = svcPin.querySelector(".svc-pin-stage");
         var maxH = svcCards.reduce(function (m, c) { return Math.max(m, c.offsetHeight); }, 0);
@@ -237,7 +237,7 @@
   if (hdeck && typeof gsap.matchMedia === "function") {
     var hCards = gsap.utils.toArray(hdeck.querySelectorAll("[data-card]"));
     if (hCards.length > 1) {
-      gsap.matchMedia().add("(min-width: 901px)", function () {
+      gsap.matchMedia().add("(min-width: 981px)", function () {
         var deck = hdeck.querySelector(".svc-deck");
         var stage = hdeck.querySelector(".svc-pin-stage");
         var maxH = hCards.reduce(function (m, c) { return Math.max(m, c.offsetHeight); }, 0);

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAG Systems for Enterprise Knowledge Search | CodeREM Labs Insights</title>
+  <meta name="description" content="A practical guide to building retrieval-augmented generation systems that make enterprise knowledge searchable, explainable and governed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand"><span class="dot"></span>CodeREM Labs</a>
+      <div class="nav-cta">
+        <a href="get-started.html" class="btn btn-primary">Get Started <span class="btn-arrow">→</span></a>
+        <button class="menu-btn" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+          <span>Menu</span><span class="menu-btn-ico"><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+    <nav id="site-menu" class="menu-panel" aria-hidden="true">
+      <div class="menu-inner">
+        <a href="how-it-works.html"><span class="menu-arrow">→</span><span>How It Works</span></a>
+        <a href="services.html"><span class="menu-arrow">→</span><span>Services</span></a>
+        <a href="portfolio.html"><span class="menu-arrow">→</span><span>Portfolio</span></a>
+        <a href="insights.html" class="active"><span class="menu-arrow">→</span><span>Insights</span></a>
+        <a href="about.html"><span class="menu-arrow">→</span><span>About</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero article-hero" style="min-height:auto; padding:150px 0 40px;">
+      <div class="orbs"><span class="orb a"></span></div>
+      <div class="container">
+        <p class="article-meta reveal"><a href="insights.html" style="color:var(--accent)">Insights</a> <span class="sep">/</span> <span class="cat">RAG Systems</span> <span class="sep">·</span> <span>5 min read</span></p>
+        <h1 class="reveal" data-delay="60">RAG Systems for <span class="h-word">Enterprise</span> Knowledge Search</h1>
+        <p class="lead reveal" data-delay="120">A practical guide to building retrieval-augmented generation systems that make enterprise knowledge searchable, explainable and governed.</p>
+      </div>
+    </section>
+
+    <section style="padding:30px 0 90px;">
+      <div class="container">
+        <div class="prose reveal">
+          <p>Every enterprise is sitting on more knowledge than anyone can read, wikis, tickets, contracts, policies, past projects. The promise of a large language model is that you can finally <em>ask</em> that knowledge a question. The risk is that a raw LLM will answer confidently from its training data instead of your data, and you'll have no way to tell the difference.</p>
+          <p><strong>Retrieval-Augmented Generation (RAG)</strong> closes that gap. Instead of trusting the model to "know," you retrieve the relevant passages from your own corpus and ask the model to answer <em>from those passages</em>, with citations. Done well, RAG turns a black box into a searchable, explainable, governed system. Done badly, it's a confident liar with extra steps.</p>
+
+          <h2>What RAG actually is</h2>
+          <p>RAG has two halves. <strong>Retrieval</strong> finds the most relevant chunks of your knowledge for a given question. <strong>Generation</strong> hands those chunks to an LLM and asks it to compose an answer grounded in them. The model contributes language and synthesis; your data contributes truth.</p>
+          <p>This separation is the whole point. It means you can update knowledge without retraining a model, trace every answer back to a source, and restrict what each user is allowed to see.</p>
+
+          <h2>The pipeline, stage by stage</h2>
+
+          <h3>1. Ingestion &amp; chunking</h3>
+          <p>Documents are split into passages small enough to be precise but large enough to carry context. Chunking strategy matters more than people expect, split on semantic boundaries (sections, headings) rather than arbitrary character counts, and keep metadata (source, date, access level) attached to every chunk.</p>
+
+          <h3>2. Embeddings &amp; the index</h3>
+          <p>Each chunk is converted into a vector embedding and stored in a vector index for fast nearest-neighbour search. This is what lets a query like "what's our refund policy for enterprise plans" find the right passage even if it never uses the word "refund."</p>
+
+          <h3>3. Hybrid retrieval</h3>
+          <p>Pure semantic search misses exact terms (product codes, names, acronyms); pure keyword search misses paraphrase. The robust answer is <strong>hybrid retrieval</strong>, run lexical (BM25) and semantic search in parallel and fuse the results. It's the same principle that drives our <a href="leximatch.html">LexiMatch</a> retrieval engine.</p>
+
+          <h3>4. Generation with citations</h3>
+          <p>The retrieved passages, plus the question, go to the LLM with an instruction to answer only from the provided context and to cite which passage supports each claim. If the context doesn't contain the answer, the correct response is "I don't know", not a guess.</p>
+
+          <blockquote>A good RAG answer is one you can verify in two clicks. If you can't see the source, you can't trust the system.</blockquote>
+
+          <h2>Searchable, explainable, governed</h2>
+          <p>Those three words are the difference between a demo and a system an enterprise can deploy.</p>
+          <ul>
+            <li><strong>Searchable</strong>, hybrid retrieval and good chunking make the right knowledge findable, even across messy, heterogeneous sources.</li>
+            <li><strong>Explainable</strong>, every answer carries citations to the exact passages it used, so users can verify and auditors can trace.</li>
+            <li><strong>Governed</strong>, access control travels with the data. Retrieval respects who is asking, so the model can never surface a document the user isn't allowed to read.</li>
+          </ul>
+
+          <div class="callout-box">
+            <span class="k">Governance is not optional</span>
+            <p>The fastest way to fail a security review is to build RAG that retrieves across everything and filters at the end. Enforce permissions <strong>at retrieval time</strong>, filter the candidate set by the user's access before anything reaches the model. A passage the user can't see should never enter the prompt.</p>
+          </div>
+
+          <h2>Evaluate before you trust</h2>
+          <p>RAG quality is measurable. Build a small evaluation set of real questions with known good answers, and track two things: did retrieval surface the right passages (recall), and did the answer stay faithful to them (groundedness)? Most "the AI is wrong" complaints are actually retrieval failures, fix the search before you blame the model.</p>
+
+          <h2>Common pitfalls</h2>
+          <ul>
+            <li>Chunking blindly on character count and shredding the context the answer needs.</li>
+            <li>Skipping hybrid retrieval and missing exact-match terms.</li>
+            <li>Letting the model answer without citations, you lose explainability entirely.</li>
+            <li>Bolting on access control at the end instead of enforcing it during retrieval.</li>
+          </ul>
+
+          <h2>Key takeaways</h2>
+          <ol>
+            <li>Retrieve first, generate second, ground every answer in your own corpus.</li>
+            <li>Use hybrid (lexical + semantic) retrieval; chunk on meaning, keep metadata.</li>
+            <li>Always cite sources, and let the system say "I don't know."</li>
+            <li>Enforce permissions at retrieval time, and evaluate retrieval and groundedness continuously.</li>
+          </ol>
+        </div>
+
+        <div class="prose" style="margin-top:50px;">
+          <div class="cta-band reveal">
+            <p class="eyebrow center">Sitting on knowledge no one can find?</p>
+            <h2 style="margin:0 0 18px;">Let's make it searchable and safe.</h2>
+            <div class="cta-actions">
+              <a href="get-started.html" class="btn btn-primary">Start Your Project <span class="btn-arrow">→</span></a>
+              <a href="services.html" class="btn btn-ghost">Our AI Services</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand"><span class="dot"></span>CodeREM Labs</a>
+          <p>Engineering excellence for modern businesses. We build software that delivers measurable results.</p>
+          <a href="mailto:hello@coderemlabs.com" class="accent">hello@coderemlabs.com</a>
+        </div>
+        <div><h4>Company</h4><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="insights.html">Insights</a><a href="get-started.html">Get Started</a></div>
+        <div><h4>Services</h4><a href="services.html">Enterprise Solutions</a><a href="services.html">Mobile Applications</a><a href="services.html">AI Automations</a><a href="services.html">Discovery &amp; Analysis</a></div>
+        <div><h4>Insights</h4><a href="insights-medical-claims-ai.html">Medical Claims AI</a><a href="insights-enterprise-rag.html">Enterprise RAG Systems</a><a href="insights-custom-erp.html">Custom ERP Decisions</a><a href="insights-prototype-scope.html">14-Day Prototype Scope</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> CodeREM Labs. All rights reserved.</span>
+        <span>Sri Lanka / Global · <a href="#" class="accent">LinkedIn</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/script.js"></script>
+</body>
+</html>

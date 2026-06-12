@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Automation for Medical Claims Processing | CodeREM Labs Insights</title>
+  <meta name="description" content="How OCR, LLM guardrails, code validation and human review reduce manual medical claims processing without removing accountability, a practical guide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand"><span class="dot"></span>CodeREM Labs</a>
+      <div class="nav-cta">
+        <a href="get-started.html" class="btn btn-primary">Get Started <span class="btn-arrow">→</span></a>
+        <button class="menu-btn" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+          <span>Menu</span><span class="menu-btn-ico"><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+    <nav id="site-menu" class="menu-panel" aria-hidden="true">
+      <div class="menu-inner">
+        <a href="how-it-works.html"><span class="menu-arrow">→</span><span>How It Works</span></a>
+        <a href="services.html"><span class="menu-arrow">→</span><span>Services</span></a>
+        <a href="portfolio.html"><span class="menu-arrow">→</span><span>Portfolio</span></a>
+        <a href="insights.html" class="active"><span class="menu-arrow">→</span><span>Insights</span></a>
+        <a href="about.html"><span class="menu-arrow">→</span><span>About</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero article-hero" style="min-height:auto; padding:150px 0 40px;">
+      <div class="orbs"><span class="orb a"></span></div>
+      <div class="container">
+        <p class="article-meta reveal"><a href="insights.html" style="color:var(--accent)">Insights</a> <span class="sep">/</span> <span class="cat">AI Automation</span> <span class="sep">·</span> <span>5 min read</span></p>
+        <h1 class="reveal" data-delay="60">AI Automation for <span class="h-word">Medical Claims</span> Processing</h1>
+        <p class="lead reveal" data-delay="120">How OCR, LLM guardrails, code validation and human review reduce manual claims work, without removing accountability.</p>
+      </div>
+    </section>
+
+    <section style="padding:30px 0 90px;">
+      <div class="container">
+        <div class="prose reveal">
+          <p>Medical claims processing is one of the most automatable workflows in healthcare, and one of the riskiest to automate carelessly. The documents are messy, the rules are payer-specific, and a wrong code can mean a denied claim or a compliance problem. The goal isn't to remove humans; it's to <strong>remove the repetitive work that wastes them</strong>, while keeping a human accountable for the decisions that matter.</p>
+          <p>This guide lays out the pattern we use in production (it powers our <a href="claimbrain.html">ClaimBrain</a> system): a pipeline of <strong>OCR → guardrailed LLM understanding → code &amp; rule validation → human-in-the-loop review</strong>. Each stage does one job well, and each stage knows when to ask for help.</p>
+
+          <h2>Why manual processing is so expensive</h2>
+          <p>A typical claims operation spends thousands of hours a year reviewing scanned forms, verifying diagnosis and procedure codes, cross-referencing policy coverage and catching billing errors. The work demands experienced adjusters who can interpret nuanced clinical language, yet most of their time goes to <strong>data entry, not judgement</strong>. Error rates stay high because humans tire; throughput stays low because every claim is handled by hand.</p>
+          <p>The opportunity is obvious. The trap is automating the easy 80% in a way that quietly corrupts the hard 20%.</p>
+
+          <h2>The four-stage pattern</h2>
+
+          <h3>1. Extraction with OCR</h3>
+          <p>Claims arrive as CMS-1500 and UB-04 forms, EOBs, scanned attachments and handwritten physician notes. A custom OCR pipeline, tuned for these document types rather than generic text, converts the page into structured fields. Tuning matters: medical forms have predictable layouts you can exploit, and handwriting needs different handling than printed text.</p>
+
+          <h3>2. Understanding with guardrailed LLMs</h3>
+          <p>OCR gives you text; it doesn't give you meaning. Large language models interpret clinical context, but only within <strong>defined guardrails</strong>. That means constraining the model to extract specific fields, validate against known schemas, and return structured output with a confidence signal, rather than free-form prose. The model's job is to read and classify, not to invent.</p>
+
+          <blockquote>The point of a guardrail is simple: the model should be allowed to say "I'm not sure", and never allowed to guess.</blockquote>
+
+          <h3>3. Code &amp; rule validation</h3>
+          <p>Extraction is only useful if it's correct. Classification models and deterministic rules validate <strong>ICD-10, CPT and HCPCS</strong> codes against the submitted diagnoses, and check for payer-specific issues like upcoding or bundling errors. This is where a lot of revenue leakage hides, and where rule-based logic, not just an LLM, earns its place.</p>
+
+          <h3>4. Human-in-the-loop review</h3>
+          <p>Every uncertain case, low confidence, a flagged discrepancy, an appeal, routes to a human review interface instead of being auto-approved. Adjusters handle the edge cases, and their decisions feed back to improve the models over time. Automation handles volume; humans handle ambiguity.</p>
+
+          <div class="callout-box">
+            <span class="k">Why guardrails preserve accountability</span>
+            <p>Automation fails in healthcare when it hides uncertainty. A well-designed pipeline does the opposite, it <strong>surfaces</strong> uncertainty. Every claim carries a confidence score and an audit trail of what was extracted, what was validated and what was flagged. A human is always accountable for approvals; the machine just makes that accountability cheaper to exercise.</p>
+          </div>
+
+          <h2>Measuring whether it works</h2>
+          <p>Decide your success metrics before you build. The two that matter most:</p>
+          <ul>
+            <li><strong>Extraction accuracy</strong> on the data fields that drive adjudication, aim for human-level, and measure it on a held-out set of real claims.</li>
+            <li><strong>Processing time</strong> per claim or per batch, the number that translates directly into cleared backlogs and freed staff.</li>
+          </ul>
+          <p>In practice, this pattern reaches around <strong>97% extraction accuracy</strong> while cutting processing time by roughly <strong>90%</strong>, not because it replaces adjusters, but because it lets them spend their time on complex adjudication and fraud detection instead of typing.</p>
+
+          <h2>Key takeaways</h2>
+          <ol>
+            <li>Split the problem: OCR for the page, LLMs for meaning, rules for validation, humans for ambiguity.</li>
+            <li>Constrain the model, structured output and confidence scores, never free-form guesses.</li>
+            <li>Flag, don't hide. Route every uncertain case to a human.</li>
+            <li>Define accuracy and time metrics up front, and measure on real documents.</li>
+          </ol>
+        </div>
+
+        <div class="prose" style="margin-top:50px;">
+          <div class="cta-band reveal">
+            <p class="eyebrow center">Have a document-heavy workflow?</p>
+            <h2 style="margin:0 0 18px;">Let's automate the boring 80%.</h2>
+            <div class="cta-actions">
+              <a href="get-started.html" class="btn btn-primary">Start Your Project <span class="btn-arrow">→</span></a>
+              <a href="claimbrain.html" class="btn btn-ghost">See ClaimBrain</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand"><span class="dot"></span>CodeREM Labs</a>
+          <p>Engineering excellence for modern businesses. We build software that delivers measurable results.</p>
+          <a href="mailto:hello@coderemlabs.com" class="accent">hello@coderemlabs.com</a>
+        </div>
+        <div><h4>Company</h4><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="insights.html">Insights</a><a href="get-started.html">Get Started</a></div>
+        <div><h4>Services</h4><a href="services.html">Enterprise Solutions</a><a href="services.html">Mobile Applications</a><a href="services.html">AI Automations</a><a href="services.html">Discovery &amp; Analysis</a></div>
+        <div><h4>Insights</h4><a href="insights-medical-claims-ai.html">Medical Claims AI</a><a href="insights-enterprise-rag.html">Enterprise RAG Systems</a><a href="insights-custom-erp.html">Custom ERP Decisions</a><a href="insights-prototype-scope.html">14-Day Prototype Scope</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> CodeREM Labs. All rights reserved.</span>
+        <span>Sri Lanka / Global · <a href="#" class="accent">LinkedIn</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/script.js"></script>
+</body>
+</html>
