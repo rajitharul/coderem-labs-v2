@@ -16,6 +16,7 @@ const MENU_LINKS = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,7 +29,15 @@ export default function Header() {
   }, [open]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      // hide the bar when scrolling down past its height, reveal on scroll up
+      if (y > lastY && y > 120) setHidden(true);
+      else if (y < lastY) setHidden(false);
+      lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -47,7 +56,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`site-header${scrolled ? " scrolled" : ""}`}>
+      <header className={`site-header${scrolled ? " scrolled" : ""}${hidden && !open ? " header-hidden" : ""}`}>
         <div className="container nav">
           <Link href="/" className="brand">
             <Logo id="logo-header" />
