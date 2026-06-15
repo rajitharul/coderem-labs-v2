@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof of Play — Yuzu Energy Launch Promo</title>
+  <link rel="stylesheet" href="design.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          yuzu: '#FED766', 'yuzu-bright': '#FFE48A', 'yuzu-dim': '#C9A94D',
+          kick: '#FED766', 'kick-dim': '#C9A94D',
+          bg: '#000000', 'bg-elevated': '#0B0B0B', 'bg-card': '#0F0F0F', 'bg-hover': '#161616',
+          border: '#1F1F1F', 'border-strong': '#2E2E2E',
+          live: '#FF3B3B', pending: '#FFB800', info: '#7FB3FF',
+        },
+        fontFamily: {
+          display: ['Gasoek One', 'Impact', 'Arial Black', 'sans-serif'],
+          body: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['Inter', 'system-ui', 'sans-serif'],
+        },
+        boxShadow: { 'offset': '6px 6px 0 #000', 'offset-sm': '3px 3px 0 #000', 'offset-lg': '10px 10px 0 #000', 'offset-yuzu': '6px 6px 0 #FED766' },
+      } },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="min-h-screen grid grid-cols-[260px_1fr] bg-black text-white">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="border-r-2 border-white bg-black min-h-screen sticky top-0 flex flex-col">
+    <div class="h-16 px-5 border-b-2 border-white flex items-center gap-3">
+      <div class="bs-mark w-9 h-9 text-lg">B</div>
+      <div>
+        <div class="bs-wordmark-sm text-lg leading-none">BADSTREAMS</div>
+        <div class="font-body text-[9px] font-extrabold text-yuzu tracking-[0.22em] uppercase mt-1">ADMIN · CONSOLE</div>
+      </div>
+    </div>
+    <nav class="py-5 flex-1 overflow-y-auto">
+      <div class="px-5 mb-3 font-body text-[10px] font-extrabold text-white/40 tracking-[0.22em] uppercase">Overview</div>
+      <a href="#" class="nav-item"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Dashboard</a>
+      <a href="#" class="nav-item"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Inquiries</a>
+      <div class="px-5 mt-6 mb-3 font-body text-[10px] font-extrabold text-white/40 tracking-[0.22em] uppercase">Delivery</div>
+      <a href="admin-campaigns.html" class="nav-item active"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16"/><path d="M3 9h18"/></svg>Campaigns</a>
+      <a href="#" class="nav-item"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>Streamers</a>
+    </nav>
+    <div class="mt-auto border-t-2 border-white p-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-yuzu border-2 border-black grid place-items-center text-black font-display text-lg" style="box-shadow: 2px 2px 0 #000;">A</div>
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-bold truncate">admin</div>
+          <div class="font-body text-[10px] font-bold text-white/50 truncate tracking-wider uppercase">admin · ops</div>
+        </div>
+        <a href="landing.html" title="Logout" class="text-white/60 hover:text-live transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="min-h-screen">
+    <header class="h-16 border-b-2 border-white px-8 flex items-center justify-between bg-black sticky top-0 z-20">
+      <div class="font-body text-sm font-semibold text-white/70">
+        <a href="admin-campaigns.html" class="hover:text-kick">Campaigns</a> / <a href="admin-campaigns.html" class="hover:text-kick">Yuzu Energy — Launch Promo</a> / Analytics
+      </div>
+      <div class="flex items-center gap-3"></div>
+    </header>
+
+    <div class="p-8 max-w-[1500px]">
+
+      <a href="admin-campaigns.html" class="font-mono text-[11px] text-muted hover:text-kick tracking-[0.12em] uppercase mb-6 inline-block">← Back to campaign</a>
+
+      <div class="flex items-end justify-between mb-8 fade-up gap-4 flex-wrap">
+        <div>
+          <div class="stat-label mb-3">Yuzu Energy — Launch Promo</div>
+          <h1 class="font-display text-5xl tracking-brand leading-none">Proof of play</h1>
+          <p class="text-muted mt-3">2 approved streamers · sessions, heartbeats, screenshots, and chat.</p>
+        </div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <a href="#" class="btn btn-kick !py-2 !px-4 !text-xs">↓ Download report</a>
+          <div class="text-right">
+            <div class="font-mono text-[11px] text-muted tracking-[0.12em] uppercase mb-1">Auto-refresh</div>
+            <div class="flex items-center gap-2 justify-end">
+              <span class="dot bg-kick pulse-kick"></span>
+              <span class="font-mono text-sm text-kick">LIVE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI band -->
+      <section class="card fade-up mb-8" style="animation-delay:.025s">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-0">
+          <div class="p-5 border-r border-default">
+            <div class="stat-label mb-2">Live Now</div>
+            <div class="flex items-baseline gap-2"><div class="stat-value text-live">1</div><span class="dot bg-live pulse-live mb-2"></span></div>
+            <div class="font-mono text-[10px] text-muted tracking-wider mt-1">of 2 approved</div>
+          </div>
+          <div class="p-5 border-r border-default">
+            <div class="stat-label mb-2">Sessions</div>
+            <div class="stat-value">7</div>
+            <div class="font-mono text-[10px] text-muted tracking-wider mt-1">across all streamers</div>
+          </div>
+          <div class="p-5 border-r border-default">
+            <div class="stat-label mb-2">Total Ad Air-Time</div>
+            <div class="font-display text-3xl text-kick leading-none">6h 12m</div>
+            <div class="font-mono text-[10px] text-muted tracking-wider mt-1">on-air seconds delivered</div>
+          </div>
+          <div class="p-5 border-r border-default">
+            <div class="stat-label mb-2">Viewer-Minutes</div>
+            <div class="stat-value">182,400</div>
+            <div class="font-mono text-[10px] text-muted tracking-wider mt-1">qualifying contribution</div>
+          </div>
+          <div class="p-5">
+            <div class="stat-label mb-2">Chat Messages</div>
+            <div class="stat-value">9,318</div>
+            <div class="font-mono text-[10px] text-muted tracking-wider mt-1">collected</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Monetization & goal -->
+      <section class="card fade-up mb-8">
+        <div class="px-6 py-4 border-b border-default flex items-center justify-between">
+          <div class="stat-label">Monetization &amp; Goal</div>
+          <span class="font-mono text-[10.5px] text-muted tracking-wider">1 of 2 streamers qualified</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-b border-default">
+          <div class="p-5 border-r border-default"><div class="stat-label mb-2">Min Play Time</div><div class="font-display text-2xl">20m</div></div>
+          <div class="p-5 border-r border-default"><div class="stat-label mb-2">Viewer-Minutes</div><div class="font-display text-2xl">182,400</div></div>
+          <div class="p-5"><div class="stat-label mb-2">Goal</div><div class="font-display text-2xl text-kick">250,000</div></div>
+        </div>
+        <div class="p-5 space-y-2">
+          <div class="flex items-center justify-between font-mono text-[10px] tracking-[0.12em] uppercase">
+            <span class="text-muted">Progress</span>
+            <span class="text-kick">73%</span>
+          </div>
+          <div class="h-2 w-full border border-default bg-bg overflow-hidden"><div class="bg-yuzu h-full" style="width:73%"></div></div>
+        </div>
+      </section>
+
+      <div class="space-y-8">
+
+        <!-- ═══ STREAMER 1 — live, qualified ═══ -->
+        <section class="card fade-up" style="animation-delay:.05s">
+          <div class="px-6 py-5 border-b border-default flex flex-wrap items-center gap-4">
+            <img src="https://i.pravatar.cc/88?img=12" class="w-11 h-11 rounded-full object-cover border border-default" alt="">
+            <div>
+              <div class="font-semibold">NovaPlays</div>
+              <div class="font-mono text-[11px] text-muted">@novaplays · 8,420 followers</div>
+            </div>
+            <div class="ml-auto flex items-center gap-3 flex-wrap">
+              <span class="badge badge-live"><span class="dot bg-live pulse-live"></span>LIVE</span>
+              <span class="badge badge-kick !text-[9px]">OBS · CONNECTED</span>
+              <span class="font-mono text-[11px] text-muted">👁 612 viewers</span>
+              <span class="badge badge-kick !text-[9px]">QUALIFIED</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-0 border-b border-default">
+            <div class="p-5 border-r border-default"><div class="stat-label mb-2">Total Sessions</div><div class="stat-value">4</div></div>
+            <div class="p-5 border-r border-default"><div class="stat-label mb-2">Total Screenshots</div><div class="stat-value">37</div></div>
+            <div class="p-5 border-r border-default"><div class="stat-label mb-2">Cumulative Ad Air</div><div class="font-display text-2xl">4h 38m</div></div>
+            <div class="p-5 border-r border-default"><div class="stat-label mb-2">Viewer-Minutes</div><div class="font-display text-2xl text-kick">131,200</div></div>
+            <div class="p-5"><div class="stat-label mb-2">Last Seen</div><div class="font-display text-2xl">now</div></div>
+          </div>
+
+          <div class="p-6 space-y-4">
+
+            <!-- Active session -->
+            <details class="border border-default bg-bg-elevated/30 group/sess" open>
+              <summary class="px-5 py-3 border-b border-default flex items-center gap-3 flex-wrap cursor-pointer hover:bg-bg-elevated/50 transition select-none list-none">
+                <span class="font-mono text-[10px] text-muted tracking-[0.15em] uppercase group-open/sess:rotate-90 transition inline-block w-3">▸</span>
+                <span class="badge badge-live"><span class="dot bg-live pulse-live"></span>LIVE SESSION</span>
+                <span class="font-mono text-[11px] text-muted">Jun 16, 2026 · 18:04 → 20:31</span>
+                <div class="ml-auto flex items-center gap-4 font-mono text-[11px]">
+                  <span><span class="text-muted">DURATION</span><span class="text-kick ml-2">2h 27m</span></span>
+                  <span><span class="text-muted">AD AIR-TIME</span><span class="text-live ml-2">2h 09m</span></span>
+                  <span><span class="text-muted">OFF-AIR</span><span class="text-pending ml-2">18m</span></span>
+                </div>
+              </summary>
+
+              <div class="px-5 py-3 border-b border-default bg-bg/30">
+                <div class="flex items-center justify-between font-mono text-[10px] tracking-[0.12em] uppercase mb-2">
+                  <span class="text-live">On-air 2h 09m (88%)</span>
+                  <span class="text-pending">Off-air 18m (12%)</span>
+                </div>
+                <div class="flex items-stretch gap-px h-3 w-full bg-bg border border-default hb-strip" data-seed="1" title="One tick per heartbeat"></div>
+                <div class="flex items-center gap-4 mt-2 font-mono text-[9px] tracking-[0.12em] uppercase text-dim flex-wrap">
+                  <span class="flex items-center gap-1.5"><span class="dot bg-live"></span>On-air</span>
+                  <span class="flex items-center gap-1.5"><span class="dot bg-pending"></span>Off-air</span>
+                  <span class="flex items-center gap-1.5"><span class="dot bg-amber-500"></span>Setup issue</span>
+                  <span class="flex items-center gap-1.5"><span class="dot bg-elevated border border-default"></span>Unknown</span>
+                  <span class="ml-auto">147 heartbeats</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-0 border-b border-default">
+                <div class="p-4 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1.5">Heartbeats</div><div class="font-display text-xl">147</div></div>
+                <div class="p-4 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1.5">Screenshots</div><div class="font-display text-xl">18</div></div>
+                <div class="p-4 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1.5">Avg Viewers</div><div class="font-display text-xl">548</div></div>
+                <div class="p-4 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1.5">Peak</div><div class="font-display text-xl text-kick">734</div></div>
+                <div class="p-4 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1.5">Chat msgs</div><div class="font-display text-xl">3,142</div></div>
+                <div class="p-4 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1.5">Unique chatters</div><div class="font-display text-xl">486</div></div>
+                <div class="p-4"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1.5">Rate</div><div class="font-display text-xl">21<span class="text-sm text-muted">/m</span></div></div>
+              </div>
+
+              <div class="px-5 py-4 border-b border-default">
+                <div class="flex items-center justify-between font-mono text-[10px] tracking-[0.15em] uppercase mb-2">
+                  <span class="text-muted">Concurrent viewers</span>
+                  <span class="text-dim">24 samples</span>
+                </div>
+                <div class="h-[80px]"><canvas class="viewer-chart" data-points='[{"t":"2026-06-16T18:04:00","v":210},{"t":"2026-06-16T18:10:00","v":288},{"t":"2026-06-16T18:16:00","v":355},{"t":"2026-06-16T18:22:00","v":401},{"t":"2026-06-16T18:28:00","v":468},{"t":"2026-06-16T18:34:00","v":512},{"t":"2026-06-16T18:40:00","v":540},{"t":"2026-06-16T18:46:00","v":588},{"t":"2026-06-16T18:52:00","v":611},{"t":"2026-06-16T18:58:00","v":659},{"t":"2026-06-16T19:04:00","v":701},{"t":"2026-06-16T19:10:00","v":734},{"t":"2026-06-16T19:16:00","v":690},{"t":"2026-06-16T19:22:00","v":655},{"t":"2026-06-16T19:28:00","v":612},{"t":"2026-06-16T19:34:00","v":598},{"t":"2026-06-16T19:40:00","v":571},{"t":"2026-06-16T19:46:00","v":603},{"t":"2026-06-16T19:52:00","v":640},{"t":"2026-06-16T19:58:00","v":622},{"t":"2026-06-16T20:10:00","v":585},{"t":"2026-06-16T20:18:00","v":560},{"t":"2026-06-16T20:25:00","v":601},{"t":"2026-06-16T20:31:00","v":612}]'></canvas></div>
+              </div>
+
+              <div class="p-5 space-y-4">
+                <details>
+                  <summary class="font-mono text-[11px] text-muted tracking-wider uppercase cursor-pointer hover:text-kick transition select-none">▸ View 3,142 chat messages from 486 unique chatters <span class="text-dim">(first 8 shown)</span></summary>
+                  <div class="mt-3 max-h-64 overflow-y-auto bg-bg border border-default p-3 space-y-1 font-mono text-[11px]">
+                    <div class="flex gap-2"><span class="text-muted shrink-0">18:41:02</span><span class="text-kick font-semibold shrink-0">pixelwizard</span><span class="text-white/80 break-all">that yuzu can looks clean ngl</span></div>
+                    <div class="flex gap-2"><span class="text-muted shrink-0">18:41:09</span><span class="text-kick font-semibold shrink-0">gg_marin</span><span class="text-white/80 break-all">where do i get the code</span></div>
+                    <div class="flex gap-2"><span class="text-muted shrink-0">18:41:15</span><span class="text-kick font-semibold shrink-0">tofu_btw</span><span class="text-white/80 break-all">NOVA W stream</span></div>
+                    <div class="flex gap-2"><span class="text-muted shrink-0">18:41:22</span><span class="text-kick font-semibold shrink-0">kira.exe</span><span class="text-white/80 break-all">is it actually citrus or sour</span></div>
+                    <div class="flex gap-2"><span class="text-muted shrink-0">18:41:30</span><span class="text-kick font-semibold shrink-0">benchmarked</span><span class="text-white/80 break-all">ad placement bottom right is non intrusive, respect</span></div>
+                    <div class="flex gap-2"><span class="text-muted shrink-0">18:41:38</span><span class="text-kick font-semibold shrink-0">lunafps</span><span class="text-white/80 break-all">grabbing one on my next grocery run lol</span></div>
+                    <div class="flex gap-2"><span class="text-muted shrink-0">18:41:45</span><span class="text-kick font-semibold shrink-0">ohno_its_dom</span><span class="text-white/80 break-all">YUZU GANG</span></div>
+                    <div class="flex gap-2"><span class="text-muted shrink-0">18:41:51</span><span class="text-kick font-semibold shrink-0">sprout77</span><span class="text-white/80 break-all">does it have caffeine</span></div>
+                  </div>
+                </details>
+
+                <div>
+                  <div class="font-mono text-[11px] text-muted tracking-wider uppercase mb-2">Screenshots</div>
+                  <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-1.5" data-gallery="nova"></div>
+                </div>
+              </div>
+            </details>
+
+            <!-- Ended session -->
+            <details class="border border-default bg-bg-elevated/30 group/sess">
+              <summary class="px-5 py-3 border-b border-default flex items-center gap-3 flex-wrap cursor-pointer hover:bg-bg-elevated/50 transition select-none list-none">
+                <span class="font-mono text-[10px] text-muted tracking-[0.15em] uppercase group-open/sess:rotate-90 transition inline-block w-3">▸</span>
+                <span class="badge badge-dim">ENDED</span>
+                <span class="font-mono text-[11px] text-muted">Jun 15, 2026 · 19:12 → 22:48</span>
+                <div class="ml-auto flex items-center gap-4 font-mono text-[11px]">
+                  <span><span class="text-muted">DURATION</span><span class="text-kick ml-2">3h 36m</span></span>
+                  <span><span class="text-muted">AD AIR-TIME</span><span class="text-live ml-2">3h 21m</span></span>
+                  <span><span class="text-muted">OFF-AIR</span><span class="text-pending ml-2">15m</span></span>
+                </div>
+              </summary>
+              <div class="px-5 py-3 border-b border-default bg-bg/30">
+                <div class="flex items-center justify-between font-mono text-[10px] tracking-[0.12em] uppercase mb-2">
+                  <span class="text-live">On-air 3h 21m (93%)</span>
+                  <span class="text-pending">Off-air 15m (7%)</span>
+                </div>
+                <div class="flex items-stretch gap-px h-3 w-full bg-bg border border-default hb-strip" data-seed="2" title="One tick per heartbeat"></div>
+              </div>
+              <div class="p-5 text-sm text-muted">Session ended normally. 19 screenshots, 2,704 chat messages collected.</div>
+            </details>
+
+          </div>
+        </section>
+
+        <!-- ═══ STREAMER 2 — offline, setup issue, not yet qualified ═══ -->
+        <section class="card fade-up" style="animation-delay:.08s">
+          <div class="px-6 py-5 border-b border-default flex flex-wrap items-center gap-4">
+            <img src="https://i.pravatar.cc/88?img=33" class="w-11 h-11 rounded-full object-cover border border-default" alt="">
+            <div>
+              <div class="font-semibold">EmberTV</div>
+              <div class="font-mono text-[11px] text-muted">@embertv · 3,910 followers</div>
+            </div>
+            <div class="ml-auto flex items-center gap-3 flex-wrap">
+              <span class="badge badge-dim">OFFLINE</span>
+              <span class="badge badge-dim !text-[9px]">OBS · DISCONNECTED</span>
+              <span class="badge badge-pending !text-[9px]">+8m 40s TO QUALIFY</span>
+              <span class="badge !text-[9px] !bg-amber-500 !text-black !border-amber-600" title="Source 'Badstreams Ad' not found in scene 'Live'">⚠ SETUP ISSUE</span>
+            </div>
+          </div>
+
+          <div class="px-6 py-3 border-b border-default bg-amber-500/10 flex items-start gap-3">
+            <span class="font-mono text-[10px] text-amber-400 tracking-[0.12em] uppercase shrink-0 mt-0.5">⚠ Setup mismatch</span>
+            <span class="text-sm text-amber-200">Source 'Badstreams Ad' not found in scene 'Live' — ad-air not counted while this persists.</span>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-0 border-b border-default">
+            <div class="p-5 border-r border-default"><div class="stat-label mb-2">Total Sessions</div><div class="stat-value">3</div></div>
+            <div class="p-5 border-r border-default"><div class="stat-label mb-2">Total Screenshots</div><div class="stat-value">14</div></div>
+            <div class="p-5 border-r border-default"><div class="stat-label mb-2">Cumulative Ad Air</div><div class="font-display text-2xl">11m 20s</div></div>
+            <div class="p-5 border-r border-default"><div class="stat-label mb-2">Viewer-Minutes</div><div class="font-display text-2xl text-muted">2,180</div></div>
+            <div class="p-5"><div class="stat-label mb-2">Last Seen</div><div class="font-display text-2xl">3h ago</div></div>
+          </div>
+
+          <div class="p-6 space-y-4">
+            <details class="border border-default bg-bg-elevated/30 group/sess">
+              <summary class="px-5 py-3 border-b border-default flex items-center gap-3 flex-wrap cursor-pointer hover:bg-bg-elevated/50 transition select-none list-none">
+                <span class="font-mono text-[10px] text-muted tracking-[0.15em] uppercase group-open/sess:rotate-90 transition inline-block w-3">▸</span>
+                <span class="badge badge-dim">ENDED</span>
+                <span class="font-mono text-[11px] text-muted">Jun 16, 2026 · 14:50 → 15:36</span>
+                <div class="ml-auto flex items-center gap-4 font-mono text-[11px]">
+                  <span><span class="text-muted">DURATION</span><span class="text-kick ml-2">46m</span></span>
+                  <span><span class="text-muted">AD AIR-TIME</span><span class="text-live ml-2">4m 20s</span></span>
+                  <span><span class="text-muted">OFF-AIR</span><span class="text-pending ml-2">41m</span></span>
+                  <span class="badge !text-[9px] !bg-amber-500 !text-black !border-amber-600">⚠ 32 SETUP ISSUES</span>
+                </div>
+              </summary>
+              <div class="px-5 py-3 border-b border-default bg-bg/30">
+                <div class="flex items-center justify-between font-mono text-[10px] tracking-[0.12em] uppercase mb-2">
+                  <span class="text-live">On-air 4m 20s (9%)</span>
+                  <span class="text-pending">Off-air 41m (91%)</span>
+                </div>
+                <div class="flex items-stretch gap-px h-3 w-full bg-bg border border-default hb-strip" data-seed="3" title="One tick per heartbeat"></div>
+                <div class="flex items-center gap-4 mt-2 font-mono text-[9px] tracking-[0.12em] uppercase text-dim flex-wrap">
+                  <span class="flex items-center gap-1.5"><span class="dot bg-live"></span>On-air</span>
+                  <span class="flex items-center gap-1.5"><span class="dot bg-pending"></span>Off-air</span>
+                  <span class="flex items-center gap-1.5"><span class="dot bg-amber-500"></span>Setup issue</span>
+                  <span class="flex items-center gap-1.5"><span class="dot bg-elevated border border-default"></span>Unknown</span>
+                  <span class="ml-auto">46 heartbeats</span>
+                </div>
+              </div>
+              <div class="p-5 text-sm text-amber-200/80">Most of this session ran with the configured browser source missing from the active scene, so ad-air was withheld. Streamer was notified via the setup-mismatch banner.</div>
+            </details>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<!-- Screenshot lightbox -->
+<div id="screenshot-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-6 cursor-zoom-out">
+  <div class="max-w-[90vw] max-h-[90vh] flex flex-col gap-3 items-center">
+    <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] border-2 border-white object-contain" alt="">
+    <div class="flex items-center gap-3 font-mono text-[11px] text-white/90">
+      <span id="lightbox-source" class="badge badge-kick !text-[10px]"></span>
+      <span id="lightbox-time" class="text-muted"></span>
+      <span class="text-dim">· click anywhere or press ESC to close</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ── Heartbeat strips (mock) ──────────────────────────────
+  function makeStrip(el) {
+    var seed = parseInt(el.getAttribute('data-seed') || '1', 10);
+    var rng = function () { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+    var setupHeavy = el.getAttribute('data-seed') === '3';
+    var n = setupHeavy ? 46 : 130;
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < n; i++) {
+      var r = rng();
+      var cls, label;
+      if (setupHeavy) {
+        if (i < 4) { cls = 'bg-live'; label = 'on air'; }
+        else if (r < 0.12) { cls = 'bg-pending'; label = 'off air'; }
+        else { cls = 'bg-amber-500'; label = "setup issue · source 'Badstreams Ad' not found"; }
+      } else {
+        if (r < 0.88) { cls = 'bg-live'; label = 'on air'; }
+        else if (r < 0.97) { cls = 'bg-pending'; label = "off air · 'BRB' on program (configured 'Live')"; }
+        else { cls = 'bg-bg-elevated'; label = 'unknown'; }
+      }
+      var d = document.createElement('div');
+      d.className = 'flex-1 min-w-[2px] ' + cls;
+      d.title = label;
+      frag.appendChild(d);
+    }
+    el.appendChild(frag);
+  }
+  document.querySelectorAll('.hb-strip').forEach(makeStrip);
+
+  // ── Screenshot gallery (seeded placeholder stream frames) ─
+  var SHOTS = [
+    {seed: 'nova-1', src: 'kick', t: '18:41:12'},
+    {seed: 'nova-2', src: 'kick', t: '18:42:14'},
+    {seed: 'nova-3', src: 'obs',  t: '18:43:16'},
+    {seed: 'nova-4', src: 'kick', t: '18:44:18'},
+    {seed: 'nova-5', src: 'kick', t: '18:45:20'},
+    {seed: 'nova-6', src: 'canvas', t: '18:46:22'},
+    {seed: 'nova-7', src: 'kick', t: '18:47:24'},
+    {seed: 'nova-8', src: 'kick', t: '18:48:26'},
+  ];
+  var badge = { kick: 'badge-kick', obs: 'badge-info', canvas: 'badge-dim' };
+  document.querySelectorAll('[data-gallery]').forEach(function (grid) {
+    SHOTS.forEach(function (s) {
+      var url = 'https://picsum.photos/seed/' + s.seed + '/320/180';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'screenshot-thumb relative group aspect-video bg-bg border border-default overflow-hidden hover:border-kick transition cursor-zoom-in';
+      btn.dataset.src = url;
+      btn.dataset.source = s.src.toUpperCase();
+      btn.dataset.time = 'Jun 16, 2026 · ' + s.t;
+      btn.innerHTML =
+        '<img src="' + url + '" class="w-full h-full object-cover" loading="lazy" alt="">' +
+        '<div class="absolute top-1 right-1"><span class="badge ' + badge[s.src] + ' !text-[8px] !py-0 !px-1">' + s.src.toUpperCase() + '</span></div>' +
+        '<div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition flex items-end p-1"><span class="font-mono text-[9px] text-white/90">' + s.t + '</span></div>';
+      grid.appendChild(btn);
+    });
+  });
+
+  // ── Viewer charts ────────────────────────────────────────
+  document.querySelectorAll('canvas.viewer-chart').forEach(function (canvas) {
+    var raw = canvas.getAttribute('data-points');
+    if (!raw) return;
+    var data; try { data = JSON.parse(raw); } catch (e) { return; }
+    if (!data || !data.length) return;
+    var labels = data.map(function (d) { return new Date(d.t).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}); });
+    var values = data.map(function (d) { return d.v; });
+    new Chart(canvas, {
+      type: 'line',
+      data: { labels: labels, datasets: [{ label: 'Viewers', data: values, borderColor: '#FED766', backgroundColor: 'rgba(254,215,102,0.12)', borderWidth: 2, fill: true, tension: 0.3, pointRadius: 2, pointHoverRadius: 5, pointBackgroundColor: '#FED766', pointBorderColor: '#000', pointBorderWidth: 1 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#9A9A9A', maxTicksLimit: 8, font: { size: 9, family: 'Inter', weight: '700' } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          y: { beginAtZero: true, ticks: { color: '#9A9A9A', precision: 0, font: { size: 9, family: 'Inter', weight: '700' } }, grid: { color: 'rgba(255,255,255,0.04)' } }
+        } }
+    });
+  });
+
+  // ── Lightbox ─────────────────────────────────────────────
+  var lb = document.getElementById('screenshot-lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  var lbSource = document.getElementById('lightbox-source');
+  var lbTime = document.getElementById('lightbox-time');
+  function open(src, source, time) { lbImg.src = src; lbSource.textContent = source || ''; lbTime.textContent = time || ''; lb.classList.remove('hidden'); lb.classList.add('flex'); }
+  function close() { lb.classList.add('hidden'); lb.classList.remove('flex'); lbImg.src = ''; }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.screenshot-thumb');
+    if (btn) open(btn.dataset.src, btn.dataset.source, btn.dataset.time);
+  });
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>

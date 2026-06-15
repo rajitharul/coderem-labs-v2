@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campaigns — Badstreams Admin</title>
+  <link rel="stylesheet" href="design.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          yuzu: '#FED766', 'yuzu-bright': '#FFE48A', 'yuzu-dim': '#C9A94D',
+          kick: '#FED766', 'kick-dim': '#C9A94D',
+          bg: '#000000', 'bg-elevated': '#0B0B0B', 'bg-card': '#0F0F0F', 'bg-hover': '#161616',
+          border: '#1F1F1F', 'border-strong': '#2E2E2E',
+          live: '#FF3B3B', pending: '#FFB800', info: '#7FB3FF',
+        },
+        fontFamily: {
+          display: ['Gasoek One', 'Impact', 'Arial Black', 'sans-serif'],
+          body: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['Inter', 'system-ui', 'sans-serif'],
+        },
+        boxShadow: { 'offset': '6px 6px 0 #000', 'offset-sm': '3px 3px 0 #000', 'offset-lg': '10px 10px 0 #000', 'offset-yuzu': '6px 6px 0 #FED766' },
+      } },
+    };
+  </script>
+</head>
+<body>
+<div class="min-h-screen grid grid-cols-[260px_1fr] bg-black text-white">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="border-r-2 border-white bg-black min-h-screen sticky top-0 flex flex-col">
+    <div class="h-16 px-5 border-b-2 border-white flex items-center gap-3">
+      <div class="bs-mark w-9 h-9 text-lg">B</div>
+      <div>
+        <div class="bs-wordmark-sm text-lg leading-none">BADSTREAMS</div>
+        <div class="font-body text-[9px] font-extrabold text-yuzu tracking-[0.22em] uppercase mt-1">ADMIN · CONSOLE</div>
+      </div>
+    </div>
+
+    <nav class="py-5 flex-1 overflow-y-auto">
+      <div class="px-5 mb-3 font-body text-[10px] font-extrabold text-white/40 tracking-[0.22em] uppercase">Overview</div>
+      <a href="#" class="nav-item">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        Inquiries
+      </a>
+
+      <div class="px-5 mt-6 mb-3 font-body text-[10px] font-extrabold text-white/40 tracking-[0.22em] uppercase">Delivery</div>
+      <a href="admin-campaigns.html" class="nav-item active">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16"/><path d="M3 9h18"/></svg>
+        Campaigns
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        Streamers
+      </a>
+    </nav>
+
+    <div class="mt-auto border-t-2 border-white p-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-yuzu border-2 border-black grid place-items-center text-black font-display text-lg" style="box-shadow: 2px 2px 0 #000;">A</div>
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-bold truncate">admin</div>
+          <div class="font-body text-[10px] font-bold text-white/50 truncate tracking-wider uppercase">admin · ops</div>
+        </div>
+        <a href="landing.html" title="Logout" class="text-white/60 hover:text-live transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="min-h-screen">
+    <header class="h-16 border-b-2 border-white px-8 flex items-center justify-between bg-black sticky top-0 z-20">
+      <div class="font-body text-sm font-semibold text-white/70">Control Room / Campaigns</div>
+      <div class="flex items-center gap-3">
+        <a href="#" class="btn btn-kick !py-2 !px-4 !text-xs">+ Campaign</a>
+      </div>
+    </header>
+
+    <div class="p-8 max-w-[1400px]">
+
+      <div class="flex items-end justify-between mb-10 fade-up">
+        <div>
+          <div class="stat-label mb-3">16 June 2026</div>
+          <h1 class="font-display text-5xl tracking-brand leading-none">Control room</h1>
+          <p class="text-muted mt-3">Ad delivery, inquiries, and live streamer state.</p>
+        </div>
+        <div class="text-right">
+          <div class="font-mono text-[11px] text-muted tracking-[0.12em] uppercase mb-1">Network</div>
+          <div class="flex items-center gap-2 justify-end">
+            <span class="dot bg-kick pulse-kick"></span>
+            <span class="font-mono text-sm text-kick">HEALTHY</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI band -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-0 border border-default mb-10 fade-up" style="animation-delay:.05s">
+        <div class="p-6 border-r border-default">
+          <div class="stat-label mb-3">Total Campaigns</div>
+          <div class="stat-value">12</div>
+        </div>
+        <div class="p-6 border-r border-default">
+          <div class="stat-label mb-3">Live Now</div>
+          <div class="stat-value text-kick">5</div>
+          <div class="mt-3 flex items-center gap-1.5">
+            <span class="dot bg-kick pulse-kick"></span>
+            <span class="font-mono text-[10.5px] text-muted tracking-wider">BROADCASTING</span>
+          </div>
+        </div>
+        <div class="p-6 border-r border-default">
+          <div class="stat-label mb-3">Pending Apps</div>
+          <div class="stat-value text-pending">8</div>
+        </div>
+        <div class="p-6 border-r border-default">
+          <div class="stat-label mb-3">New Inquiries</div>
+          <div class="stat-value text-info">3</div>
+        </div>
+        <div class="p-6">
+          <div class="stat-label mb-3">Streamers</div>
+          <div class="stat-value">47</div>
+        </div>
+      </div>
+
+      <!-- Campaign grid -->
+      <div class="flex items-center justify-between mb-5">
+        <div class="flex items-center gap-3">
+          <h2 class="font-display text-xl">All campaigns</h2>
+          <span class="badge badge-kick">12</span>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[11px]">
+          <button class="px-3 py-1.5 border-2 border-yuzu text-yuzu uppercase tracking-wider">All</button>
+          <button class="px-3 py-1.5 border border-default text-muted hover:text-white uppercase tracking-wider">Live</button>
+          <button class="px-3 py-1.5 border border-default text-muted hover:text-white uppercase tracking-wider">Draft</button>
+          <button class="px-3 py-1.5 border border-default text-muted hover:text-white uppercase tracking-wider">Ended</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 fade-up" style="animation-delay:.1s">
+
+        <!-- Card 1 -->
+        <div class="card p-6 card-yuzu-hover">
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge badge-kick !text-[9px]"><span class="dot bg-kick pulse-kick"></span>LIVE</span>
+                <span class="font-mono text-[10.5px] text-muted">#104</span>
+              </div>
+              <h3 class="font-display text-2xl tracking-brand leading-tight">Yuzu Energy — Launch Promo</h3>
+              <p class="text-sm text-muted mt-2 line-clamp-2">Hero can + tagline pinned bottom-right across gaming streams for the citrus energy launch week.</p>
+            </div>
+            <a href="admin-analytics.html" class="btn btn-ghost !py-1.5 !px-3 !text-[10px] shrink-0">Analytics →</a>
+          </div>
+          <div class="grid grid-cols-4 gap-0 border border-default mb-5">
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Assets</div><div class="font-display text-lg">3</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Streamers</div><div class="font-display text-lg">9</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Min foll.</div><div class="font-display text-lg text-kick">2,500</div></div>
+            <div class="p-3"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Live</div><div class="font-display text-lg text-live">4</div></div>
+          </div>
+          <div class="border border-default p-3">
+            <div class="flex items-center justify-between font-mono text-[9px] tracking-[0.15em] uppercase mb-2">
+              <span class="text-muted">Goal · viewer-minutes</span>
+              <span class="text-kick">182,400 / 250,000 · 73%</span>
+            </div>
+            <div class="h-1.5 w-full border border-default bg-bg overflow-hidden"><div class="bg-yuzu h-full" style="width:73%"></div></div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card p-6 card-yuzu-hover">
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge badge-kick !text-[9px]"><span class="dot bg-kick pulse-kick"></span>LIVE</span>
+                <span class="font-mono text-[10.5px] text-muted">#101</span>
+              </div>
+              <h3 class="font-display text-2xl tracking-brand leading-tight">Razer Viper — Esports Push</h3>
+              <p class="text-sm text-muted mt-2 line-clamp-2">Animated lower-third for the new wireless mouse, targeted at FPS streamers above 10k followers.</p>
+            </div>
+            <a href="admin-analytics.html" class="btn btn-ghost !py-1.5 !px-3 !text-[10px] shrink-0">Analytics →</a>
+          </div>
+          <div class="grid grid-cols-4 gap-0 border border-default mb-5">
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Assets</div><div class="font-display text-lg">2</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Streamers</div><div class="font-display text-lg">14</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Min foll.</div><div class="font-display text-lg text-kick">10,000</div></div>
+            <div class="p-3"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Live</div><div class="font-display text-lg text-live">6</div></div>
+          </div>
+          <div class="border border-default p-3">
+            <div class="flex items-center justify-between font-mono text-[9px] tracking-[0.15em] uppercase mb-2">
+              <span class="text-muted">Goal · viewer-minutes</span>
+              <span class="text-kick">498,200 / 500,000 · 99%</span>
+            </div>
+            <div class="h-1.5 w-full border border-default bg-bg overflow-hidden"><div class="bg-yuzu h-full" style="width:99%"></div></div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card p-6 card-yuzu-hover">
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge badge-pending !text-[9px]">PAUSED</span>
+                <span class="font-mono text-[10.5px] text-muted">#98</span>
+              </div>
+              <h3 class="font-display text-2xl tracking-brand leading-tight">HelloFresh — Meal Drop</h3>
+              <p class="text-sm text-muted mt-2 line-clamp-2">Discount-code banner during cooking + IRL streams. Paused pending creative refresh from sponsor.</p>
+            </div>
+            <a href="admin-analytics.html" class="btn btn-ghost !py-1.5 !px-3 !text-[10px] shrink-0">Analytics →</a>
+          </div>
+          <div class="grid grid-cols-4 gap-0 border border-default mb-5">
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Assets</div><div class="font-display text-lg">1</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Streamers</div><div class="font-display text-lg">5</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Min foll.</div><div class="font-display text-lg">500</div></div>
+            <div class="p-3"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Live</div><div class="font-display text-lg text-muted">0</div></div>
+          </div>
+          <div class="border border-default p-3">
+            <div class="flex items-center justify-between font-mono text-[9px] tracking-[0.15em] uppercase mb-2">
+              <span class="text-muted">Goal · viewer-minutes</span>
+              <span class="text-muted">61,300 / 150,000 · 41%</span>
+            </div>
+            <div class="h-1.5 w-full border border-default bg-bg overflow-hidden"><div class="bg-yuzu-dim h-full" style="width:41%"></div></div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card p-6 card-yuzu-hover">
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge badge-dim !text-[9px]">DRAFT</span>
+                <span class="font-mono text-[10.5px] text-muted">#112</span>
+              </div>
+              <h3 class="font-display text-2xl tracking-brand leading-tight">G FUEL — Summer Flavor</h3>
+              <p class="text-sm text-muted mt-2 line-clamp-2">Awaiting final asset placement on the 1920×1080 canvas before going live next week.</p>
+            </div>
+            <a href="#" class="btn btn-ghost !py-1.5 !px-3 !text-[10px] shrink-0">Editor →</a>
+          </div>
+          <div class="grid grid-cols-4 gap-0 border border-default mb-5">
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Assets</div><div class="font-display text-lg">0</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Streamers</div><div class="font-display text-lg">0</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Min foll.</div><div class="font-display text-lg">1,000</div></div>
+            <div class="p-3"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Live</div><div class="font-display text-lg text-muted">0</div></div>
+          </div>
+          <div class="border border-default p-3 flex items-center justify-between">
+            <span class="font-mono text-[10px] text-muted tracking-wider uppercase">Not published</span>
+            <a href="#" class="font-mono text-[10px] text-kick tracking-wider uppercase hover:underline">Set up assets →</a>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card p-6 card-yuzu-hover opacity-80">
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge badge-live !text-[9px]">ENDED</span>
+                <span class="font-mono text-[10.5px] text-muted">#76</span>
+              </div>
+              <h3 class="font-display text-2xl tracking-brand leading-tight">NordVPN — Q1 Always-On</h3>
+              <p class="text-sm text-muted mt-2 line-clamp-2">Long-run corner badge campaign. Wrapped March 31 — final report delivered to sponsor.</p>
+            </div>
+            <a href="admin-analytics.html" class="btn btn-ghost !py-1.5 !px-3 !text-[10px] shrink-0">Report →</a>
+          </div>
+          <div class="grid grid-cols-4 gap-0 border border-default mb-5">
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Assets</div><div class="font-display text-lg">2</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Streamers</div><div class="font-display text-lg">22</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Min foll.</div><div class="font-display text-lg">5,000</div></div>
+            <div class="p-3"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Live</div><div class="font-display text-lg text-muted">0</div></div>
+          </div>
+          <div class="border border-default p-3">
+            <div class="flex items-center justify-between font-mono text-[9px] tracking-[0.15em] uppercase mb-2">
+              <span class="text-muted">Goal · viewer-minutes</span>
+              <span class="text-kick">1,240,000 / 1,000,000 · 124%</span>
+            </div>
+            <div class="h-1.5 w-full border border-default bg-bg overflow-hidden"><div class="bg-yuzu h-full" style="width:100%"></div></div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card p-6 card-yuzu-hover">
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge badge-kick !text-[9px]"><span class="dot bg-kick pulse-kick"></span>LIVE</span>
+                <span class="font-mono text-[10.5px] text-muted">#108</span>
+              </div>
+              <h3 class="font-display text-2xl tracking-brand leading-tight">Logitech — Creator Gear</h3>
+              <p class="text-sm text-muted mt-2 line-clamp-2">Rotating product showcase for the new creator lineup — webcams, mics, and stream decks.</p>
+            </div>
+            <a href="admin-analytics.html" class="btn btn-ghost !py-1.5 !px-3 !text-[10px] shrink-0">Analytics →</a>
+          </div>
+          <div class="grid grid-cols-4 gap-0 border border-default mb-5">
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Assets</div><div class="font-display text-lg">4</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Streamers</div><div class="font-display text-lg">11</div></div>
+            <div class="p-3 border-r border-default"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Min foll.</div><div class="font-display text-lg text-kick">3,000</div></div>
+            <div class="p-3"><div class="font-mono text-[9px] text-muted tracking-[0.15em] uppercase mb-1">Live</div><div class="font-display text-lg text-live">3</div></div>
+          </div>
+          <div class="border border-default p-3">
+            <div class="flex items-center justify-between font-mono text-[9px] tracking-[0.15em] uppercase mb-2">
+              <span class="text-muted">Goal · viewer-minutes</span>
+              <span class="text-kick">94,800 / 300,000 · 32%</span>
+            </div>
+            <div class="h-1.5 w-full border border-default bg-bg overflow-hidden"><div class="bg-yuzu h-full" style="width:32%"></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

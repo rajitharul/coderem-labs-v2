@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import UIShowcase from "@/components/UIShowcase";
+
+const BADSTREAMS_SCREENS = [
+  { file: "landing.html", title: "Landing" },
+  { file: "streamer-browse.html", title: "Browse Campaigns" },
+  { file: "admin-campaigns.html", title: "Campaigns" },
+  { file: "admin-analytics.html", title: "Proof of Play" },
+];
 
 export const metadata: Metadata = {
   title: "Bad Streams: Tamper-proof, real-time ad delivery for live streams | CodeREM Labs",
@@ -108,6 +116,18 @@ export default function Page() {
                   <p>A 90-second heartbeat freshness window means stale data is shown as offline, never as a misleading "live", accuracy brands can act on.</p>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* UI SCREENS */}
+          <section className="cs-section">
+            <div className="container">
+              <div className="section-head reveal" style={{ marginBottom: "40px" } as React.CSSProperties}>
+                <p className="eyebrow">Product view</p>
+                <h2>Inside the <span className="h-word">product.</span></h2>
+                <p>The real screens we shipped — click any to open it full screen.</p>
+              </div>
+              <UIShowcase base="/portfolio/badstreams/ui" screens={BADSTREAMS_SCREENS} />
             </div>
           </section>
 

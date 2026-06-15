@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BADSTREAMS — Portfolio Screens</title>
+  <link rel="stylesheet" href="design.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { yuzu: '#FED766', 'yuzu-bright': '#FFE48A', 'yuzu-dim': '#C9A94D', kick: '#FED766',
+        bg: '#000000', 'bg-elevated': '#0B0B0B', 'bg-card': '#0F0F0F', border: '#1F1F1F', 'border-strong': '#2E2E2E',
+        live: '#FF3B3B', pending: '#FFB800', info: '#7FB3FF' },
+      fontFamily: { display: ['Gasoek One','Impact','sans-serif'], body: ['Inter','system-ui','sans-serif'], mono: ['Inter','system-ui','sans-serif'] },
+      boxShadow: { 'offset': '6px 6px 0 #000', 'offset-sm': '3px 3px 0 #000', 'offset-lg': '10px 10px 0 #000' },
+    } } };
+  </script>
+</head>
+<body class="bg-black text-white">
+<div class="max-w-[1100px] mx-auto px-6 md:px-10 py-16">
+
+  <div class="flex items-center gap-4 mb-3">
+    <div class="bs-mark w-12 h-12 text-2xl">B</div>
+    <span class="bs-wordmark text-4xl">BADSTREAMS</span>
+  </div>
+  <h1 class="font-display text-5xl md:text-6xl leading-[0.9] mb-4"><span class="offset-shadow">PORTFOLIO</span> SCREENS</h1>
+  <p class="text-muted max-w-2xl mb-12">Four self-contained UI screens from Badstreams — an enforced overlay ad-delivery platform for Kick streamers. Pure black + white + Yuzu accent, Gasoek One display type, hard offset drop-shadows. All data is mocked.</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+    <a href="landing.html" class="card card-yuzu-hover p-7 block">
+      <div class="flex items-center justify-between mb-3">
+        <span class="badge badge-kick !text-[9px]">PUBLIC</span>
+        <span class="font-mono text-[10px] text-muted tracking-wider">landing.html</span>
+      </div>
+      <h2 class="font-display text-3xl leading-none mb-2">Landing Page</h2>
+      <p class="text-sm text-muted">Hero, telemetry card, dual advertiser/streamer panels, enforcement loop walkthrough.</p>
+    </a>
+
+    <a href="admin-analytics.html" class="card card-yuzu-hover p-7 block">
+      <div class="flex items-center justify-between mb-3">
+        <span class="badge badge-live !text-[9px]"><span class="dot bg-live pulse-live"></span>ADMIN</span>
+        <span class="font-mono text-[10px] text-muted tracking-wider">admin-analytics.html</span>
+      </div>
+      <h2 class="font-display text-3xl leading-none mb-2">Proof of Play</h2>
+      <p class="text-sm text-muted">KPI band, viewer charts, per-heartbeat scene strips, screenshot gallery + lightbox, chat logs.</p>
+    </a>
+
+    <a href="admin-campaigns.html" class="card card-yuzu-hover p-7 block">
+      <div class="flex items-center justify-between mb-3">
+        <span class="badge badge-kick !text-[9px]">ADMIN</span>
+        <span class="font-mono text-[10px] text-muted tracking-wider">admin-campaigns.html</span>
+      </div>
+      <h2 class="font-display text-3xl leading-none mb-2">Campaigns Dashboard</h2>
+      <p class="text-sm text-muted">Stats overview + campaign cards with LIVE/PAUSED/DRAFT/ENDED states and goal progress.</p>
+    </a>
+
+    <a href="streamer-browse.html" class="card card-yuzu-hover p-7 block">
+      <div class="flex items-center justify-between mb-3">
+        <span class="badge badge-pending !text-[9px]">STREAMER</span>
+        <span class="font-mono text-[10px] text-muted tracking-wider">streamer-browse.html</span>
+      </div>
+      <h2 class="font-display text-3xl leading-none mb-2">Campaign Browse</h2>
+      <p class="text-sm text-muted">Eligibility-gated campaign cards: apply, pending, approved, rejected, and locked states.</p>
+    </a>
+
+  </div>
+
+  <p class="font-mono text-[11px] text-dim tracking-wider uppercase mt-12">Open any file directly in a browser · requires internet for fonts, Tailwind, Chart.js, and placeholder imagery</p>
+</div>
+</body>
+</html>
