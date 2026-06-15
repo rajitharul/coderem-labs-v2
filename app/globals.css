@@ -103,6 +103,19 @@ p { color: var(--text-soft); font-size: 1.05rem; font-weight: 500; line-height: 
   padding-right: 0.04em;
 }
 
+/* Hero headline emphasis — stronger, more saturated brand-blue with a moving
+   light band and a soft glow, so "Precision." / "Performance." read as one
+   aligned, high-impact pair. */
+.hero-hl {
+  background: linear-gradient(100deg, #122e9e 0%, #2756e6 34%, #5b8cff 50%, #2756e6 66%, #122e9e 100%);
+  background-size: 230% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  font-weight: 800;
+  filter: drop-shadow(0 10px 30px rgba(31, 76, 226, 0.30));
+  animation: gradMove 5.5s linear infinite;
+}
+
 /* ----------  Layout  ---------- */
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
 section { padding: 120px 0; position: relative; }
@@ -199,6 +212,17 @@ body.menu-open .menu-backdrop { opacity: 1; pointer-events: auto; }
 .scroll-progress { position: fixed; top: 0; right: 0; width: 3px; height: 100vh; z-index: 1000; pointer-events: none; background: rgba(12, 16, 22, 0.06); }
 .scroll-progress span { position: absolute; top: 0; left: 0; right: 0; height: 0; background: var(--accent); transition: height .1s linear; }
 
+/* soft cursor glow (components/CursorWaves.tsx) — a small blurred brand-blue
+   spotlight that eases toward the pointer, behind the page content */
+.cursor-glow {
+  position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.16), rgba(30, 64, 175, 0.06) 42%, transparent 70%);
+  filter: blur(24px);
+  opacity: 0; transition: opacity .5s ease;
+  will-change: transform;
+}
+
 /* floating orbs */
 .orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: -1; }
 .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 1; }
@@ -281,6 +305,10 @@ body.menu-open .menu-backdrop { opacity: 1; pointer-events: auto; }
 .tag-cloud .v { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 14px 26px; font-family: var(--font-display); font-size: 1.1rem; color: var(--text); transition: transform .5s var(--ease), border-color .5s, color .5s; }
 .tag-cloud .v:hover { transform: translateY(-4px); border-color: var(--accent); color: var(--accent); }
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+/* grid tracks default to minmax(auto,1fr); without this the intrinsic width of
+   the form inputs blows the columns past the container and the right column
+   gets clipped by overflow-x. Letting items shrink keeps both columns aligned. */
+.split > * { min-width: 0; }
 
 /* ----------  CTA band  ---------- */
 .cta-band { background: linear-gradient(135deg, var(--surface), var(--bg-2)); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 80px 56px; text-align: center; position: relative; overflow: hidden; }
@@ -290,11 +318,11 @@ body.menu-open .menu-backdrop { opacity: 1; pointer-events: auto; }
 
 /* ----------  Form  ---------- */
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-.field { display: flex; flex-direction: column; gap: 8px; }
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .field.full { grid-column: 1 / -1; }
 .field label { font-size: 0.85rem; color: var(--text-soft); font-weight: 500; }
 .field label .req { color: var(--accent); }
-.field input, .field select, .field textarea { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; color: var(--text); font-family: inherit; font-size: 0.95rem; transition: border-color .3s, box-shadow .3s; }
+.field input, .field select, .field textarea { width: 100%; min-width: 0; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; color: var(--text); font-family: inherit; font-size: 0.95rem; transition: border-color .3s, box-shadow .3s; }
 .field input::placeholder, .field textarea::placeholder { color: var(--text-muted); }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .field textarea { resize: vertical; min-height: 130px; }
@@ -405,7 +433,16 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
 .msg.ai .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); animation: typing 1.2s ease-in-out infinite; }
 .msg.ai .dots i:nth-child(2) { animation-delay: .15s; }
 .msg.ai .dots i:nth-child(3) { animation-delay: .3s; }
-.msg.ai .ai-text { display: inline; opacity: 0; animation: chatText 7s ease-in-out infinite; }
+.msg.ai .ai-text { display: block; opacity: 0; animation: chatText 7s ease-in-out infinite; }
+/* "finds the related documents for ref #12345" step, between the typing dots
+   and the extraction summary */
+.msg.ai .ai-docs { display: flex; flex-direction: column; gap: 7px; overflow: hidden; max-height: 0; opacity: 0; animation: chatDocs 7s ease-in-out infinite; }
+.msg.ai .ai-docs em { font-style: normal; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+.msg.ai .ai-docs em b { color: var(--accent); }
+.msg.ai .ai-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.msg.ai .doc { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 500; color: var(--text-soft); background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; opacity: 0; transform: translateY(6px); animation: chatDoc 7s ease-in-out infinite; animation-delay: calc(var(--d) * 0.16s); }
+.msg.ai .doc::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); flex: 0 0 auto; }
+.msg.ai .ai-text { margin-top: 9px; }
 
 /* ---- Scene D: Discovery — analysis chart + checklist ---- */
 .sc-analysis { display: grid; grid-template-rows: 1fr auto; gap: 12px; }
@@ -424,7 +461,9 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
 @keyframes chatUser { 0%,6% { opacity: 0; transform: translateY(8px); } 12%,92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 @keyframes chatAi   { 0%,16% { opacity: 0; transform: translateY(8px); } 24%,92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 @keyframes chatDots { 0%,18% { opacity: 0; max-width: 0; } 22%,44% { opacity: 1; max-width: 60px; } 48%,100% { opacity: 0; max-width: 0; } }
-@keyframes chatText { 0%,46% { opacity: 0; } 56%,92% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes chatText { 0%,52% { opacity: 0; } 62%,92% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes chatDocs { 0%,42% { opacity: 0; max-height: 0; } 48% { opacity: 1; } 50%,92% { opacity: 1; max-height: 120px; } 100% { opacity: 0; max-height: 0; } }
+@keyframes chatDoc  { 0%,44% { opacity: 0; transform: translateY(6px); } 54%,92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 @keyframes typing   { 0%,100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(-4px); opacity: 1; } }
 @keyframes draw     { 0% { stroke-dashoffset: 620; } 60%,90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 620; } }
 @keyframes anaArea  { 0%,35% { opacity: 0; } 70%,90% { opacity: 1; } 100% { opacity: 0; } }

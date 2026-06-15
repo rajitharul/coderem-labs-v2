@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import CursorWaves from "@/components/CursorWaves";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://coderemlabs.com"),
@@ -37,6 +38,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <CursorWaves />
         <Header />
         <main>{children}</main>
         <Footer />

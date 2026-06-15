@@ -14,16 +14,11 @@ export default function Page() {
             <div className="orbs"><span className="orb a"></span><span className="orb b"></span><span className="orb c"></span></div>
             <div className="container">
               <p className="eyebrow">Enterprise Software · AI Automation · AI Innovation</p>
-              <h1 className="reveal hero-2line">Medical Grade <span className="h-word">Precision.</span><br />F1 Grade <span className="h-word">Performance.</span></h1>
+              <h1 className="reveal hero-2line">Medical Grade <span className="h-word hero-hl">Precision.</span><br />F1 Grade <span className="h-word hero-hl">Performance.</span></h1>
               <p className="sub">We are a <span className="rotate-wrap"><span data-rotate="precise, relentless, exacting, fast">precise</span></span> team, turning the right problems into production-grade software.</p>
               <div className="hero-actions">
                 <Link href="/get-started" className="btn btn-primary">Start Your Project <span className="btn-arrow">→</span></Link>
                 <Link href="/portfolio" className="btn btn-ghost">View Our Work</Link>
-              </div>
-              <div className="hero-meta">
-                <div className="m"><div className="v">90%</div><div className="k">Faster claims processing</div></div>
-                <div className="m"><div className="v">14d</div><div className="k">Vision to working prototype</div></div>
-                <div className="m"><div className="v">24h</div><div className="k">Response time, every inquiry</div></div>
               </div>
             </div>
           </section>
@@ -142,8 +137,19 @@ export default function Page() {
                     <div className="mac-window">
                       <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">ClaimBrain · assistant</span></div>
                       <div className="mac-body sc-chat">
-                        <div className="msg user">Summarise this 9-page claim</div>
-                        <div className="msg ai"><span className="dots"><i></i><i></i><i></i></span><span className="ai-text">Extracted 14 fields · 97% confidence. Flagged 1 edge case for human review.</span></div>
+                        <div className="msg user">Extract all claim information for ref #12345</div>
+                        <div className="msg ai">
+                          <span className="dots"><i></i><i></i><i></i></span>
+                          <span className="ai-docs">
+                            <em>Located <b>3 documents</b> linked to ref #12345</em>
+                            <span className="ai-chips">
+                              <span className="doc" style={{ "--d": "0" } as React.CSSProperties}>Claim form</span>
+                              <span className="doc" style={{ "--d": "1" } as React.CSSProperties}>Physician notes</span>
+                              <span className="doc" style={{ "--d": "2" } as React.CSSProperties}>Itemised bill</span>
+                            </span>
+                          </span>
+                          <span className="ai-text">Extracted 14 fields · 97% confidence. Flagged 1 edge case for human review.</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -271,32 +277,6 @@ export default function Page() {
                           <div className="pr-stat" style={{ "--d": "1" } as React.CSSProperties}><span className="dot"></span><b>Scaled · 10k rps</b><em>✓ passed</em></div>
                           <div className="pr-stat" style={{ "--d": "2" } as React.CSSProperties}><span className="dot"></span><b>Uptime · 99.99%</b><em>✓ passed</em></div>
                           <div className="pr-scale"><span style={{ "--d": "0", "--peak": "50%" } as React.CSSProperties}></span><span style={{ "--d": "1", "--peak": "72%" } as React.CSSProperties}></span><span style={{ "--d": "2", "--peak": "90%" } as React.CSSProperties}></span><span style={{ "--d": "3", "--peak": "100%" } as React.CSSProperties}></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-
-                  <article className="svc-row svc-card" data-card>
-                    <div className="svc-text">
-                      <span className="svc-idx">04 · Improve</span>
-                      <h3>Quality Assurance</h3>
-                      <p>Automated and manual testing at every stage, then we enable your teams to own and run what we built.</p>
-                    </div>
-                    <div className="svc-demo">
-                      <div className="mac-window">
-                        <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">QA · test suite</span></div>
-                        <div className="mac-body pr-improve">
-                          <div className="pr-suite">
-                            <div className="pr-suite-head"><span>Running tests</span><span className="pr-count">248 / 248 passed</span></div>
-                            <div className="pr-trow" style={{ "--d": "0" } as React.CSSProperties}><i></i><b></b></div>
-                            <div className="pr-trow" style={{ "--d": "1" } as React.CSSProperties}><i></i><b></b></div>
-                            <div className="pr-trow" style={{ "--d": "2" } as React.CSSProperties}><i></i><b></b></div>
-                            <div className="pr-progress"><span></span></div>
-                          </div>
-                          <div className="pr-handover">
-                            <div className="pr-avatars"><i style={{ "--d": "0" } as React.CSSProperties}></i><i style={{ "--d": "1" } as React.CSSProperties}></i><i style={{ "--d": "2" } as React.CSSProperties}></i></div>
-                            <span className="pr-handtext">Team onboarded</span>
-                          </div>
                         </div>
                       </div>
                     </div>
