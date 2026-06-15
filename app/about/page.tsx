@@ -76,7 +76,7 @@ export default function Page() {
                 <p>Free consultation with a 24-hour response time.</p>
                 <div className="cta-actions">
                   <Link href="/get-started" className="btn btn-primary">Start Your Project <span className="btn-arrow">→</span></Link>
-                  <a href="#" className="btn btn-ghost">View Careers</a>
+                  <Link href="/careers" className="btn btn-ghost">View Careers</Link>
                   <Link href="/portfolio" className="btn btn-ghost">View Our Work</Link>
                 </div>
               </div>
