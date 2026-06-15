@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import UIShowcase from "./UIShowcase";
+import UIShowcase from "@/components/UIShowcase";
+
+const FLIGHTSMART_SCREENS = [
+  { file: "agent_dashboard.html", title: "Agent Dashboard" },
+  { file: "subagent_dashboard.html", title: "Sub-agent Dashboard" },
+  { file: "admin_dashboard.html", title: "Admin Dashboard" },
+  { file: "accountant_dashboard.html", title: "Accountant Dashboard" },
+  { file: "wallet_dashboard.html", title: "Wallet Dashboard" },
+  { file: "my_wallet.html", title: "My Wallet" },
+  { file: "wallet_ledger.html", title: "Wallet Ledger" },
+  { file: "payments_overview.html", title: "Payments Overview" },
+  { file: "payout_list.html", title: "Payouts" },
+  { file: "fund_request_list.html", title: "Fund Requests" },
+  { file: "fund_request_detail.html", title: "Fund Request Detail" },
+];
 
 export const metadata: Metadata = {
   title: "FlightSmart: A unified booking & operations platform for travel agencies | CodeREM Labs",
@@ -139,7 +153,7 @@ export default function Page() {
                 <h2>Inside the <span className="h-word">product.</span></h2>
                 <p>The real screens we shipped — click any to open it full screen.</p>
               </div>
-              <UIShowcase />
+              <UIShowcase base="/portfolio/flightsmart/ui" screens={FLIGHTSMART_SCREENS} />
             </div>
           </section>
 

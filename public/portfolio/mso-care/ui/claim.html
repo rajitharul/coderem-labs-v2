@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claim CLM-2026-0481 · CareFlow Pro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"></aside>
+  <div class="main">
+    <header class="topbar"></header>
+    <div class="content wide">
+
+      <div class="crumbs"><a href="dashboard.html">Dashboard</a><i class="bi bi-chevron-right"></i><a href="#">Claims</a><i class="bi bi-chevron-right"></i><span>CLM-2026-0481</span></div>
+
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">837P Professional Claim</div>
+          <h1 style="display:flex; align-items:center; gap:.6rem;"><i class="bi bi-receipt" style="color:var(--brand)"></i> CLM-2026-0481 <span class="badge b-blue" style="font-size:.78rem;"><i class="bi bi-check"></i> Ready</span></h1>
+          <p>Service date Jun 02, 2026 · Riverside Main · Place of service 11</p>
+        </div>
+        <div style="display:flex; gap:.55rem; flex-wrap:wrap;">
+          <button class="btn btn-ghost"><i class="bi bi-file-code"></i> View 837P</button>
+          <button class="btn btn-ghost"><i class="bi bi-currency-dollar"></i> Set Rates</button>
+          <button class="btn btn-primary"><i class="bi bi-send"></i> Submit Claim</button>
+        </div>
+      </div>
+
+      <!-- prior auth warning -->
+      <div class="banner warn" style="margin-bottom:1.2rem;">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div><strong>Prior authorization required:</strong> Service line 2 (93306 Echocardiogram) requires prior auth but no auth number is on file. Add it before submitting.</div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1fr 330px; align-items:start;">
+
+        <!-- Main -->
+        <div style="display:flex; flex-direction:column; gap:1.1rem;">
+
+          <!-- claim info -->
+          <div class="card">
+            <div class="card-head"><h3><i class="bi bi-info-circle"></i> Claim Information</h3></div>
+            <div class="card-pad">
+              <div class="fields">
+                <div class="field"><div class="k">Patient</div><div class="v"><a class="link" href="patient.html">Robert Tran</a> · MRN 02981</div></div>
+                <div class="field"><div class="k">Insurance</div><div class="v">Blue Shield CA <span class="muted sm">· PPO Gold 500</span></div></div>
+                <div class="field"><div class="k">Rendering Provider</div><div class="v">Dr. Anjali Patel</div></div>
+                <div class="field"><div class="k">Member ID</div><div class="v mono">XJZ884201773</div></div>
+                <div class="field"><div class="k">Encounter</div><div class="v"><a class="link" href="#">Encounter #3187</a></div></div>
+                <div class="field"><div class="k">Service Date</div><div class="v">Jun 02, 2026</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- diagnoses -->
+          <div class="card">
+            <div class="card-head"><h3><i class="bi bi-clipboard-pulse"></i> Diagnosis Codes (ICD-10)</h3></div>
+            <div class="tbl-wrap">
+              <table class="tbl">
+                <thead><tr><th style="width:60px;">Seq</th><th style="width:120px;">ICD-10</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="badge b-blue">1</span></td><td class="mono fw7" style="color:var(--brand-ink)">I50.9</td><td>Heart failure, unspecified</td></tr>
+                  <tr><td><span class="badge b-slate">2</span></td><td class="mono fw7" style="color:var(--brand-ink)">E11.9</td><td>Type 2 diabetes mellitus without complications</td></tr>
+                  <tr><td><span class="badge b-slate">3</span></td><td class="mono fw7" style="color:var(--brand-ink)">I10</td><td>Essential (primary) hypertension</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- service lines -->
+          <div class="card">
+            <div class="card-head"><h3><i class="bi bi-list-ol"></i> Service Lines (CPT)</h3></div>
+            <div class="tbl-wrap">
+              <table class="tbl">
+                <thead><tr><th>#</th><th>CPT</th><th>Description</th><th>DX</th><th class="num">Units</th><th class="num">Charge</th><th class="num">Allowed</th><th>Auth</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="num">1</td><td class="mono fw7">99214</td>
+                    <td class="sm">Office visit, established, moderate</td>
+                    <td><span class="badge b-slate">1,3</span></td><td class="num">1</td>
+                    <td class="num fw6">$178.00</td><td class="num">$142.40</td>
+                    <td><span class="muted">—</span></td>
+                  </tr>
+                  <tr>
+                    <td class="num">2</td><td class="mono fw7">93306</td>
+                    <td class="sm">Echocardiography, transthoracic, complete</td>
+                    <td><span class="badge b-slate">1</span></td><td class="num">1</td>
+                    <td class="num fw6">$612.00</td><td class="num">$489.60</td>
+                    <td><span class="badge b-amber"><i class="bi bi-exclamation"></i></span></td>
+                  </tr>
+                  <tr>
+                    <td class="num">3</td><td class="mono fw7">85025</td>
+                    <td class="sm">Complete blood count (CBC) w/ differential</td>
+                    <td><span class="badge b-slate">2</span></td><td class="num">1</td>
+                    <td class="num fw6">$38.00</td><td class="num">$24.70</td>
+                    <td><span class="muted">—</span></td>
+                  </tr>
+                  <tr>
+                    <td class="num">4</td><td class="mono fw7">83036</td>
+                    <td class="sm">Hemoglobin A1c</td>
+                    <td><span class="badge b-slate">2</span></td><td class="num">1</td>
+                    <td class="num fw6">$54.00</td><td class="num">$35.10</td>
+                    <td><span class="muted">—</span></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr style="background:var(--surface-2);">
+                    <td colspan="5" class="fw7" style="text-align:right; padding:.85rem 1.35rem;">Totals</td>
+                    <td class="num fw8" style="padding:.85rem 1.35rem;">$882.00</td>
+                    <td class="num fw8" style="padding:.85rem 1.35rem;">$691.80</td>
+                    <td></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div style="display:flex; flex-direction:column; gap:1.1rem;">
+
+          <!-- financial summary -->
+          <div class="card" style="border-color:var(--brand);">
+            <div class="card-head" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5); border-bottom-color:#a7f3d0;">
+              <h3 style="color:var(--brand-ink)"><i class="bi bi-cash-coin"></i> Financial Summary</h3>
+            </div>
+            <div class="card-pad">
+              <div style="display:flex; justify-content:space-between; padding:.4rem 0; font-size:.88rem;"><span class="muted">Total Charges</span><span class="fw7 num">$882.00</span></div>
+              <div style="display:flex; justify-content:space-between; padding:.4rem 0; font-size:.88rem;"><span class="muted">Allowed Amount</span><span class="num">$691.80</span></div>
+              <div class="divider"></div>
+              <div style="display:flex; justify-content:space-between; padding:.4rem 0; font-size:.88rem;"><span class="muted">Insurance Paid</span><span class="num" style="color:#059669;">$553.44</span></div>
+              <div style="display:flex; justify-content:space-between; padding:.4rem 0; font-size:.88rem;"><span class="muted">Adjustments</span><span class="num">$190.20</span></div>
+              <div style="display:flex; justify-content:space-between; padding:.4rem 0; font-size:.88rem;"><span class="muted">Patient Responsibility</span><span class="num">$138.36</span></div>
+              <div class="divider"></div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:.3rem 0;"><span class="fw7">Balance Due</span><span class="fw8 num" style="font-size:1.25rem; color:var(--crit);">$138.36</span></div>
+            </div>
+          </div>
+
+          <!-- status timeline -->
+          <div class="card">
+            <div class="card-head"><h3 style="font-size:1rem;"><i class="bi bi-clock-history"></i> Status History</h3></div>
+            <div class="card-pad" style="padding-top:.4rem;">
+              <div class="timeline">
+                <div class="tl-item done"><div class="t">Draft created</div><div class="d">Jun 03 · 09:14 · by Coder L. Marsh</div></div>
+                <div class="tl-item done"><div class="t">Coded &amp; reviewed</div><div class="d">Jun 03 · 11:02 · by Coder L. Marsh</div></div>
+                <div class="tl-item"><div class="t">Ready to submit</div><div class="d">Jun 04 · 08:40 · by Biller K. Adler</div></div>
+                <div class="tl-item wait"><div class="t">Awaiting submission</div><div class="d">Prior auth pending on line 2</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- contract rate ref -->
+          <div class="card card-pad">
+            <h3 style="font-size:.95rem; margin:0 0 .7rem;"><i class="bi bi-file-earmark-text" style="color:var(--brand)"></i> Contract Reference</h3>
+            <div class="sm muted" style="margin-bottom:.5rem;">Blue Shield CA · PPO Gold 500 fee schedule</div>
+            <div style="display:flex; justify-content:space-between; font-size:.82rem; padding:.3rem 0;"><span class="mono">99214</span><span class="num">$142.40 allowed</span></div>
+            <div style="display:flex; justify-content:space-between; font-size:.82rem; padding:.3rem 0;"><span class="mono">93306</span><span class="num">$489.60 allowed</span></div>
+            <div style="display:flex; justify-content:space-between; font-size:.82rem; padding:.3rem 0;"><span class="mono">85025</span><span class="num">$24.70 allowed</span></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="assets/shell.js" data-active="claims"></script>
+</body>
+</html>

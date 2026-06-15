@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Chart · CareFlow Pro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"></aside>
+  <div class="main">
+    <header class="topbar"></header>
+    <div class="content wide">
+
+      <div class="crumbs"><a href="dashboard.html">Dashboard</a><i class="bi bi-chevron-right"></i><a href="#">Patients</a><i class="bi bi-chevron-right"></i><span>Robert Tran</span></div>
+
+      <!-- Patient header -->
+      <div class="card" style="margin-bottom:1.2rem; overflow:visible;">
+        <div style="height:74px; background:linear-gradient(120deg,#0b1f3d 0%, #0d9488 130%); border-radius:18px 18px 0 0;"></div>
+        <div class="card-pad" style="padding-top:0;">
+          <div style="display:flex; align-items:flex-end; gap:1.1rem; margin-top:-34px; flex-wrap:wrap;">
+            <div class="av a6" style="width:88px;height:88px;border-radius:22px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.9rem;background:linear-gradient(135deg,#f87171,#dc2626);border:4px solid #fff;box-shadow:var(--sh);">RT</div>
+            <div style="padding-bottom:.3rem;">
+              <h1 style="font-size:1.5rem; margin:0;">Robert Tran
+                <span class="badge b-green" style="vertical-align:middle;">Active</span>
+                <span class="badge b-crit" style="vertical-align:middle;"><i class="bi bi-exclamation-triangle-fill"></i> Critical Risk</span>
+              </h1>
+              <div class="muted sm" style="margin-top:.3rem;">MRN 02981 · 71 yrs · Male · <span class="mono">DOB 04 Mar 1955</span></div>
+            </div>
+            <div style="margin-left:auto; display:flex; gap:.55rem; padding-bottom:.3rem;">
+              <button class="btn btn-ghost"><i class="bi bi-calendar-plus"></i> Book Visit</button>
+              <button class="btn btn-ghost"><i class="bi bi-pencil"></i> Edit</button>
+              <button class="btn btn-primary"><i class="bi bi-file-medical"></i> New Encounter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Allergy alert -->
+      <div class="banner warn" style="margin-bottom:1.2rem;">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div><strong>Allergy alert:</strong> Penicillin <span class="badge b-rose" style="margin:0 .25rem;">Life-threatening</span> — anaphylaxis · Sulfa drugs <span class="badge b-amber" style="margin-left:.25rem;">Severe</span> — rash</div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1fr 330px; align-items:start;">
+
+        <!-- Main -->
+        <div style="display:flex; flex-direction:column; gap:1.1rem;">
+
+          <!-- demographics + contact -->
+          <div class="card">
+            <div class="card-head"><h3><i class="bi bi-person-vcard"></i> Patient Details</h3><span class="meta">Updated 2 days ago</span></div>
+            <div class="card-pad">
+              <div class="fields">
+                <div class="field"><div class="k">Facility</div><div class="v">Riverside Main</div></div>
+                <div class="field"><div class="k">Primary Provider</div><div class="v">Dr. Anjali Patel</div></div>
+                <div class="field"><div class="k">Phone</div><div class="v">(415) 555-0172</div></div>
+                <div class="field"><div class="k">Email</div><div class="v">r.tran@example.com</div></div>
+                <div class="field"><div class="k">Address</div><div class="v">284 Birchwood Ave, San Mateo, CA 94401</div></div>
+                <div class="field"><div class="k">Preferred Language</div><div class="v">English</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- vitals strip -->
+          <div class="card card-pad">
+            <h3 style="font-size:1rem; margin:0 0 1rem;">Latest Vitals &amp; Labs</h3>
+            <div class="grid" style="grid-template-columns:repeat(4,1fr); gap:.8rem;">
+              <div style="border:1px solid var(--line); border-radius:12px; padding:.85rem;">
+                <div class="tiny muted">Blood Pressure</div>
+                <div class="fw8 num" style="font-size:1.3rem; color:var(--crit);">185/125</div>
+                <div class="tiny"><span class="badge b-crit">Crisis</span></div>
+              </div>
+              <div style="border:1px solid var(--line); border-radius:12px; padding:.85rem;">
+                <div class="tiny muted">HbA1c</div>
+                <div class="fw8 num" style="font-size:1.3rem; color:#d97706;">9.5%</div>
+                <div class="tiny"><span class="badge b-amber">High</span></div>
+              </div>
+              <div style="border:1px solid var(--line); border-radius:12px; padding:.85rem;">
+                <div class="tiny muted">SpO₂</div>
+                <div class="fw8 num" style="font-size:1.3rem; color:#d97706;">91%</div>
+                <div class="tiny"><span class="badge b-amber">Low</span></div>
+              </div>
+              <div style="border:1px solid var(--line); border-radius:12px; padding:.85rem;">
+                <div class="tiny muted">eGFR</div>
+                <div class="fw8 num" style="font-size:1.3rem; color:#d97706;">38</div>
+                <div class="tiny"><span class="badge b-amber">Stage 3b</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- insurance coverage -->
+          <div class="card">
+            <div class="card-head"><h3><i class="bi bi-shield-check"></i> Insurance Coverage</h3><button class="btn btn-ghost btn-sm"><i class="bi bi-plus-lg"></i> Add</button></div>
+            <div class="tbl-wrap">
+              <table class="tbl">
+                <thead><tr><th>Priority</th><th>Payer</th><th>Plan</th><th>Member ID</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="badge b-blue">Primary</span></td><td class="strong">Blue Shield CA</td><td>PPO Gold 500</td><td class="mono">XJZ884201773</td><td><span class="badge b-green dotb">Active</span></td></tr>
+                  <tr><td><span class="badge b-sky">Secondary</span></td><td class="strong">Medicare Part B</td><td>Original Medicare</td><td class="mono">1EG4-TE5-MK72</td><td><span class="badge b-green dotb">Active</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- recent encounters -->
+          <div class="card">
+            <div class="card-head"><h3><i class="bi bi-clipboard2-pulse"></i> Recent Encounters</h3><a class="link sm" href="#">View all</a></div>
+            <div class="tbl-wrap">
+              <table class="tbl">
+                <thead><tr><th>Date</th><th>Provider</th><th>Reason</th><th>Diagnoses</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td class="strong">Jun 02, 2026</td><td>Dr. A. Patel</td><td>CHF follow-up</td><td><span class="badge b-slate mono">I50.9</span> <span class="badge b-slate mono">E11.9</span></td><td><span class="badge b-green">Ready for Billing</span></td></tr>
+                  <tr><td class="strong">May 12, 2026</td><td>Dr. A. Patel</td><td>Hypertension review</td><td><span class="badge b-slate mono">I10</span></td><td><span class="badge b-blue">Coded</span></td></tr>
+                  <tr><td class="strong">Apr 28, 2026</td><td>Dr. S. Okafor</td><td>Diabetes management</td><td><span class="badge b-slate mono">E11.9</span></td><td><span class="badge b-slate">Documented</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div style="display:flex; flex-direction:column; gap:1.1rem;">
+          <div class="card card-pad" style="text-align:center;">
+            <h3 style="font-size:.95rem; margin:0 0 .7rem;">Risk Score</h3>
+            <div class="gauge" style="width:130px;height:130px;margin:0 auto;">
+              <svg viewBox="0 0 42 42" width="130" height="130">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f1f5f9" stroke-width="5"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#e11d48" stroke-width="5" stroke-dasharray="88 12" stroke-dashoffset="25" stroke-linecap="round" transform="rotate(-90 21 21)"/>
+              </svg>
+              <div class="center"><div><div class="g-val num" style="color:var(--crit);font-size:2rem;">88</div><div class="g-lbl">Critical</div></div></div>
+            </div>
+            <a class="btn btn-ghost btn-sm" href="patient-risk.html" style="width:100%; justify-content:center; margin-top:.9rem;">View risk detail</a>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="font-size:.95rem; margin:0 0 .8rem;">Active Problems</h3>
+            <div style="display:flex; flex-direction:column; gap:.55rem; font-size:.85rem;">
+              <div style="display:flex; gap:.5rem; align-items:center;"><span class="badge b-slate mono">I50.9</span> Congestive heart failure</div>
+              <div style="display:flex; gap:.5rem; align-items:center;"><span class="badge b-slate mono">E11.9</span> Type 2 diabetes mellitus</div>
+              <div style="display:flex; gap:.5rem; align-items:center;"><span class="badge b-slate mono">I10</span> Essential hypertension</div>
+              <div style="display:flex; gap:.5rem; align-items:center;"><span class="badge b-slate mono">N18.3</span> CKD, stage 3b</div>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="font-size:.95rem; margin:0 0 .8rem;">Care Plan</h3>
+            <div class="fw6 sm" style="margin-bottom:.4rem;">CHF Management Protocol</div>
+            <div class="bar" style="margin-bottom:.4rem;"><span class="fill-teal" style="width:72%"></span></div>
+            <div class="tiny muted">11 of 15 tasks complete · ends Sep 02, 2026</div>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="font-size:.95rem; margin:0 0 .8rem;">Documents</h3>
+            <div style="display:flex; flex-direction:column; gap:.55rem; font-size:.84rem;">
+              <a class="link" href="#"><i class="bi bi-file-earmark-pdf"></i> Echocardiogram_May2026.pdf</a>
+              <a class="link" href="#"><i class="bi bi-file-earmark-pdf"></i> Lab_Panel_Jun2026.pdf</a>
+              <a class="link" href="#"><i class="bi bi-file-earmark-medical"></i> Cardiology_Consult.pdf</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="assets/shell.js" data-active="patients"></script>
+</body>
+</html>

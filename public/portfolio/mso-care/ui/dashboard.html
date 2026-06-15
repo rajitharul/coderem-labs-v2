@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard · CareFlow Pro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"></aside>
+  <div class="main">
+    <header class="topbar"></header>
+    <div class="content wide">
+
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Good morning, Dr. Mercer</div>
+          <h1>Operations Dashboard</h1>
+          <p>Tuesday, June 15, 2026 · Riverside Health Network</p>
+        </div>
+        <div style="display:flex; gap:.6rem;">
+          <button class="btn btn-ghost"><i class="bi bi-calendar3"></i> Last 30 days</button>
+          <button class="btn btn-primary"><i class="bi bi-plus-lg"></i> New Patient</button>
+        </div>
+      </div>
+
+      <!-- KPI strip -->
+      <div class="grid g-4" style="margin-bottom:1.2rem;">
+        <div class="kpi">
+          <span class="trend up"><i class="bi bi-arrow-up-short"></i> 4.2%</span>
+          <div class="ic ic-rose"><i class="bi bi-people-fill"></i></div>
+          <div class="val num">2,847</div>
+          <div class="lbl">Active Patients</div>
+        </div>
+        <div class="kpi">
+          <span class="trend up"><i class="bi bi-arrow-up-short"></i> 12</span>
+          <div class="ic ic-blue"><i class="bi bi-calendar2-check-fill"></i></div>
+          <div class="val num">18</div>
+          <div class="lbl">Appointments Today</div>
+        </div>
+        <div class="kpi">
+          <span class="trend down"><i class="bi bi-arrow-down-short"></i> 2</span>
+          <div class="ic ic-amber"><i class="bi bi-exclamation-triangle-fill"></i></div>
+          <div class="val num">9</div>
+          <div class="lbl">High-Risk Patients</div>
+        </div>
+        <div class="kpi">
+          <span class="trend up"><i class="bi bi-arrow-up-short"></i> 8.1%</span>
+          <div class="ic ic-green"><i class="bi bi-cash-stack"></i></div>
+          <div class="val num">$184.2k</div>
+          <div class="lbl">Collected This Month</div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1.55fr 1fr; align-items:start;">
+
+        <!-- LEFT column -->
+        <div style="display:flex; flex-direction:column; gap:1.1rem;">
+
+          <!-- Revenue chart -->
+          <div class="card">
+            <div class="card-head">
+              <h3><i class="bi bi-graph-up-arrow"></i> Claims Revenue</h3>
+              <div class="seg">
+                <button>Week</button><button class="on">Month</button><button>Quarter</button>
+              </div>
+            </div>
+            <div class="card-pad">
+              <div style="display:flex; align-items:baseline; gap:.8rem; margin-bottom:1rem;">
+                <div class="num" style="font-family:'Plus Jakarta Sans'; font-weight:800; font-size:1.9rem;">$184,210</div>
+                <span class="badge b-green"><i class="bi bi-arrow-up-right"></i> 8.1% vs last month</span>
+              </div>
+              <!-- SVG area chart -->
+              <svg viewBox="0 0 720 200" width="100%" height="190" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="rev" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0ea5a4" stop-opacity="0.28"/>
+                    <stop offset="100%" stop-color="#0ea5a4" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="40"  x2="720" y2="40"  stroke="#eef2f7"/>
+                <line x1="0" y1="90"  x2="720" y2="90"  stroke="#eef2f7"/>
+                <line x1="0" y1="140" x2="720" y2="140" stroke="#eef2f7"/>
+                <path d="M0,150 C60,140 90,120 150,118 C210,116 230,90 300,96 C360,101 380,70 450,72 C520,74 540,55 600,48 C660,42 690,55 720,40 L720,200 L0,200 Z" fill="url(#rev)"/>
+                <path d="M0,150 C60,140 90,120 150,118 C210,116 230,90 300,96 C360,101 380,70 450,72 C520,74 540,55 600,48 C660,42 690,55 720,40" fill="none" stroke="#0ea5a4" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="600" cy="48" r="5" fill="#0ea5a4" stroke="#fff" stroke-width="2.5"/>
+              </svg>
+              <div style="display:flex; justify-content:space-between; color:var(--muted); font-size:.72rem; margin-top:.4rem;">
+                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Today's schedule -->
+          <div class="card">
+            <div class="card-head">
+              <h3><i class="bi bi-clock-history"></i> Today's Schedule</h3>
+              <a class="link sm" href="appointments.html">View calendar <i class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="tbl-wrap">
+              <table class="tbl">
+                <thead><tr><th>Time</th><th>Patient</th><th>Provider</th><th>Type</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="strong num">09:00</td>
+                    <td><div class="uchip"><div class="av a2">MK</div><div><div class="nm">Maria Klein</div><div class="ml">MRN 04417</div></div></div></td>
+                    <td>Dr. A. Patel</td>
+                    <td>Follow-up</td>
+                    <td><span class="badge b-blue dotb">Confirmed</span></td>
+                  </tr>
+                  <tr>
+                    <td class="strong num">09:30</td>
+                    <td><div class="uchip"><div class="av a7">JR</div><div><div class="nm">James Rivera</div><div class="ml">MRN 03980</div></div></div></td>
+                    <td>Dr. S. Okafor</td>
+                    <td>New Patient</td>
+                    <td><span class="badge b-sky dotb">Checked In</span></td>
+                  </tr>
+                  <tr>
+                    <td class="strong num">10:15</td>
+                    <td><div class="uchip"><div class="av a3">EH</div><div><div class="nm">Evelyn Hughes</div><div class="ml">MRN 04102</div></div></div></td>
+                    <td>Dr. A. Patel</td>
+                    <td>Procedure</td>
+                    <td><span class="badge b-amber dotb">In Encounter</span></td>
+                  </tr>
+                  <tr>
+                    <td class="strong num">11:00</td>
+                    <td><div class="uchip"><div class="av a5">TN</div><div><div class="nm">Theodore Nolan</div><div class="ml">MRN 02214</div></div></div></td>
+                    <td>Dr. L. Greene</td>
+                    <td>Telehealth</td>
+                    <td><span class="badge b-slate dotb">Scheduled</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT column -->
+        <div style="display:flex; flex-direction:column; gap:1.1rem;">
+
+          <!-- Risk donut -->
+          <div class="card card-pad">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:.4rem;">
+              <h3 style="font-size:1rem; margin:0;">Patient Risk Mix</h3>
+              <a class="link sm" href="risk.html">Details</a>
+            </div>
+            <div style="display:flex; align-items:center; gap:1.2rem;">
+              <div class="gauge" style="width:140px;height:140px;">
+                <svg viewBox="0 0 42 42" width="140" height="140">
+                  <circle cx="21" cy="21" r="15.9" fill="none" stroke="#eef2f7" stroke-width="6"/>
+                  <!-- low 62% green, med 22% orange, high 11% amber, crit 5% rose -->
+                  <circle cx="21" cy="21" r="15.9" fill="none" stroke="#10b981" stroke-width="6" stroke-dasharray="62 38" stroke-dashoffset="25" stroke-linecap="round" transform="rotate(-90 21 21)"/>
+                  <circle cx="21" cy="21" r="15.9" fill="none" stroke="#fb923c" stroke-width="6" stroke-dasharray="22 78" stroke-dashoffset="-37" stroke-linecap="round" transform="rotate(-90 21 21)"/>
+                  <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f59e0b" stroke-width="6" stroke-dasharray="11 89" stroke-dashoffset="-59" stroke-linecap="round" transform="rotate(-90 21 21)"/>
+                  <circle cx="21" cy="21" r="15.9" fill="none" stroke="#e11d48" stroke-width="6" stroke-dasharray="5 95" stroke-dashoffset="-70" stroke-linecap="round" transform="rotate(-90 21 21)"/>
+                </svg>
+                <div class="center"><div><div class="g-val num">2.8k</div><div class="g-lbl">Patients</div></div></div>
+              </div>
+              <div style="flex:1; display:flex; flex-direction:column; gap:.55rem;">
+                <div class="legend-row" style="display:flex; align-items:center; gap:.5rem; font-size:.82rem;"><span style="width:10px;height:10px;border-radius:3px;background:#10b981;"></span> Low <span class="num muted" style="margin-left:auto;">1,765</span></div>
+                <div class="legend-row" style="display:flex; align-items:center; gap:.5rem; font-size:.82rem;"><span style="width:10px;height:10px;border-radius:3px;background:#fb923c;"></span> Medium <span class="num muted" style="margin-left:auto;">626</span></div>
+                <div class="legend-row" style="display:flex; align-items:center; gap:.5rem; font-size:.82rem;"><span style="width:10px;height:10px;border-radius:3px;background:#f59e0b;"></span> High <span class="num muted" style="margin-left:auto;">313</span></div>
+                <div class="legend-row" style="display:flex; align-items:center; gap:.5rem; font-size:.82rem;"><span style="width:10px;height:10px;border-radius:3px;background:#e11d48;"></span> Critical <span class="num muted" style="margin-left:auto;">143</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick actions -->
+          <div class="card card-pad">
+            <h3 style="font-size:1rem; margin:0 0 .9rem;">Quick Actions</h3>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:.6rem;">
+              <a class="chip" href="appointments.html" style="justify-content:flex-start;"><i class="bi bi-calendar-plus" style="color:var(--brand)"></i> Book Visit</a>
+              <a class="chip" href="claim.html" style="justify-content:flex-start;"><i class="bi bi-receipt" style="color:var(--brand)"></i> New Claim</a>
+              <a class="chip" href="patient.html" style="justify-content:flex-start;"><i class="bi bi-person-plus" style="color:var(--brand)"></i> Add Patient</a>
+              <a class="chip" href="risk.html" style="justify-content:flex-start;"><i class="bi bi-activity" style="color:var(--brand)"></i> Risk Review</a>
+              <a class="chip" href="#" style="justify-content:flex-start;"><i class="bi bi-person-badge" style="color:var(--brand)"></i> Add Provider</a>
+              <a class="chip" href="#" style="justify-content:flex-start;"><i class="bi bi-shield-plus" style="color:var(--brand)"></i> New Policy</a>
+            </div>
+          </div>
+
+          <!-- Claims pipeline -->
+          <div class="card card-pad">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:.9rem;">
+              <h3 style="font-size:1rem; margin:0;">Claims Pipeline</h3>
+              <a class="link sm" href="claim.html">Open</a>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:.85rem;">
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.3rem;"><span class="fw6">Ready to bill</span><span class="num muted">$42.1k · 23</span></div>
+                <div class="bar"><span class="fill-teal" style="width:78%"></span></div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.3rem;"><span class="fw6">Submitted</span><span class="num muted">$96.4k · 51</span></div>
+                <div class="bar"><span class="fill-blue" style="width:60%"></span></div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.3rem;"><span class="fw6">Needs prior auth</span><span class="num muted">$11.8k · 6</span></div>
+                <div class="bar"><span class="fill-amber" style="width:28%"></span></div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.3rem;"><span class="fw6">Denied / rework</span><span class="num muted">$5.2k · 4</span></div>
+                <div class="bar"><span class="fill-rose" style="width:14%"></span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="assets/shell.js" data-active="dashboard"></script>
+</body>
+</html>

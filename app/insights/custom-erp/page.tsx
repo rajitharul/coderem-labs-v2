@@ -37,7 +37,7 @@ export default function Page() {
                 <blockquote>Customize until the platform starts fighting your business. The moment it does, you're paying custom-build prices for off-the-shelf constraints.</blockquote>
 
                 <h2>When to build custom</h2>
-                <p>Build when the software <em>is</em> the business, when a core process is your competitive advantage and no product models it well. A travel agency that needs to consolidate air ticketing, DMS, insurance and visas into one record (our <Link href="/portfolio/flightsmart">FlightSmart</Link> platform) or an MSO that needs to orchestrate dozens of healthcare workflows (our <Link href="/portfolio/mso-care">MSO Care Orchestrator</Link>) couldn't buy that off a shelf. The differentiation lived in the workflow itself.</p>
+                <p>Build when the software <em>is</em> the business, when a core process is your competitive advantage and no product models it well. A travel agency that needs to consolidate air ticketing, DMS, insurance and visas into one record (our <Link href="/portfolio/flightsmart">FlightSmart</Link> platform) or an MSO that needs to orchestrate dozens of healthcare workflows (our <Link href="/portfolio/mso-care">CareFlow</Link> platform) couldn't buy that off a shelf. The differentiation lived in the workflow itself.</p>
                 <p>Custom build is also right when you need <strong>full ownership</strong>, of the data, the roadmap, the integrations and the security posture, and when scaling on a packaged product would cost more in license fees and workarounds than it would to own the thing outright.</p>
 
                 <h2>A decision framework</h2>

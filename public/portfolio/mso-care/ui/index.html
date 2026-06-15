@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareFlow Pro · UI Walkthrough</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/app.css">
+  <style>
+    .hero { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem 2rem; }
+    .hero .logo-xl { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--brand), #14b8a6); color:#fff; font-size:2rem;
+      box-shadow: 0 14px 30px -10px rgba(14,165,164,.6); margin-bottom: 1.5rem; }
+    .hero h1 { font-size: 2.6rem; margin: 0; }
+    .hero p.lead { font-size: 1.1rem; color: var(--muted); max-width: 640px; margin: .8rem 0 0; }
+    .screens { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem 5rem; }
+    .screen-card { display:block; text-decoration:none; color:inherit; }
+    .screen-card .thumb { height: 150px; border-radius: 14px 14px 0 0; position: relative; overflow: hidden;
+      display:flex; align-items:center; justify-content:center; }
+    .screen-card .thumb i { font-size: 3rem; color: #fff; opacity:.95; }
+    .screen-card .body { padding: 1.1rem 1.25rem; }
+    .screen-card .body h3 { margin:0; font-size: 1.05rem; }
+    .screen-card .body p { margin:.35rem 0 0; font-size:.84rem; color:var(--muted); }
+    .screen-card { transition: transform .2s, box-shadow .2s; }
+    .screen-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); }
+    .t-dash { background:linear-gradient(135deg,#0b1f3d,#0d9488); }
+    .t-risk { background:linear-gradient(135deg,#e11d48,#fb923c); }
+    .t-rdet { background:linear-gradient(135deg,#7c3aed,#e11d48); }
+    .t-appt { background:linear-gradient(135deg,#3b82f6,#0ea5a4); }
+    .t-pat  { background:linear-gradient(135deg,#0891b2,#0d9488); }
+    .t-clm  { background:linear-gradient(135deg,#059669,#0d9488); }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="logo-xl"><i class="bi bi-heart-pulse-fill"></i></div>
+    <div class="eyebrow">CareFlow Pro · MSO Platform</div>
+    <h1>Product UI Walkthrough</h1>
+    <p class="lead">A guided look at the CareFlow Pro interface — a healthcare Medical Service Organization platform covering scheduling, patient care, clinical risk, and revenue. Click any screen below to open it full-screen.</p>
+    <div style="margin-top:1.4rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+      <span class="chip"><i class="bi bi-stars" style="color:var(--brand)"></i> Concept design</span>
+      <span class="chip"><i class="bi bi-display"></i> Best viewed full-screen</span>
+      <span class="chip"><i class="bi bi-cursor"></i> Screens are clickable</span>
+    </div>
+  </div>
+
+  <div class="screens">
+    <div class="grid g-3">
+      <a class="screen-card card" href="dashboard.html">
+        <div class="thumb t-dash"><i class="bi bi-grid-1x2-fill"></i></div>
+        <div class="body"><h3>Operations Dashboard</h3><p>KPIs, revenue trend, today's schedule and risk mix at a glance.</p></div>
+      </a>
+      <a class="screen-card card" href="risk.html">
+        <div class="thumb t-risk"><i class="bi bi-activity"></i></div>
+        <div class="body"><h3>Risk Stratification</h3><p>Population risk tiers with a live patient risk register.</p></div>
+      </a>
+      <a class="screen-card card" href="patient-risk.html">
+        <div class="thumb t-rdet"><i class="bi bi-speedometer2"></i></div>
+        <div class="body"><h3>Patient Risk Detail</h3><p>Composite score, factor breakdown and recommended actions.</p></div>
+      </a>
+      <a class="screen-card card" href="appointments.html">
+        <div class="thumb t-appt"><i class="bi bi-calendar2-week"></i></div>
+        <div class="body"><h3>Appointments</h3><p>Colour-coded week calendar with smart slot finding.</p></div>
+      </a>
+      <a class="screen-card card" href="patient.html">
+        <div class="thumb t-pat"><i class="bi bi-person-vcard"></i></div>
+        <div class="body"><h3>Patient Chart</h3><p>Demographics, vitals, coverage, encounters and care plan.</p></div>
+      </a>
+      <a class="screen-card card" href="claim.html">
+        <div class="thumb t-clm"><i class="bi bi-receipt"></i></div>
+        <div class="body"><h3>Insurance Claim</h3><p>837P claim with diagnoses, service lines and financials.</p></div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

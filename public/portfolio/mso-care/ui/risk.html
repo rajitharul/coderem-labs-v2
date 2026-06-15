@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk &amp; Care · CareFlow Pro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"></aside>
+  <div class="main">
+    <header class="topbar"></header>
+    <div class="content wide">
+
+      <div class="crumbs"><a href="dashboard.html">Dashboard</a><i class="bi bi-chevron-right"></i><span>Risk &amp; Care Management</span></div>
+
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Population Health</div>
+          <h1>Risk Stratification</h1>
+          <p>Rule-based clinical risk scoring across labs, vitals &amp; ICD-10 diagnoses</p>
+        </div>
+        <div style="display:flex; gap:.6rem;">
+          <button class="btn btn-ghost"><i class="bi bi-download"></i> Export</button>
+          <button class="btn btn-primary"><i class="bi bi-arrow-repeat"></i> Recalculate All</button>
+        </div>
+      </div>
+
+      <!-- Tier KPIs -->
+      <div class="grid g-4" style="margin-bottom:1.2rem;">
+        <div class="kpi" style="border-left:4px solid var(--crit);">
+          <div class="ic ic-rose"><i class="bi bi-exclamation-triangle-fill"></i></div>
+          <div class="val num" style="color:var(--crit)">143</div>
+          <div class="lbl">Critical Risk · Score ≥ 76</div>
+        </div>
+        <div class="kpi" style="border-left:4px solid var(--high);">
+          <div class="ic ic-amber"><i class="bi bi-exclamation-circle-fill"></i></div>
+          <div class="val num" style="color:#d97706">313</div>
+          <div class="lbl">High Risk · Score 51–75</div>
+        </div>
+        <div class="kpi" style="border-left:4px solid var(--med);">
+          <div class="ic" style="background:#ffedd5;color:#ea580c;"><i class="bi bi-dash-circle-fill"></i></div>
+          <div class="val num" style="color:#ea580c">626</div>
+          <div class="lbl">Medium Risk · Score 26–50</div>
+        </div>
+        <div class="kpi" style="border-left:4px solid var(--low);">
+          <div class="ic ic-green"><i class="bi bi-check-circle-fill"></i></div>
+          <div class="val num" style="color:#059669">1,765</div>
+          <div class="lbl">Low Risk · Score 0–25</div>
+        </div>
+      </div>
+
+      <!-- Methodology banner -->
+      <div class="banner info" style="margin-bottom:1.2rem;">
+        <i class="bi bi-info-circle-fill"></i>
+        <div>
+          <strong>How risk scores work.</strong> A weighted algorithm analyzes the most recent <strong>lab results</strong>, the worst <strong>vital signs</strong> from the last 6 months, and matched <strong>ICD-10 diagnoses</strong> &mdash; then tiers each patient. <span class="muted">Total = Lab + Vitals + Diagnosis.</span>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1fr 320px; align-items:start;">
+
+        <!-- Patient risk table -->
+        <div class="card">
+          <div class="card-head">
+            <h3><i class="bi bi-people-fill"></i> Patient Risk Register</h3>
+            <div class="seg">
+              <button class="on">All</button><button>Critical</button><button>High</button><button>Medium</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th>Patient</th><th>Age</th><th>Facility</th><th>Score</th><th>Risk Tier</th><th>Top Drivers</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="uchip"><div class="av a6">RT</div><div><div class="nm">Robert Tran</div><div class="ml">MRN 02981</div></div></div></td>
+                  <td class="num">71</td>
+                  <td class="sm muted">Riverside Main</td>
+                  <td><span class="fw8 num" style="font-size:1.1rem; color:var(--crit)">88</span></td>
+                  <td><span class="badge b-crit"><i class="bi bi-exclamation-triangle-fill"></i> Critical</span></td>
+                  <td><span class="badge b-rose">HF</span> <span class="badge b-amber">HbA1c 9.5</span></td>
+                  <td><a class="link" href="patient-risk.html"><i class="bi bi-arrow-up-right"></i></a></td>
+                </tr>
+                <tr>
+                  <td><div class="uchip"><div class="av a2">GS</div><div><div class="nm">Gloria Santos</div><div class="ml">MRN 03114</div></div></div></td>
+                  <td class="num">64</td>
+                  <td class="sm muted">Northgate Clinic</td>
+                  <td><span class="fw8 num" style="font-size:1.1rem; color:var(--crit)">78</span></td>
+                  <td><span class="badge b-crit"><i class="bi bi-exclamation-triangle-fill"></i> Critical</span></td>
+                  <td><span class="badge b-rose">BP 185/125</span> <span class="badge b-sky">CKD</span></td>
+                  <td><a class="link" href="patient-risk.html"><i class="bi bi-arrow-up-right"></i></a></td>
+                </tr>
+                <tr>
+                  <td><div class="uchip"><div class="av a4">MW</div><div><div class="nm">Marcus Webb</div><div class="ml">MRN 04550</div></div></div></td>
+                  <td class="num">58</td>
+                  <td class="sm muted">Riverside Main</td>
+                  <td><span class="fw8 num" style="font-size:1.1rem; color:#d97706">69</span></td>
+                  <td><span class="badge b-high"><i class="bi bi-exclamation-circle-fill"></i> High</span></td>
+                  <td><span class="badge b-amber">COPD</span> <span class="badge b-sky">SpO₂ 91%</span></td>
+                  <td><a class="link" href="patient-risk.html"><i class="bi bi-arrow-up-right"></i></a></td>
+                </tr>
+                <tr>
+                  <td><div class="uchip"><div class="av a8">PD</div><div><div class="nm">Priya Desai</div><div class="ml">MRN 03872</div></div></div></td>
+                  <td class="num">52</td>
+                  <td class="sm muted">Westside Center</td>
+                  <td><span class="fw8 num" style="font-size:1.1rem; color:#d97706">61</span></td>
+                  <td><span class="badge b-high"><i class="bi bi-exclamation-circle-fill"></i> High</span></td>
+                  <td><span class="badge b-amber">T2DM</span> <span class="badge b-rose">HTN</span></td>
+                  <td><a class="link" href="patient-risk.html"><i class="bi bi-arrow-up-right"></i></a></td>
+                </tr>
+                <tr>
+                  <td><div class="uchip"><div class="av a7">EH</div><div><div class="nm">Evelyn Hughes</div><div class="ml">MRN 04102</div></div></div></td>
+                  <td class="num">47</td>
+                  <td class="sm muted">Northgate Clinic</td>
+                  <td><span class="fw8 num" style="font-size:1.1rem; color:#ea580c">44</span></td>
+                  <td><span class="badge b-med"><i class="bi bi-dash-circle-fill"></i> Medium</span></td>
+                  <td><span class="badge b-amber">Obesity</span></td>
+                  <td><a class="link" href="patient-risk.html"><i class="bi bi-arrow-up-right"></i></a></td>
+                </tr>
+                <tr>
+                  <td><div class="uchip"><div class="av a3">JL</div><div><div class="nm">Jordan Lee</div><div class="ml">MRN 04781</div></div></div></td>
+                  <td class="num">39</td>
+                  <td class="sm muted">Westside Center</td>
+                  <td><span class="fw8 num" style="font-size:1.1rem; color:#059669">18</span></td>
+                  <td><span class="badge b-low"><i class="bi bi-check-circle-fill"></i> Low</span></td>
+                  <td><span class="muted sm">—</span></td>
+                  <td><a class="link" href="patient-risk.html"><i class="bi bi-arrow-up-right"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Side: care plans + drivers -->
+        <div style="display:flex; flex-direction:column; gap:1.1rem;">
+          <div class="card card-pad">
+            <h3 style="font-size:1rem; margin:0 0 1rem;">Score Distribution</h3>
+            <div style="display:flex; align-items:flex-end; gap:8px; height:120px; padding:0 .2rem;">
+              <div style="flex:1; text-align:center;"><div class="bar" style="height:38px; width:100%; background:#10b981; border-radius:8px 8px 0 0;"></div></div>
+              <div style="flex:1; text-align:center;"><div style="height:70px; background:#34d399; border-radius:8px 8px 0 0;"></div></div>
+              <div style="flex:1; text-align:center;"><div style="height:100px; background:#fbbf24; border-radius:8px 8px 0 0;"></div></div>
+              <div style="flex:1; text-align:center;"><div style="height:62px; background:#fb923c; border-radius:8px 8px 0 0;"></div></div>
+              <div style="flex:1; text-align:center;"><div style="height:48px; background:#f59e0b; border-radius:8px 8px 0 0;"></div></div>
+              <div style="flex:1; text-align:center;"><div style="height:30px; background:#e11d48; border-radius:8px 8px 0 0;"></div></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:.68rem; color:var(--muted); margin-top:.4rem;">
+              <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:.9rem;">
+              <h3 style="font-size:1rem; margin:0;">Active Care Plans</h3>
+              <span class="badge b-teal">42 open</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:.85rem;">
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.35rem;"><span class="fw6">Robert Tran · CHF Protocol</span><span class="num muted">72%</span></div>
+                <div class="bar"><span class="fill-teal" style="width:72%"></span></div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.35rem;"><span class="fw6">Priya Desai · Diabetes Mgmt</span><span class="num muted">45%</span></div>
+                <div class="bar"><span class="fill-amber" style="width:45%"></span></div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.35rem;"><span class="fw6">Marcus Webb · COPD Pathway</span><span class="num muted">30%</span></div>
+                <div class="bar"><span class="fill-blue" style="width:30%"></span></div>
+              </div>
+            </div>
+            <a class="btn btn-ghost btn-sm" href="#" style="width:100%; justify-content:center; margin-top:1rem;">View all care plans</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="assets/shell.js" data-active="risk"></script>
+</body>
+</html>

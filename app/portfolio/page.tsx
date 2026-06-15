@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Portfolio: CodeREM Labs",
-  description: "Value beyond what you think you need. FlightSmart, MSO Care Orchestrator, ClaimBrain, LexiMatch AI and Bad Streams.",
+  description: "Value beyond what you think you need. FlightSmart, CareFlow, ClaimBrain, LexiMatch AI and Bad Streams.",
 };
 
 export default function Page() {
@@ -36,7 +36,7 @@ export default function Page() {
                 </div>
 
                 <div className="work-item">
-                  <div className="work-visual"><span className="tag">Platform · Healthcare</span><span className="big">MSO Care Orchestrator</span></div>
+                  <div className="work-visual"><span className="tag">Platform · Healthcare</span><span className="big">CareFlow</span></div>
                   <div className="work-body">
                     <p>A management services organization platform automating healthcare provider operations, credentialing, payer contracts, scheduling, prior authorization, coding, billing, and denial management. Reduced staffing requirements by 80% while improving care coordination.</p>
                     <div className="work-metrics"><div className="m"><div className="v">40%</div><div className="k">Increase in care gaps closed</div></div><div className="m"><div className="v">85%</div><div className="k">Reduction in reporting time</div></div></div>

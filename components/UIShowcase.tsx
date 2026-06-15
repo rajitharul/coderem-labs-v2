@@ -2,30 +2,18 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-/* FlightSmart UI gallery — a grid of the real HTML screens (served from
-   /public/portfolio/flightsmart/ui) shown as live browser-framed previews.
-   Click a screen to open a fullscreen, interactive viewer with prev/next. */
+/* Reusable live UI gallery for case studies. Renders a grid of real HTML
+   screens (served from /public) as live, browser-framed previews; clicking a
+   screen opens a fullscreen, interactive viewer with prev/next.
+   Pass `base` (the public folder, e.g. "/portfolio/mso-care/ui") and the list
+   of `screens` ({ file, title }). */
 
-const BASE = "/portfolio/flightsmart/ui";
+export type UIScreen = { file: string; title: string };
 
-const SCREENS: { file: string; title: string }[] = [
-  { file: "agent_dashboard.html", title: "Agent Dashboard" },
-  { file: "subagent_dashboard.html", title: "Sub-agent Dashboard" },
-  { file: "admin_dashboard.html", title: "Admin Dashboard" },
-  { file: "accountant_dashboard.html", title: "Accountant Dashboard" },
-  { file: "wallet_dashboard.html", title: "Wallet Dashboard" },
-  { file: "my_wallet.html", title: "My Wallet" },
-  { file: "wallet_ledger.html", title: "Wallet Ledger" },
-  { file: "payments_overview.html", title: "Payments Overview" },
-  { file: "payout_list.html", title: "Payouts" },
-  { file: "fund_request_list.html", title: "Fund Requests" },
-  { file: "fund_request_detail.html", title: "Fund Request Detail" },
-];
-const N = SCREENS.length;
-
-export default function UIShowcase() {
+export default function UIShowcase({ base, screens }: { base: string; screens: UIScreen[] }) {
   const gridRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<number | null>(null);
+  const n = screens.length;
 
   // Scale each fixed 1280-wide screen down to its tile width.
   useEffect(() => {
@@ -42,7 +30,10 @@ export default function UIShowcase() {
     return () => ro.disconnect();
   }, []);
 
-  const move = useCallback((dir: number) => setOpen((i) => (i === null ? i : (i + dir + N) % N)), []);
+  const move = useCallback(
+    (dir: number) => setOpen((i) => (i === null ? i : (i + dir + n) % n)),
+    [n]
+  );
 
   // lightbox keyboard + scroll lock
   useEffect(() => {
@@ -61,12 +52,12 @@ export default function UIShowcase() {
     };
   }, [open, move]);
 
-  const lb = open === null ? null : SCREENS[open];
+  const lb = open === null ? null : screens[open];
 
   return (
     <>
       <div className="ui-grid" ref={gridRef} data-stagger>
-        {SCREENS.map((s, i) => (
+        {screens.map((s, i) => (
           <button key={s.file} className="ui-tile" onClick={() => setOpen(i)} aria-label={`Open ${s.title}`}>
             <div className="ui-tile-bar">
               <span className="ui-dots"><i></i><i></i><i></i></span>
@@ -76,7 +67,7 @@ export default function UIShowcase() {
             <div className="ui-stage">
               <iframe
                 className="ui-frame"
-                src={`${BASE}/${s.file}`}
+                src={`${base}/${s.file}`}
                 title={s.title}
                 loading="lazy"
                 tabIndex={-1}
@@ -96,13 +87,13 @@ export default function UIShowcase() {
             <div className="ui-lb-bar">
               <span className="ui-dots"><i></i><i></i><i></i></span>
               <span className="ui-lb-title">{lb.title}</span>
-              <span className="ui-lb-counter">{String(open + 1).padStart(2, "0")} / {N}</span>
+              <span className="ui-lb-counter">{String(open + 1).padStart(2, "0")} / {n}</span>
               <div className="ui-lb-actions">
-                <a href={`${BASE}/${lb.file}`} target="_blank" rel="noopener noreferrer" className="ui-lb-btn" title="Open in new tab">↗</a>
+                <a href={`${base}/${lb.file}`} target="_blank" rel="noopener noreferrer" className="ui-lb-btn" title="Open in new tab">↗</a>
                 <button className="ui-lb-btn" onClick={() => setOpen(null)} aria-label="Close">✕</button>
               </div>
             </div>
-            <iframe key={lb.file} className="ui-lb-frame" src={`${BASE}/${lb.file}`} title={`${lb.title} (fullscreen)`} />
+            <iframe key={lb.file} className="ui-lb-frame" src={`${base}/${lb.file}`} title={`${lb.title} (fullscreen)`} />
           </div>
         </div>
       )}
