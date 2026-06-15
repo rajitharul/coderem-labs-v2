@@ -125,9 +125,9 @@ export default function Page() {
               <div className="section-head reveal" style={{ marginBottom: "40px" } as React.CSSProperties}>
                 <p className="eyebrow">Product view</p>
                 <h2>Inside the <span className="h-word">product.</span></h2>
-                <p>The real screens we shipped — click any to open it full screen.</p>
+                <p>A few of the real screens we shipped. Browse with the arrows or dots — click the front screen to open it full screen.</p>
               </div>
-              <UIShowcase base="/portfolio/badstreams/ui" screens={BADSTREAMS_SCREENS} />
+              <UIShowcase base="/portfolio/badstreams/ui" screens={BADSTREAMS_SCREENS} layout="carousel" />
             </div>
           </section>
 
