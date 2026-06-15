@@ -26,19 +26,6 @@ export default function Page() {
             </div>
           </section>
 
-          {/* HERO VISUAL */}
-          <section style={{ padding: "0 0 30px" } as React.CSSProperties}>
-            <div className="container">
-              <div className="mac-window reveal" style={{ maxWidth: "980px", margin: "0 auto" } as React.CSSProperties}>
-                <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">leximatch · precedent search</span></div>
-                <div className="mac-body sc-chat" style={{ height: "clamp(260px,32vw,340px)" } as React.CSSProperties}>
-                  <div className="msg user">Find precedents that match this reasoning</div>
-                  <div className="msg ai"><span className="dots"><i></i><i></i><i></i></span><span className="ai-text">3 analogous precedents · matched facet: <strong>reasoning</strong> · 94% recall. Smith v. Jones, <strong>supports plaintiff</strong>. Rationale &amp; matched section shown.</span></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* ABSTRACT */}
           <section style={{ padding: "50px 0 20px" } as React.CSSProperties}>
             <div className="container">

@@ -132,7 +132,7 @@ export default function Page() {
                   </div>
                   <div className="svc-demo">
                     <div className="mac-window">
-                      <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">ClaimBrain · assistant</span></div>
+                      <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">CodeREM Claims Assist</span></div>
                       <div className="mac-body sc-chat">
                         <div className="msg user">Summarise this 9-page claim</div>
                         <div className="msg ai"><span className="dots"><i></i><i></i><i></i></span><span className="ai-text">Extracted 14 fields · 97% confidence. Flagged 1 edge case for human review.</span></div>

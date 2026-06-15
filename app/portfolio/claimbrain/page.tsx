@@ -26,19 +26,6 @@ export default function Page() {
             </div>
           </section>
 
-          {/* HERO VISUAL */}
-          <section style={{ padding: "0 0 30px" } as React.CSSProperties}>
-            <div className="container">
-              <div className="mac-window reveal" style={{ maxWidth: "980px", margin: "0 auto" } as React.CSSProperties}>
-                <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">ClaimBrain · adjudication assistant</span></div>
-                <div className="mac-body sc-chat" style={{ height: "clamp(260px,32vw,340px)" } as React.CSSProperties}>
-                  <div className="msg user">Extract &amp; validate this CMS-1500 claim</div>
-                  <div className="msg ai"><span className="dots"><i></i><i></i><i></i></span><span className="ai-text">Extracted 14 fields · ICD-10 &amp; CPT validated against diagnosis · 97% confidence. Flagged 1 possible bundling error for human review.</span></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* ABSTRACT */}
           <section style={{ padding: "50px 0 20px" } as React.CSSProperties}>
             <div className="container">
