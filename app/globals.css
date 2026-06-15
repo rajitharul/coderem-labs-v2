@@ -51,7 +51,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; overscroll-behavior-x: none; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 body {
@@ -63,7 +63,11 @@ body {
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -132,7 +136,8 @@ section { padding: 120px 0; position: relative; }
 
 /* ----------  Header / nav  ---------- */
 /* Floating, transparent, airy header (sohub-style: no solid bar) */
-.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; pointer-events: none; }
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; pointer-events: none; transition: transform .38s var(--ease); will-change: transform; }
+.site-header.header-hidden { transform: translateY(-100%); }
 .site-header::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0)); opacity: 0; transition: opacity .45s var(--ease); pointer-events: none; }
 .site-header.scrolled::before { opacity: 1; }
 .site-header .nav.container { max-width: none; height: auto; padding: clamp(20px, 3vw, 40px) clamp(22px, 4.5vw, 60px); }
@@ -738,6 +743,10 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
   .svc-deck .svc-text h3 { font-size: clamp(2.1rem, 3.4vw, 3.1rem); }
 }
 @media (max-width: 980px) {
+  /* solid site background on the top bar (matching the page) instead of the
+     transparent / fade-in treatment used on desktop */
+  .site-header { background: var(--bg); border-bottom: 1px solid var(--border); }
+  .site-header::before { display: none; }
   .pin-stage .container { grid-template-columns: 1fr; gap: 36px; }
   .panels { min-height: 380px; }
   .grid.cols-3, .grid.cols-4, .steps { grid-template-columns: repeat(2, 1fr); }
@@ -750,6 +759,20 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
   .svc-scroll { display: none; }
   .svc-pin-stage { min-height: 0; display: block; }
   .svc-pin { padding-bottom: 80px; }
+  /* The desktop pinned-deck animation positions cards absolutely with inline
+     GSAP transforms. On mobile the deck must be a plain vertical stack, so
+     override any lingering inline styles (incl. across the breakpoint). */
+  .svc-pin-stage, .proc-pin .svc-pin-stage { overflow: visible !important; }
+  .svc-deck { height: auto !important; display: flex !important; flex-direction: column; gap: 22px; }
+  .svc-card {
+    position: relative !important;
+    top: auto !important; left: auto !important; right: auto !important;
+    width: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    z-index: auto !important;
+  }
+  .svc-peek { display: none !important; }
 }
 @media (max-width: 680px) {
   section { padding: 78px 0; }
@@ -781,8 +804,21 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
   .svc-deck .svc-row { padding: 24px 20px; gap: 26px; }
   .svc-text h3 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
   .menu-inner a { font-size: 1.5rem; padding: 11px 16px; }
-  /* keep demos comfortable on phones */
-  .mac-body { height: clamp(220px, 56vw, 300px); }
+  /* keep the macOS-window demos compact & legible on phones */
+  .mac-body { height: clamp(208px, 54vw, 290px); padding: 14px; }
+  .mac-bar { padding: 8px 11px; gap: 7px; }
+  .mac-dots i { width: 9px; height: 9px; }
+  .mac-title { font-size: 0.74rem; padding-right: 22px; }
+  .sc-dash { grid-template-columns: 44px 1fr; gap: 10px; }
+  .dash-kpis { gap: 7px; }
+  .kpi { padding: 8px 9px; border-radius: 8px; }
+  .kpi b { font-size: 1rem; }
+  .kpi i { font-size: 0.64rem; }
+  .dash-chart { padding: 10px; gap: 5px; }
+  .sc-flow { gap: 9px; }
+  .task { padding: 9px 11px; font-size: 0.82rem; gap: 9px; }
+  .task .check { width: 17px; height: 17px; }
+  .msg { font-size: 0.82rem; padding: 9px 12px; max-width: 88%; }
   .phone-stage { height: clamp(300px, 80vw, 360px); }
   .story-lead .kw-brand { font-size: 1.18em; }
   .svc-list { gap: clamp(48px, 12vw, 80px); }
