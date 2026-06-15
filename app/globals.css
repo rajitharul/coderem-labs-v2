@@ -92,28 +92,15 @@ p { color: var(--text-soft); font-size: 1.05rem; font-weight: 500; line-height: 
   animation: gradMove 5s linear infinite;
 }
 
-/* moving-light highlighted word (sohub .h-word) — solid brand-blue with a
-   barely-lighter band drifting through; emphasis without flash */
+/* moving-light highlighted word (sohub .h-word) — dark text with an accent-blue
+   light band sweeping through, matching the reference hero heading */
 .h-word {
   color: transparent;
-  background: linear-gradient(90deg, var(--accent) 0%, #2d5cc8 50%, var(--accent) 100%);
+  background: linear-gradient(90deg, var(--text) 0%, var(--accent) 50%, var(--text) 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text; background-clip: text;
-  animation: gradMove 6s linear infinite;
+  animation: gradMove 4.5s linear infinite;
   padding-right: 0.04em;
-}
-
-/* Hero headline emphasis — stronger, more saturated brand-blue with a moving
-   light band and a soft glow, so "Precision." / "Performance." read as one
-   aligned, high-impact pair. */
-.hero-hl {
-  background: linear-gradient(100deg, #122e9e 0%, #2756e6 34%, #5b8cff 50%, #2756e6 66%, #122e9e 100%);
-  background-size: 230% 100%;
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
-  font-weight: 800;
-  filter: drop-shadow(0 10px 30px rgba(31, 76, 226, 0.30));
-  animation: gradMove 5.5s linear infinite;
 }
 
 /* ----------  Layout  ---------- */
@@ -633,9 +620,26 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
 @keyframes uiFade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes uiPop { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
 
+/* coverflow carousel — one screen centred, neighbours peeking & tilted */
+.ui-carousel { position: relative; }
+.ui-cstage { position: relative; height: clamp(300px, 42vw, 560px); perspective: 2200px; transform-style: preserve-3d; }
+.ui-cslide { position: absolute; top: 50%; left: 50%; width: min(64%, 820px); transform-origin: center; will-change: transform, opacity; transition: transform .65s var(--ease), opacity .55s var(--ease), filter .55s, box-shadow .4s; }
+.ui-cslide.is-active { box-shadow: 0 18px 40px rgba(12,16,22,.14), 0 44px 90px rgba(12,16,22,.18); }
+.ui-cslide:not(.is-active) { cursor: pointer; }
+.ui-cslide .ui-tile-overlay::after { content: "⤢ View full screen"; }
+.ui-cslide:not(.is-active) .ui-tile-overlay::after { content: "→ Bring to front"; }
+
+.ui-cnav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: clamp(22px, 3vw, 34px); }
+.ui-cnav-arrow { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 1.6rem; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: background .25s var(--ease), border-color .25s, color .25s, transform .25s; }
+.ui-cnav-arrow:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); }
+.ui-cdots { display: flex; align-items: center; gap: 10px; }
+.ui-cdot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 100px; background: var(--surface-3); cursor: pointer; transition: width .35s var(--ease), background .35s; }
+.ui-cdot.is-active { width: 30px; background: var(--accent); }
+
 @media (max-width: 560px) {
   .ui-grid { grid-template-columns: 1fr; }
   .ui-lb-arrow { width: 44px; height: 44px; font-size: 1.5rem; }
+  .ui-cslide { width: 84%; }
 }
 
 /* ----------  Product case-study page  ---------- */

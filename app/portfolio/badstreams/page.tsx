@@ -26,28 +26,6 @@ export default function Page() {
             </div>
           </section>
 
-          {/* HERO VISUAL */}
-          <section style={{ padding: "0 0 30px" } as React.CSSProperties}>
-            <div className="container">
-              <div className="mac-window reveal" style={{ maxWidth: "980px", margin: "0 auto" } as React.CSSProperties}>
-                <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">bad streams · campaign monitor</span></div>
-                <div className="mac-body sc-dash" style={{ height: "clamp(260px,32vw,340px)" } as React.CSSProperties}>
-                  <div className="dash-side"><span></span><span className="on"></span><span></span><span></span></div>
-                  <div className="dash-main">
-                    <div className="dash-kpis">
-                      <div className="kpi"><b>&lt;1s</b><i>enforcement</i></div>
-                      <div className="kpi"><b>30s</b><i>proof of play</i></div>
-                      <div className="kpi"><b>Live</b><i>stream status</i></div>
-                    </div>
-                    <div className="dash-chart">
-                      <span style={{ "--d": "0", "--peak": "60%" } as React.CSSProperties}></span><span style={{ "--d": "1", "--peak": "82%" } as React.CSSProperties}></span><span style={{ "--d": "2", "--peak": "50%" } as React.CSSProperties}></span><span style={{ "--d": "3", "--peak": "90%" } as React.CSSProperties}></span><span style={{ "--d": "4", "--peak": "64%" } as React.CSSProperties}></span><span style={{ "--d": "5", "--peak": "74%" } as React.CSSProperties}></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* ABSTRACT */}
           <section style={{ padding: "50px 0 20px" } as React.CSSProperties}>
             <div className="container">

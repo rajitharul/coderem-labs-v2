@@ -14,7 +14,7 @@ export default function Page() {
             <div className="orbs"><span className="orb a"></span><span className="orb b"></span><span className="orb c"></span></div>
             <div className="container">
               <p className="eyebrow">Enterprise Software · AI Automation · AI Innovation</p>
-              <h1 className="reveal hero-2line">Medical Grade <span className="h-word hero-hl">Precision.</span><br />F1 Grade <span className="h-word hero-hl">Performance.</span></h1>
+              <h1 className="reveal hero-2line">Medical Grade <span className="h-word">Precision.</span><br />F1 Grade <span className="h-word">Performance.</span></h1>
               <p className="sub">We are a <span className="rotate-wrap"><span data-rotate="precise, relentless, exacting, fast">precise</span></span> team, turning the right problems into production-grade software.</p>
               <div className="hero-actions">
                 <Link href="/get-started" className="btn btn-primary">Start Your Project <span className="btn-arrow">→</span></Link>
@@ -135,7 +135,7 @@ export default function Page() {
                   </div>
                   <div className="svc-demo">
                     <div className="mac-window">
-                      <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">ClaimBrain · assistant</span></div>
+                      <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">CodeREM Claims Assist</span></div>
                       <div className="mac-body sc-chat">
                         <div className="msg user">Extract all claim information for ref #12345</div>
                         <div className="msg ai">

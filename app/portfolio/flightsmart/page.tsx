@@ -2,17 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import UIShowcase from "@/components/UIShowcase";
 
+// A curated handful of the most representative screens — operations, admin,
+// finance and a detail view — shown as a coverflow carousel.
 const FLIGHTSMART_SCREENS = [
   { file: "agent_dashboard.html", title: "Agent Dashboard" },
-  { file: "subagent_dashboard.html", title: "Sub-agent Dashboard" },
   { file: "admin_dashboard.html", title: "Admin Dashboard" },
-  { file: "accountant_dashboard.html", title: "Accountant Dashboard" },
   { file: "wallet_dashboard.html", title: "Wallet Dashboard" },
-  { file: "my_wallet.html", title: "My Wallet" },
-  { file: "wallet_ledger.html", title: "Wallet Ledger" },
   { file: "payments_overview.html", title: "Payments Overview" },
-  { file: "payout_list.html", title: "Payouts" },
-  { file: "fund_request_list.html", title: "Fund Requests" },
   { file: "fund_request_detail.html", title: "Fund Request Detail" },
 ];
 
@@ -37,28 +33,6 @@ export default function Page() {
                 <div className="m"><div className="k">Sector</div><div className="v">Travel &amp; Tourism</div></div>
                 <div className="m"><div className="k">Engagement</div><div className="v">Product design &amp; build · 0→1</div></div>
                 <div className="m"><div className="k">Platform</div><div className="v">Web · Enterprise SaaS</div></div>
-              </div>
-            </div>
-          </section>
-
-          {/* HERO VISUAL */}
-          <section style={{ padding: "0 0 30px" } as React.CSSProperties}>
-            <div className="container">
-              <div className="mac-window reveal" style={{ maxWidth: "980px", margin: "0 auto" } as React.CSSProperties}>
-                <div className="mac-bar"><span className="mac-dots"><i></i><i></i><i></i></span><span className="mac-title">flightsmart · agency console</span></div>
-                <div className="mac-body sc-dash" style={{ height: "clamp(260px,32vw,340px)" } as React.CSSProperties}>
-                  <div className="dash-side"><span></span><span className="on"></span><span></span><span></span></div>
-                  <div className="dash-main">
-                    <div className="dash-kpis">
-                      <div className="kpi"><b>4 min</b><i>avg booking</i></div>
-                      <div className="kpi"><b>99.8%</b><i>revenue accuracy</i></div>
-                      <div className="kpi"><b>1</b><i>system of record</i></div>
-                    </div>
-                    <div className="dash-chart">
-                      <span style={{ "--d": "0", "--peak": "58%" } as React.CSSProperties}></span><span style={{ "--d": "1", "--peak": "80%" } as React.CSSProperties}></span><span style={{ "--d": "2", "--peak": "46%" } as React.CSSProperties}></span><span style={{ "--d": "3", "--peak": "92%" } as React.CSSProperties}></span><span style={{ "--d": "4", "--peak": "68%" } as React.CSSProperties}></span><span style={{ "--d": "5", "--peak": "54%" } as React.CSSProperties}></span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
@@ -151,9 +125,9 @@ export default function Page() {
               <div className="section-head reveal" style={{ marginBottom: "40px" } as React.CSSProperties}>
                 <p className="eyebrow">Product view</p>
                 <h2>Inside the <span className="h-word">product.</span></h2>
-                <p>The real screens we shipped — click any to open it full screen.</p>
+                <p>A few of the real screens we shipped. Browse with the arrows or dots — click the front screen to open it full screen.</p>
               </div>
-              <UIShowcase base="/portfolio/flightsmart/ui" screens={FLIGHTSMART_SCREENS} />
+              <UIShowcase base="/portfolio/flightsmart/ui" screens={FLIGHTSMART_SCREENS} layout="carousel" />
             </div>
           </section>
 
