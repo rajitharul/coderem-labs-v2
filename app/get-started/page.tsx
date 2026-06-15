@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Get Started: CodeREM Labs",
@@ -22,51 +23,7 @@ export default function Page() {
               <div className="split" style={{ alignItems: "flex-start" } as React.CSSProperties}>
 
                 {/* FORM */}
-                <div className="card reveal" style={{ padding: "36px" } as React.CSSProperties}>
-                  <form id="project-form">
-                    <div className="form-grid">
-                      <div className="field"><label>Full Name <span className="req">*</span></label><input type="text" required placeholder="Jane Doe" /></div>
-                      <div className="field"><label>Work Email <span className="req">*</span></label><input type="email" required placeholder="jane@company.com" /></div>
-                      <div className="field full"><label>Company <span className="req">*</span></label><input type="text" required placeholder="Company name" /></div>
-                      <div className="field"><label>Budget Range <span className="req">*</span></label>
-                        <select required defaultValue="">
-                          <option value="" disabled>Select a range</option>
-                          <option>Under $25,000</option>
-                          <option>$25,000, $50,000</option>
-                          <option>$50,000, $100,000</option>
-                          <option>$100,000, $250,000</option>
-                          <option>Over $250,000</option>
-                          <option>Not sure yet</option>
-                        </select>
-                      </div>
-                      <div className="field"><label>Timeline <span className="req">*</span></label>
-                        <select required defaultValue="">
-                          <option value="" disabled>Select a timeline</option>
-                          <option>As soon as possible</option>
-                          <option>1 to 3 months</option>
-                          <option>3 to 6 months</option>
-                          <option>6+ months</option>
-                          <option>Flexible</option>
-                        </select>
-                      </div>
-                      <div className="field full"><label>Project Type <span className="req">*</span></label>
-                        <select required defaultValue="">
-                          <option value="" disabled>Select a type</option>
-                          <option>Web Application</option>
-                          <option>Mobile Application</option>
-                          <option>Enterprise System</option>
-                          <option>AI/ML Solution</option>
-                          <option>Cloud &amp; DevOps</option>
-                          <option>Other</option>
-                        </select>
-                      </div>
-                      <div className="field full"><label>Tell Us About Your Project <span className="req">*</span></label><textarea required placeholder="What are you trying to build, or where are you struggling?"></textarea></div>
-                      <div className="field full"><label>Attachment Link (Optional)</label><input type="url" placeholder="https://…" /></div>
-                    </div>
-                    <button type="submit" className="btn btn-primary" style={{ marginTop: "22px", width: "100%" } as React.CSSProperties}>Send Project Details <span className="btn-arrow">→</span></button>
-                    <p id="form-note" className="accent" style={{ display: "none", marginTop: "16px", textAlign: "center" } as React.CSSProperties}>Thanks, your inquiry has been sent. We'll respond within 24 hours.</p>
-                  </form>
-                </div>
+                <ContactForm />
 
                 {/* SIDE INFO */}
                 <div className="reveal" data-delay="120">

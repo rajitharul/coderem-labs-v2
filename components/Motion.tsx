@@ -107,27 +107,8 @@ export default function Motion() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const intervals: number[] = [];
 
-    // Contact form (get-started page) — simulated submit, as before.
-    const form = document.getElementById("project-form") as HTMLFormElement | null;
-    const onSubmit = (e: Event) => {
-      e.preventDefault();
-      if (!form) return;
-      const btn = form.querySelector<HTMLButtonElement>("button[type=submit]");
-      const note = document.getElementById("form-note");
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Sending…";
-      }
-      window.setTimeout(() => {
-        if (note) note.style.display = "block";
-        form.reset();
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = "Send Project Details";
-        }
-      }, 700);
-    };
-    form?.addEventListener("submit", onSubmit);
+    // (The get-started contact form now submits for real via its own client
+    // component, app/get-started/ContactForm.tsx — no simulated handler here.)
 
     // Rotating words (hero "precise / relentless / …")
     document.querySelectorAll<HTMLElement>("[data-rotate]").forEach((el) => {
@@ -166,7 +147,6 @@ export default function Motion() {
         .forEach((el) => el.classList.add("in"));
       return () => {
         intervals.forEach((id) => window.clearInterval(id));
-        form?.removeEventListener("submit", onSubmit);
       };
     }
 
@@ -240,7 +220,6 @@ export default function Motion() {
 
     return () => {
       intervals.forEach((id) => window.clearInterval(id));
-      form?.removeEventListener("submit", onSubmit);
       ctx.revert();
       gsap.ticker.remove(raf);
       lenis.destroy();

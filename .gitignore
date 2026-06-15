@@ -6,6 +6,10 @@
 /out/
 next-env.d.ts
 
+# env (secrets — never commit)
+.env
+.env*.local
+
 # misc
 .DS_Store
 *.tsbuildinfo
