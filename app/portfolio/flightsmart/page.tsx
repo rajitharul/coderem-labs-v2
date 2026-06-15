@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import UIShowcase from "./UIShowcase";
 
 export const metadata: Metadata = {
   title: "FlightSmart: A unified booking & operations platform for travel agencies | CodeREM Labs",
@@ -127,6 +128,18 @@ export default function Page() {
                   <p>Managers get full, real-time visibility into how the business is running, across agents, products and channels, on a single ground where the whole agency operates.</p>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* UI SCREENS */}
+          <section className="cs-section">
+            <div className="container">
+              <div className="section-head reveal" style={{ marginBottom: "40px" } as React.CSSProperties}>
+                <p className="eyebrow">Product view</p>
+                <h2>Inside the <span className="h-word">product.</span></h2>
+                <p>The real screens we shipped — click any to open it full screen.</p>
+              </div>
+              <UIShowcase />
             </div>
           </section>
 

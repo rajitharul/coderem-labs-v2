@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payouts — TravelMo</title>
+  <!-- Design mockup with hardcoded data. Mirrors templates/wallets/payout_list.html -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#d03c4c;--brand-soft:rgba(208,60,76,.08);--brand-hover:#b83344;
+      --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;
+      --slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;
+      --slate-100:#f1f5f9;--slate-50:#f8fafc;--white:#fff;
+      --sidebar-w:248px;--topbar-h:56px;--radius:10px;--radius-sm:6px;
+      --font:'Outfit',-apple-system,sans-serif;--mono:'JetBrains Mono',monospace;
+      --bs-primary:#d03c4c;--bs-link-color:#d03c4c;--bs-link-hover-color:#b83344;
+      --bs-body-font-family:'Outfit',-apple-system,sans-serif;
+    }
+    .btn-primary{--bs-btn-bg:#d03c4c;--bs-btn-border-color:#d03c4c;--bs-btn-hover-bg:#b83344;--bs-btn-hover-border-color:#b83344}
+    *,*::before,*::after{box-sizing:border-box}
+    body{font-family:var(--font);background:var(--slate-50);color:var(--slate-900);-webkit-font-smoothing:antialiased}
+
+    /* ── Sidebar ── */
+    .sidebar{width:var(--sidebar-w);background:var(--slate-900);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;scrollbar-width:none;z-index:100}
+    .sidebar::-webkit-scrollbar{display:none}
+    .sidebar-brand{display:flex;align-items:center;gap:10px;padding:20px 20px 18px;text-decoration:none}
+    .sidebar-brand-icon{width:32px;height:32px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0}
+    .sidebar-brand-text{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.01em}
+    .nav-section-label{font-size:10px;font-weight:600;color:var(--slate-500);text-transform:uppercase;letter-spacing:.08em;padding:20px 20px 6px}
+    .nav-item-wrapper{padding:1px 8px}
+    .nav-top-link{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:7px;color:var(--slate-400);text-decoration:none;font-size:13.5px;font-weight:450;transition:all .15s;cursor:pointer}
+    .nav-top-link:hover{background:rgba(255,255,255,.06);color:var(--slate-200)}
+    .nav-top-link.active{background:rgba(255,255,255,.08);color:#fff}
+    .nav-top-link.has-active{color:var(--slate-200)}
+    .nav-top-link i.nav-icon{font-size:16px;width:20px;text-align:center}
+    .nav-top-link .nav-label{flex:1}
+    .nav-top-link .nav-chevron{font-size:10px;color:rgba(255,255,255,.25);transition:transform .2s}
+    .nav-top-link[aria-expanded="true"] .nav-chevron{transform:rotate(90deg)}
+    .nav-submenu{padding:2px 8px 4px 8px}
+    .nav-sub-link{display:flex;align-items:center;gap:8px;padding:6px 10px 6px 40px;border-radius:6px;color:var(--slate-400);text-decoration:none;font-size:12.5px;transition:background .12s,color .12s;margin-bottom:1px}
+    .nav-sub-link:hover{background:rgba(255,255,255,.06);color:var(--slate-200)}
+    .nav-sub-link.active{background:rgba(255,255,255,.08);color:#f4a3ab}
+    .nav-sub-link::before{content:'';width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.4;flex-shrink:0}
+    .nav-sub-link.active::before{opacity:1}
+    .sidebar-footer{margin-top:auto;padding:12px 12px 16px;border-top:1px solid rgba(255,255,255,.06)}
+    .sidebar-user{display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px;margin-bottom:8px}
+    .sidebar-avatar{width:30px;height:30px;border-radius:50%;background:var(--slate-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--slate-300);flex-shrink:0}
+    .sidebar-user-name{color:var(--slate-200);font-size:13px;font-weight:500}
+    .sidebar-user-role{color:var(--slate-500);font-size:11px}
+    .badge-beta{font-size:.6rem;vertical-align:middle;padding:2px 5px;border-radius:4px;background:#ffc107;color:#000;font-weight:600}
+
+    /* ── Topbar ── */
+    .topbar{height:var(--topbar-h);background:var(--white);border-bottom:1px solid var(--slate-200);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50}
+    .topbar-title{font-size:14px;font-weight:600;color:var(--slate-900)}
+    .topbar-role{font-size:11px;font-weight:500;color:var(--slate-500);background:var(--slate-100);padding:4px 12px;border-radius:20px}
+    .content-wrapper{flex:1;min-width:0}
+    main{padding:28px 32px;max-width:1360px}
+
+    .py-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .py-hdr h1{font-size:22px;font-weight:700;letter-spacing:-.02em}
+    .py-hdr p{font-size:14px;color:var(--slate-500);margin:0}
+    .py-btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .15s}
+    .py-btn-primary:hover{background:var(--brand-hover);color:#fff}
+
+    .py-filter{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+    .py-select{font-family:var(--font);font-size:12px;padding:6px 12px;border:1px solid var(--slate-200);border-radius:6px;color:var(--slate-600);background:var(--white);cursor:pointer}
+    .py-filter-btn{font-family:var(--font);font-size:12px;font-weight:500;padding:6px 14px;border-radius:6px;border:1px solid var(--slate-200);background:var(--slate-900);color:#fff;cursor:pointer}
+    .py-filter-clear{font-size:12px;color:var(--slate-400);text-decoration:none}
+    .py-filter-clear:hover{color:var(--slate-700)}
+
+    .py-card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);overflow:hidden}
+    .py-table{width:100%;border-collapse:collapse}
+    .py-table th{font-size:11px;font-weight:600;color:var(--slate-400);text-transform:uppercase;letter-spacing:.04em;padding:10px 20px;text-align:left;border-bottom:1px solid var(--slate-100)}
+    .py-table td{font-size:13px;padding:12px 20px;border-bottom:1px solid var(--slate-50);color:var(--slate-700)}
+    .py-table tr:last-child td{border-bottom:none}
+    .py-table tr:hover td{background:var(--slate-50)}
+    .py-amount{font-family:var(--mono);font-weight:500;font-size:12px;color:#dc2626}
+    .py-mono{font-family:var(--mono);font-size:12px}
+    .py-muted{color:var(--slate-500)}
+    .py-type-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.04em}
+    .py-type-airline{background:rgba(2,132,199,.08);color:#0284c7}
+    .py-type-agent{background:rgba(124,58,237,.08);color:#7c3aed}
+    .py-type-subagent{background:rgba(217,119,6,.08);color:#d97706}
+    .py-type-customer{background:rgba(168,85,247,.08);color:#a855f7}
+    .py-type-equity{background:rgba(5,150,105,.08);color:#059669}
+    .py-bank-pill{font-size:11px;color:var(--slate-600);background:var(--slate-100);padding:2px 8px;border-radius:6px;white-space:nowrap}
+    .py-view-btn{font-family:var(--font);font-size:11px;font-weight:500;padding:4px 12px;border-radius:6px;border:1px solid var(--slate-200);background:var(--white);color:var(--slate-600);text-decoration:none;transition:all .15s}
+    .py-view-btn:hover{border-color:var(--slate-300);color:var(--slate-900)}
+
+    .pg{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+    .pg-info{font-size:12px;color:var(--slate-500)}
+    .pg-controls{display:flex;gap:4px}
+    .pg-btn{font-size:12px;padding:6px 12px;border:1px solid var(--slate-200);border-radius:6px;background:var(--white);color:var(--slate-600);text-decoration:none}
+    .pg-btn:hover{border-color:var(--slate-300);color:var(--slate-900)}
+    .pg-btn.active{background:var(--slate-900);color:#fff;border-color:var(--slate-900)}
+    .pg-btn.disabled{opacity:.4;pointer-events:none}
+  </style>
+</head>
+<body>
+  <div class="d-flex">
+    <!-- ══ SIDEBAR (admin) ══ -->
+    <nav class="sidebar">
+      <a href="#" class="sidebar-brand">
+        <div class="sidebar-brand-icon"><i class="bi bi-airplane-engines"></i></div>
+        <span class="sidebar-brand-text">TravelMo</span>
+      </a>
+      <div class="pb-2">
+        <div class="nav-section-label">Main</div>
+        <div class="nav-item-wrapper"><a href="#" class="nav-top-link"><i class="bi bi-grid-1x2 nav-icon"></i><span class="nav-label">Dashboard</span></a></div>
+        <div class="nav-item-wrapper">
+          <a class="nav-top-link" data-bs-toggle="collapse" data-bs-target="#nav-bookings" aria-expanded="false"><i class="bi bi-journal-text nav-icon"></i><span class="nav-label">Bookings</span><i class="bi bi-chevron-right nav-chevron"></i></a>
+          <div class="collapse" id="nav-bookings"><div class="nav-submenu"><a href="#" class="nav-sub-link">Overview</a><a href="#" class="nav-sub-link">All Bookings</a></div></div>
+        </div>
+        <div class="nav-item-wrapper"><a href="#" class="nav-top-link"><i class="bi bi-people nav-icon"></i><span class="nav-label">Customers</span></a></div>
+        <div class="nav-item-wrapper"><a href="#" class="nav-top-link"><i class="bi bi-cash-stack nav-icon"></i><span class="nav-label">Booking Fund Requests</span></a></div>
+        <div class="nav-item-wrapper"><a href="#" class="nav-top-link"><i class="bi bi-receipt nav-icon"></i><span class="nav-label">Customer Payments</span></a></div>
+        <div class="nav-item-wrapper">
+          <a class="nav-top-link has-active" data-bs-toggle="collapse" data-bs-target="#nav-finance" aria-expanded="true"><i class="bi bi-bank2 nav-icon"></i><span class="nav-label">Finance</span><i class="bi bi-chevron-right nav-chevron"></i></a>
+          <div class="collapse show" id="nav-finance"><div class="nav-submenu">
+            <a href="wallet_dashboard.html" class="nav-sub-link">Wallets</a>
+            <a href="payout_list.html" class="nav-sub-link active">Payouts</a>
+            <a href="#" class="nav-sub-link">Reconciliations</a>
+            <a href="#" class="nav-sub-link">Operational Top-Ups</a>
+            <a href="#" class="nav-sub-link">Bank Accounts</a>
+          </div></div>
+        </div>
+        <div class="nav-item-wrapper">
+          <a class="nav-top-link" data-bs-toggle="collapse" data-bs-target="#nav-visas" aria-expanded="false"><i class="bi bi-passport nav-icon"></i><span class="nav-label">Visas <span class="badge-beta">BETA</span></span><i class="bi bi-chevron-right nav-chevron"></i></a>
+          <div class="collapse" id="nav-visas"><div class="nav-submenu"><a href="#" class="nav-sub-link">All Applications</a><a href="#" class="nav-sub-link">+ New Application</a><a href="#" class="nav-sub-link">Doc. Templates</a></div></div>
+        </div>
+        <div class="nav-item-wrapper">
+          <a class="nav-top-link" data-bs-toggle="collapse" data-bs-target="#nav-hr" aria-expanded="false"><i class="bi bi-people nav-icon"></i><span class="nav-label">HR</span><i class="bi bi-chevron-right nav-chevron"></i></a>
+          <div class="collapse" id="nav-hr"><div class="nav-submenu"><a href="#" class="nav-sub-link">Employees</a><a href="#" class="nav-sub-link">Leave Requests</a><a href="#" class="nav-sub-link">Leave Calendar</a><a href="#" class="nav-sub-link">Leave Types</a></div></div>
+        </div>
+        <div class="nav-section-label mt-2">Administration</div>
+        <div class="nav-item-wrapper"><a href="#" class="nav-top-link"><i class="bi bi-tag nav-icon"></i><span class="nav-label">Promotions <span class="badge-beta">BETA</span></span></a></div>
+        <div class="nav-item-wrapper"><a href="#" class="nav-top-link"><i class="bi bi-gear nav-icon"></i><span class="nav-label">Agency Config</span></a></div>
+        <div class="nav-item-wrapper"><a href="#" class="nav-top-link"><i class="bi bi-database nav-icon"></i><span class="nav-label">Database Utilization</span></a></div>
+        <div class="nav-item-wrapper"><a href="#" class="nav-top-link"><i class="bi bi-person nav-icon"></i><span class="nav-label">My Profile</span></a></div>
+      </div>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar">RA</div>
+          <div><div class="sidebar-user-name">Rajitha Aravinda</div><div class="sidebar-user-role">Agency Admin</div></div>
+        </div>
+        <button type="button" class="btn btn-sm w-100 d-flex align-items-center justify-content-center gap-2" style="background:rgba(255,255,255,.06);color:var(--slate-400);border:1px solid rgba(255,255,255,.08);border-radius:7px;font-size:12px"><i class="bi bi-box-arrow-left"></i> Sign Out</button>
+      </div>
+    </nav>
+
+    <!-- ══ MAIN ══ -->
+    <div class="content-wrapper">
+      <div class="topbar">
+        <div class="topbar-title">Payouts</div>
+        <span class="topbar-role">Agency Admin</span>
+      </div>
+      <main>
+
+        <div class="py-hdr">
+          <div>
+            <h1>Payouts</h1>
+            <p>Settle airline liabilities, agent commissions, customer refunds, and equity withdrawals.</p>
+          </div>
+          <a href="#" class="py-btn-primary"><i class="bi bi-plus-lg"></i> Record Payout</a>
+        </div>
+
+        <!-- ── Filters ── -->
+        <form class="py-filter" onsubmit="return false;">
+          <select class="py-select">
+            <option value="">All Types</option>
+            <option>Sabre Liability</option>
+            <option>NDC Liability</option>
+            <option>Agent Commission</option>
+            <option>Subagent Commission</option>
+            <option>Customer Balance</option>
+            <option>Owner's Equity</option>
+          </select>
+          <select class="py-select">
+            <option value="">All Methods</option>
+            <option>Bank Transfer</option>
+            <option>Cheque</option>
+            <option>Cash</option>
+          </select>
+          <button type="submit" class="py-filter-btn"><i class="bi bi-search"></i> Filter</button>
+          <a href="payout_list.html" class="py-filter-clear"><i class="bi bi-x-circle"></i> Clear</a>
+        </form>
+
+        <!-- ── Table ── -->
+        <div class="py-card">
+          <table class="py-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Wallet</th>
+                <th style="text-align:right;">Amount</th>
+                <th>Method</th>
+                <th>Bank Account</th>
+                <th>Reference</th>
+                <th>Performed By</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-mono py-muted">15 Jun 2026</td>
+                <td><span class="py-type-badge py-type-airline">Sabre Liability</span></td>
+                <td>Net fare owed — Sabre</td>
+                <td style="text-align:right;" class="py-amount">- LKR 480,000.00</td>
+                <td class="py-muted" style="font-size:12px;">Bank Transfer</td>
+                <td><span class="py-bank-pill">Sampath Bank — Operations</span></td>
+                <td class="py-mono py-muted">SLIP-88421</td>
+                <td class="py-muted">Priya Wickrama</td>
+                <td><a href="#" class="py-view-btn">View</a></td>
+              </tr>
+              <tr>
+                <td class="py-mono py-muted">13 Jun 2026</td>
+                <td><span class="py-type-badge py-type-agent">Agent Commission</span></td>
+                <td>Nimal Karunaratne</td>
+                <td style="text-align:right;" class="py-amount">- LKR 65,000.00</td>
+                <td class="py-muted" style="font-size:12px;">Bank Transfer</td>
+                <td><span class="py-bank-pill">HNB — Payroll</span></td>
+                <td class="py-mono py-muted">TRX-55218</td>
+                <td class="py-muted">Priya Wickrama</td>
+                <td><a href="#" class="py-view-btn">View</a></td>
+              </tr>
+              <tr>
+                <td class="py-mono py-muted">12 Jun 2026</td>
+                <td><span class="py-type-badge py-type-customer">Customer Balance</span></td>
+                <td>Kumara Perera</td>
+                <td style="text-align:right;" class="py-amount">- LKR 92,000.00</td>
+                <td class="py-muted" style="font-size:12px;">Bank Transfer</td>
+                <td><span class="py-bank-pill">Commercial Bank — Main</span></td>
+                <td class="py-mono py-muted">REF-77310</td>
+                <td class="py-muted">Rajitha Aravinda</td>
+                <td><a href="#" class="py-view-btn">View</a></td>
+              </tr>
+              <tr>
+                <td class="py-mono py-muted">10 Jun 2026</td>
+                <td><span class="py-type-badge py-type-equity">Owner's Equity</span></td>
+                <td>Capital injected by owner</td>
+                <td style="text-align:right;" class="py-amount">- LKR 150,000.00</td>
+                <td class="py-muted" style="font-size:12px;">Cheque</td>
+                <td><span class="py-bank-pill">Commercial Bank — Main</span></td>
+                <td class="py-mono py-muted">CHQ-004127</td>
+                <td class="py-muted">Rajitha Aravinda</td>
+                <td><a href="#" class="py-view-btn">View</a></td>
+              </tr>
+              <tr>
+                <td class="py-mono py-muted">08 Jun 2026</td>
+                <td><span class="py-type-badge py-type-airline">NDC Liability</span></td>
+                <td>Net fare owed — NDC</td>
+                <td style="text-align:right;" class="py-amount">- LKR 310,000.00</td>
+                <td class="py-muted" style="font-size:12px;">Bank Transfer</td>
+                <td><span class="py-bank-pill">Sampath Bank — Operations</span></td>
+                <td class="py-mono py-muted">SLIP-88102</td>
+                <td class="py-muted">Priya Wickrama</td>
+                <td><a href="#" class="py-view-btn">View</a></td>
+              </tr>
+              <tr>
+                <td class="py-mono py-muted">05 Jun 2026</td>
+                <td><span class="py-type-badge py-type-subagent">Subagent Commission</span></td>
+                <td>Ruwan Bandara</td>
+                <td style="text-align:right;" class="py-amount">- LKR 28,000.00</td>
+                <td class="py-muted" style="font-size:12px;">Cash</td>
+                <td><span class="py-bank-pill">HNB — Payroll</span></td>
+                <td class="py-mono py-muted">—</td>
+                <td class="py-muted">Rajitha Aravinda</td>
+                <td><a href="#" class="py-view-btn">View</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── Pagination ── -->
+        <div class="pg">
+          <div class="pg-info">Showing 1–6 of 6 payouts</div>
+          <div class="pg-controls">
+            <a href="#" class="pg-btn disabled"><i class="bi bi-chevron-left"></i></a>
+            <a href="#" class="pg-btn active">1</a>
+            <a href="#" class="pg-btn disabled"><i class="bi bi-chevron-right"></i></a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

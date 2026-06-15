@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fund Requests — TravelMo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand:#d03c4c;--brand-soft:rgba(208,60,76,.08);--brand-hover:#b83344;
+      --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;
+      --slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;
+      --slate-100:#f1f5f9;--slate-50:#f8fafc;--white:#fff;
+      --sidebar-w:248px;--topbar-h:56px;--radius:10px;
+      --font:'Outfit',-apple-system,sans-serif;--mono:'JetBrains Mono',monospace;
+      --success:#059669;--success-soft:rgba(5,150,105,.08);
+      --warning:#d97706;--warning-soft:rgba(217,119,6,.08);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);background:var(--slate-50);color:var(--slate-900);display:flex;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+    .sidebar{width:var(--sidebar-w);background:var(--slate-900);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto;scrollbar-width:none}
+    .sidebar::-webkit-scrollbar{display:none}
+    .sidebar-brand{display:flex;align-items:center;gap:10px;padding:20px 20px 18px;text-decoration:none}
+    .sidebar-brand-icon{width:32px;height:32px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
+    .sidebar-brand-text{font-size:15px;font-weight:700;color:#fff}
+    .nav-label{font-size:10px;font-weight:600;color:var(--slate-500);text-transform:uppercase;letter-spacing:.08em;padding:20px 20px 6px}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:9px 14px;margin:1px 8px;border-radius:7px;color:var(--slate-400);text-decoration:none;font-size:13.5px;font-weight:450;transition:all .15s;cursor:pointer}
+    .nav-item:hover{background:rgba(255,255,255,.06);color:var(--slate-200)}
+    .nav-item.active{background:rgba(255,255,255,.08);color:#fff}
+    .nav-item i{font-size:16px;width:20px;text-align:center}
+    .nav-badge{margin-left:auto;font-size:10px;font-weight:600;background:var(--brand);color:#fff;padding:2px 7px;border-radius:10px;font-family:var(--mono)}
+    .sidebar-footer{margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,.06)}
+    .sidebar-user{display:flex;align-items:center;gap:10px}
+    .sidebar-avatar{width:30px;height:30px;background:var(--slate-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--slate-300)}
+    .sidebar-user-name{font-size:13px;color:var(--slate-200);font-weight:500}
+    .sidebar-user-role{font-size:11px;color:var(--slate-500)}
+
+    .main{margin-left:var(--sidebar-w);flex:1;min-height:100vh}
+    .topbar{height:var(--topbar-h);background:var(--white);border-bottom:1px solid var(--slate-200);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50}
+    .topbar-title{font-size:14px;font-weight:600;color:var(--slate-900)}
+    .topbar-role{font-size:11px;font-weight:500;color:var(--slate-500);background:var(--slate-100);padding:4px 12px;border-radius:20px}
+    .content{padding:28px 32px;max-width:1360px}
+
+    .page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .page-header h1{font-size:22px;font-weight:700;letter-spacing:-.02em}
+    .page-header p{font-size:14px;color:var(--slate-500)}
+
+    /* ── Filter bar ── */
+    .filter-bar{
+      display:flex;align-items:center;gap:8px;margin-bottom:20px;
+    }
+    .filter-tab{
+      font-family:var(--font);font-size:12px;font-weight:500;
+      padding:6px 14px;border-radius:6px;border:1px solid var(--slate-200);
+      background:var(--white);color:var(--slate-500);cursor:pointer;transition:all .15s;
+    }
+    .filter-tab:hover{border-color:var(--slate-300);color:var(--slate-700)}
+    .filter-tab.active{background:var(--slate-900);color:#fff;border-color:var(--slate-900)}
+    .filter-count{
+      font-family:var(--mono);font-size:10px;background:rgba(255,255,255,.2);
+      padding:1px 5px;border-radius:4px;margin-left:4px;
+    }
+
+    /* ── Stats strip ── */
+    .stats-strip{display:flex;gap:16px;margin-bottom:20px}
+    .stat-item{
+      background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);
+      padding:14px 20px;flex:1;
+    }
+    .stat-item-label{font-size:11px;color:var(--slate-500);margin-bottom:4px}
+    .stat-item-value{font-family:var(--mono);font-size:22px;font-weight:600}
+
+    /* ── Card + table ── */
+    .card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);overflow:hidden}
+    .data-table{width:100%;border-collapse:collapse}
+    .data-table th{font-size:11px;font-weight:600;color:var(--slate-400);text-transform:uppercase;letter-spacing:.04em;padding:10px 20px;text-align:left;border-bottom:1px solid var(--slate-100)}
+    .data-table td{font-size:13px;padding:12px 20px;border-bottom:1px solid var(--slate-50);color:var(--slate-700)}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--slate-50)}
+
+    .ref{font-weight:500;color:var(--brand);text-decoration:none}
+    .ref:hover{color:var(--brand-hover);text-decoration:underline}
+    .amount{font-family:var(--mono);font-weight:500;font-size:12px}
+
+    .status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
+    .status-dot{width:6px;height:6px;border-radius:50%}
+    .status-pending{background:var(--warning-soft);color:var(--warning)}
+    .status-pending .status-dot{background:var(--warning)}
+    .status-approved{background:var(--success-soft);color:var(--success)}
+    .status-approved .status-dot{background:var(--success)}
+    .status-rejected{background:rgba(220,38,38,.08);color:#dc2626}
+    .status-rejected .status-dot{background:#dc2626}
+
+    .btn-view{
+      font-family:var(--font);font-size:11px;font-weight:500;
+      padding:4px 12px;border-radius:6px;border:1px solid var(--slate-200);
+      background:var(--white);color:var(--slate-600);cursor:pointer;
+      text-decoration:none;transition:all .15s;
+    }
+    .btn-view:hover{border-color:var(--slate-300);color:var(--slate-900)}
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <a href="#" class="sidebar-brand">
+      <div class="sidebar-brand-icon"><i class="bi bi-airplane-engines"></i></div>
+      <span class="sidebar-brand-text">TravelMo</span>
+    </a>
+    <div class="nav-label">Main</div>
+    <a href="#" class="nav-item"><i class="bi bi-grid-1x2"></i> Dashboard</a>
+    <a href="#" class="nav-item"><i class="bi bi-journal-text"></i> Bookings</a>
+    <a href="#" class="nav-item active"><i class="bi bi-cash-stack"></i> Fund Requests <span class="nav-badge">5</span></a>
+    <a href="#" class="nav-item"><i class="bi bi-wallet2"></i> Wallets</a>
+    <a href="#" class="nav-item"><i class="bi bi-receipt"></i> Payments</a>
+    <a href="#" class="nav-item"><i class="bi bi-arrow-left-right"></i> Payouts</a>
+    <a href="#" class="nav-item"><i class="bi bi-sliders"></i> Reconciliations</a>
+    <a href="#" class="nav-item"><i class="bi bi-people"></i> HR</a>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">SD</div>
+        <div><div class="sidebar-user-name">Sanduni D.</div><div class="sidebar-user-role">Accountant</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="topbar-title">Fund Requests</span>
+      <span class="topbar-role">Accountant</span>
+    </div>
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <h1>Fund Requests</h1>
+          <p>Review and approve booking fund allocation requests.</p>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-item-label">Pending</div>
+          <div class="stat-item-value" style="color:var(--warning);">5</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-label">Approved</div>
+          <div class="stat-item-value" style="color:var(--success);">38</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-label">Rejected</div>
+          <div class="stat-item-value" style="color:#dc2626;">3</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-label">Total Approved Value</div>
+          <div class="stat-item-value">LKR 8.2M</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar">
+        <button class="filter-tab active">All<span class="filter-count">46</span></button>
+        <button class="filter-tab">Pending<span class="filter-count" style="background:var(--warning-soft);color:var(--warning);">5</span></button>
+        <button class="filter-tab">Approved</button>
+        <button class="filter-tab">Rejected</button>
+      </div>
+
+      <!-- Table -->
+      <div class="card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Booking</th>
+              <th>Customer</th>
+              <th style="text-align:right;">Amount</th>
+              <th>Requested By</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#" class="ref">BK-20260329-A1</a></td>
+              <td>Kumara Perera</td>
+              <td style="text-align:right;" class="amount">LKR 245,000.00</td>
+              <td style="color:var(--slate-500);">Nimal K.</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">29 Mar</td>
+              <td><span class="status status-pending"><span class="status-dot"></span>Pending</span></td>
+              <td><a href="#" class="btn-view">Review</a></td>
+            </tr>
+            <tr>
+              <td><a href="#" class="ref">BK-20260328-C2</a></td>
+              <td>Dilshan Fernando</td>
+              <td style="text-align:right;" class="amount">LKR 312,000.00</td>
+              <td style="color:var(--slate-500);">Nimal K.</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">28 Mar</td>
+              <td><span class="status status-pending"><span class="status-dot"></span>Pending</span></td>
+              <td><a href="#" class="btn-view">Review</a></td>
+            </tr>
+            <tr>
+              <td><a href="#" class="ref">BK-20260328-D1</a></td>
+              <td>Sachini Jayawardena</td>
+              <td style="text-align:right;" class="amount">LKR 98,750.00</td>
+              <td style="color:var(--slate-500);">Kamal S.</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">28 Mar</td>
+              <td><span class="status status-pending"><span class="status-dot"></span>Pending</span></td>
+              <td><a href="#" class="btn-view">Review</a></td>
+            </tr>
+            <tr>
+              <td><a href="#" class="ref">BK-20260327-E4</a></td>
+              <td>Ruwan Bandara</td>
+              <td style="text-align:right;" class="amount">LKR 425,000.00</td>
+              <td style="color:var(--slate-500);">Nimal K.</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">27 Mar</td>
+              <td><span class="status status-approved"><span class="status-dot"></span>Approved</span></td>
+              <td><a href="#" class="btn-view">View</a></td>
+            </tr>
+            <tr>
+              <td><a href="#" class="ref">BK-20260326-F2</a></td>
+              <td>Priyanka Ranasinghe</td>
+              <td style="text-align:right;" class="amount">LKR 156,000.00</td>
+              <td style="color:var(--slate-500);">Supun R.</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">26 Mar</td>
+              <td><span class="status status-approved"><span class="status-dot"></span>Approved</span></td>
+              <td><a href="#" class="btn-view">View</a></td>
+            </tr>
+            <tr>
+              <td><a href="#" class="ref">BK-20260325-G1</a></td>
+              <td>Amara Jayasuriya</td>
+              <td style="text-align:right;" class="amount">LKR 198,000.00</td>
+              <td style="color:var(--slate-500);">Supun R.</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">25 Mar</td>
+              <td><span class="status status-rejected"><span class="status-dot"></span>Rejected</span></td>
+              <td><a href="#" class="btn-view">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

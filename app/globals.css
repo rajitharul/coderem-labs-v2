@@ -594,6 +594,50 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
 @keyframes scrollLine { 0%,100% { opacity: 0.3; transform: scaleY(0.6) } 50% { opacity: 1; transform: scaleY(1) } }
 @keyframes scrollArrow { 0%,100% { transform: translateY(0); opacity: 0.5 } 50% { transform: translateY(7px); opacity: 1 } }
 
+/* ----------  UI screens gallery (FlightSmart case study)  ---------- */
+.ui-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: clamp(20px, 2.4vw, 30px); }
+.ui-tile { display: block; width: 100%; text-align: left; font: inherit; cursor: pointer; padding: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 1px 2px rgba(12,16,22,.04), 0 14px 34px rgba(12,16,22,.06); transition: transform .4s var(--ease), border-color .4s, box-shadow .4s; }
+.ui-tile:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: 0 12px 26px rgba(12,16,22,.10), 0 30px 60px rgba(12,16,22,.12); }
+.ui-tile-bar { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #e9eef1; border-bottom: 1px solid var(--border); }
+.ui-dots { display: flex; gap: 7px; flex: 0 0 auto; }
+.ui-dots i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.ui-dots i:nth-child(1) { background: #ff5f57; } .ui-dots i:nth-child(2) { background: #febc2e; } .ui-dots i:nth-child(3) { background: #28c840; }
+.ui-tile-title { flex: 1; font-family: var(--font-display); font-weight: 600; font-size: .92rem; letter-spacing: -0.02em; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ui-tile-open { flex: 0 0 auto; color: var(--text-muted); font-weight: 700; transition: color .25s; }
+.ui-tile:hover .ui-tile-open { color: var(--accent); }
+
+/* scaled live preview of each screen */
+.ui-stage { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-2); --ui-scale: 0.28; }
+.ui-frame { position: absolute; top: 0; left: 0; width: 1280px; height: 800px; border: 0; transform: scale(var(--ui-scale)); transform-origin: top left; pointer-events: none; background: #fff; }
+/* hover veil with a subtle "view" cue */
+.ui-tile-overlay { position: absolute; inset: 0; background: rgba(12,16,22,0); transition: background .35s var(--ease); }
+.ui-tile-overlay::after { content: "⤢ View"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.9); display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 100px; background: #fff; color: var(--accent); font-weight: 600; font-size: .9rem; box-shadow: 0 8px 24px rgba(12,16,22,.25); opacity: 0; transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.ui-tile:hover .ui-tile-overlay { background: rgba(12,16,22,0.28); }
+.ui-tile:hover .ui-tile-overlay::after { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+/* lightbox gallery viewer */
+.ui-lb { position: fixed; inset: 0; z-index: 2000; background: rgba(12,16,22,0.66); backdrop-filter: blur(6px); display: grid; place-items: center; padding: clamp(12px, 3vw, 44px); animation: uiFade .28s var(--ease); }
+.ui-lb-card { width: min(1320px, 100%); height: min(860px, 92vh); display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.5); animation: uiPop .32s var(--ease); }
+.ui-lb-bar { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+.ui-lb-title { font-family: var(--font-display); font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; color: var(--text); }
+.ui-lb-counter { margin-left: auto; font-family: var(--font-mono); font-size: .82rem; font-weight: 600; color: var(--text-muted); }
+.ui-lb-actions { display: flex; gap: 8px; }
+.ui-lb-btn { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 9px; background: #fff; border: 1px solid var(--border); color: var(--text-soft); font-weight: 700; cursor: pointer; transition: all .2s; }
+.ui-lb-btn:hover { border-color: var(--accent); color: var(--accent); }
+.ui-lb-frame { flex: 1; width: 100%; border: 0; background: #fff; }
+.ui-lb-arrow { position: fixed; top: 50%; transform: translateY(-50%); width: 54px; height: 54px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.14); color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: background .2s, transform .2s; z-index: 2001; }
+.ui-lb-arrow:hover { background: rgba(255,255,255,0.26); }
+.ui-lb-arrow.prev { left: clamp(8px, 2vw, 28px); }
+.ui-lb-arrow.next { right: clamp(8px, 2vw, 28px); }
+
+@keyframes uiFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes uiPop { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 560px) {
+  .ui-grid { grid-template-columns: 1fr; }
+  .ui-lb-arrow { width: 44px; height: 44px; font-size: 1.5rem; }
+}
+
 /* ----------  Product case-study page  ---------- */
 .cs-breadcrumb { display: inline-flex; align-items: center; gap: 8px; font-size: 0.92rem; font-weight: 600; color: var(--text-muted); margin-bottom: 22px; }
 .cs-breadcrumb a { color: var(--accent); }

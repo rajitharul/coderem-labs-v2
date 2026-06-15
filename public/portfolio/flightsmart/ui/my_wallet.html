@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wallet — TravelMo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand:#d03c4c;--brand-soft:rgba(208,60,76,.08);--brand-hover:#b83344;
+      --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;
+      --slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;
+      --slate-100:#f1f5f9;--slate-50:#f8fafc;--white:#fff;
+      --sidebar-w:248px;--topbar-h:56px;--radius:10px;
+      --font:'Outfit',-apple-system,sans-serif;--mono:'JetBrains Mono',monospace;
+      --success:#059669;--success-soft:rgba(5,150,105,.08);
+      --warning:#d97706;--warning-soft:rgba(217,119,6,.08);
+      --info:#0284c7;--info-soft:rgba(2,132,199,.08);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);background:var(--slate-50);color:var(--slate-900);display:flex;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+    .sidebar{width:var(--sidebar-w);background:var(--slate-900);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto;scrollbar-width:none}
+    .sidebar::-webkit-scrollbar{display:none}
+    .sidebar-brand{display:flex;align-items:center;gap:10px;padding:20px 20px 18px;text-decoration:none}
+    .sidebar-brand-icon{width:32px;height:32px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
+    .sidebar-brand-text{font-size:15px;font-weight:700;color:#fff}
+    .nav-label{font-size:10px;font-weight:600;color:var(--slate-500);text-transform:uppercase;letter-spacing:.08em;padding:20px 20px 6px}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:9px 14px;margin:1px 8px;border-radius:7px;color:var(--slate-400);text-decoration:none;font-size:13.5px;font-weight:450;transition:all .15s;cursor:pointer}
+    .nav-item:hover{background:rgba(255,255,255,.06);color:var(--slate-200)}
+    .nav-item.active{background:rgba(255,255,255,.08);color:#fff}
+    .nav-item i{font-size:16px;width:20px;text-align:center}
+    .sidebar-footer{margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,.06)}
+    .sidebar-user{display:flex;align-items:center;gap:10px}
+    .sidebar-avatar{width:30px;height:30px;background:var(--slate-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--slate-300)}
+    .sidebar-user-name{font-size:13px;color:var(--slate-200);font-weight:500}
+    .sidebar-user-role{font-size:11px;color:var(--slate-500)}
+
+    .main{margin-left:var(--sidebar-w);flex:1;min-height:100vh}
+    .topbar{height:var(--topbar-h);background:var(--white);border-bottom:1px solid var(--slate-200);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50}
+    .topbar-title{font-size:14px;font-weight:600;color:var(--slate-900)}
+    .topbar-role{font-size:11px;font-weight:500;color:var(--slate-500);background:var(--slate-100);padding:4px 12px;border-radius:20px}
+    .content{padding:28px 32px;max-width:1280px}
+
+    /* ── Balance hero ── */
+    .balance-hero{
+      background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);
+      padding:32px;margin-bottom:24px;
+    }
+    .balance-label{font-size:12px;font-weight:500;color:var(--slate-500);margin-bottom:8px}
+    .balance-value{
+      font-family:var(--mono);font-size:40px;font-weight:700;
+      color:var(--success);letter-spacing:-.03em;line-height:1;margin-bottom:16px;
+    }
+    .balance-meta{display:flex;gap:12px}
+    .balance-badge{
+      display:inline-flex;align-items:center;gap:5px;
+      font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;
+    }
+    .badge-type{background:var(--slate-100);color:var(--slate-600)}
+    .badge-txn{background:var(--success-soft);color:var(--success)}
+
+    /* ── Summary strip ── */
+    .summary-strip{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;
+    }
+    .summary-item{
+      background:var(--white);border:1px solid var(--slate-200);
+      border-radius:var(--radius);padding:16px 20px;
+    }
+    .summary-item-label{font-size:11px;color:var(--slate-500);margin-bottom:4px}
+    .summary-item-value{font-family:var(--mono);font-size:18px;font-weight:600;color:var(--slate-900)}
+
+    /* ── Card + table ── */
+    .card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);overflow:hidden}
+    .card-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--slate-100)}
+    .card-title{font-size:13px;font-weight:600;color:var(--slate-800)}
+
+    .data-table{width:100%;border-collapse:collapse}
+    .data-table th{font-size:11px;font-weight:600;color:var(--slate-400);text-transform:uppercase;letter-spacing:.04em;padding:10px 20px;text-align:left;border-bottom:1px solid var(--slate-100)}
+    .data-table td{font-size:13px;padding:12px 20px;border-bottom:1px solid var(--slate-50);color:var(--slate-700)}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--slate-50)}
+
+    .amount{font-family:var(--mono);font-weight:500;font-size:13px}
+    .amount-cr{color:var(--success)}
+    .amount-dr{color:#dc2626}
+
+    .ref{font-weight:500;color:var(--brand);text-decoration:none}
+    .ref:hover{color:var(--brand-hover);text-decoration:underline}
+
+    .entry-type{
+      display:inline-flex;align-items:center;gap:4px;
+      font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;
+    }
+    .entry-credit{background:var(--success-soft);color:var(--success)}
+    .entry-debit{background:rgba(220,38,38,.08);color:#dc2626}
+  </style>
+</head>
+<body>
+
+  <!-- ═══ SIDEBAR (Agent) ═══ -->
+  <aside class="sidebar">
+    <a href="#" class="sidebar-brand">
+      <div class="sidebar-brand-icon"><i class="bi bi-airplane-engines"></i></div>
+      <span class="sidebar-brand-text">TravelMo</span>
+    </a>
+    <div class="nav-label">Main</div>
+    <a href="#" class="nav-item"><i class="bi bi-grid-1x2"></i> Dashboard</a>
+    <a href="#" class="nav-item"><i class="bi bi-journal-text"></i> Bookings</a>
+    <a href="#" class="nav-item"><i class="bi bi-people"></i> Customers</a>
+    <a href="#" class="nav-item active"><i class="bi bi-wallet2"></i> My Wallet</a>
+    <a href="#" class="nav-item"><i class="bi bi-calendar3"></i> My Leave</a>
+    <a href="#" class="nav-item"><i class="bi bi-person"></i> My Profile</a>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">NK</div>
+        <div><div class="sidebar-user-name">Nimal K.</div><div class="sidebar-user-role">Agent</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <div class="main">
+    <div class="topbar">
+      <span class="topbar-title">My Wallet</span>
+      <span class="topbar-role">Agent</span>
+    </div>
+    <div class="content">
+
+      <!-- Balance hero -->
+      <div class="balance-hero">
+        <div class="balance-label">Commission Balance</div>
+        <div class="balance-value">LKR 187,450.00</div>
+        <div class="balance-meta">
+          <span class="balance-badge badge-type"><i class="bi bi-wallet2"></i> Agent Commission</span>
+          <span class="balance-badge badge-txn"><i class="bi bi-arrow-down-up"></i> 24 transactions</span>
+        </div>
+      </div>
+
+      <!-- Summary strip -->
+      <div class="summary-strip">
+        <div class="summary-item">
+          <div class="summary-item-label">This Month</div>
+          <div class="summary-item-value">LKR 32,500</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-item-label">Pending Payout</div>
+          <div class="summary-item-value">LKR 45,200</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-item-label">Last Payout</div>
+          <div class="summary-item-value">LKR 85,000</div>
+        </div>
+      </div>
+
+      <!-- Transaction history -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Transaction History</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Booking</th>
+              <th>Description</th>
+              <th style="text-align:right;">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">28 Mar 2026</td>
+              <td><span class="entry-type entry-credit">Credit</span></td>
+              <td><a href="#" class="ref">BK-20260328-A1</a></td>
+              <td>Commission — Kumara Perera (CMB→DXB)</td>
+              <td style="text-align:right;" class="amount amount-cr">+ LKR 12,250.00</td>
+            </tr>
+            <tr>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">27 Mar 2026</td>
+              <td><span class="entry-type entry-credit">Credit</span></td>
+              <td><a href="#" class="ref">BK-20260327-B3</a></td>
+              <td>Commission — Anushka Silva (CMB→SIN)</td>
+              <td style="text-align:right;" class="amount amount-cr">+ LKR 9,025.00</td>
+            </tr>
+            <tr>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">25 Mar 2026</td>
+              <td><span class="entry-type entry-debit">Debit</span></td>
+              <td>—</td>
+              <td>Payout — Bank transfer</td>
+              <td style="text-align:right;" class="amount amount-dr">- LKR 85,000.00</td>
+            </tr>
+            <tr>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">24 Mar 2026</td>
+              <td><span class="entry-type entry-credit">Credit</span></td>
+              <td><a href="#" class="ref">BK-20260324-H2</a></td>
+              <td>Commission — Sanduni Peris (CMB→DEL)</td>
+              <td style="text-align:right;" class="amount amount-cr">+ LKR 4,937.50</td>
+            </tr>
+            <tr>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">23 Mar 2026</td>
+              <td><span class="entry-type entry-credit">Credit</span></td>
+              <td><a href="#" class="ref">BK-20260323-J4</a></td>
+              <td>Commission — Tharushi De Silva (CMB→KUL)</td>
+              <td style="text-align:right;" class="amount amount-cr">+ LKR 6,725.00</td>
+            </tr>
+            <tr>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">20 Mar 2026</td>
+              <td><span class="entry-type entry-credit">Credit</span></td>
+              <td><a href="#" class="ref">BK-20260320-K1</a></td>
+              <td>Commission — Chaminda Wijesinghe (CMB→LHR)</td>
+              <td style="text-align:right;" class="amount amount-cr">+ LKR 21,250.00</td>
+            </tr>
+            <tr>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">18 Mar 2026</td>
+              <td><span class="entry-type entry-debit">Debit</span></td>
+              <td><a href="#" class="ref">BK-20260315-L2</a></td>
+              <td>Commission reversal — Refund</td>
+              <td style="text-align:right;" class="amount amount-dr">- LKR 3,500.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

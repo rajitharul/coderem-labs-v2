@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments Overview — TravelMo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand:#d03c4c;--brand-soft:rgba(208,60,76,.08);--brand-hover:#b83344;
+      --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;
+      --slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;
+      --slate-100:#f1f5f9;--slate-50:#f8fafc;--white:#fff;
+      --sidebar-w:248px;--topbar-h:56px;--radius:10px;
+      --font:'Outfit',-apple-system,sans-serif;--mono:'JetBrains Mono',monospace;
+      --success:#059669;--success-soft:rgba(5,150,105,.08);
+      --warning:#d97706;--warning-soft:rgba(217,119,6,.08);
+      --info:#0284c7;--info-soft:rgba(2,132,199,.08);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);background:var(--slate-50);color:var(--slate-900);display:flex;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+    .sidebar{width:var(--sidebar-w);background:var(--slate-900);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto;scrollbar-width:none}
+    .sidebar::-webkit-scrollbar{display:none}
+    .sidebar-brand{display:flex;align-items:center;gap:10px;padding:20px 20px 18px;text-decoration:none}
+    .sidebar-brand-icon{width:32px;height:32px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
+    .sidebar-brand-text{font-size:15px;font-weight:700;color:#fff}
+    .nav-label{font-size:10px;font-weight:600;color:var(--slate-500);text-transform:uppercase;letter-spacing:.08em;padding:20px 20px 6px}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:9px 14px;margin:1px 8px;border-radius:7px;color:var(--slate-400);text-decoration:none;font-size:13.5px;font-weight:450;transition:all .15s;cursor:pointer}
+    .nav-item:hover{background:rgba(255,255,255,.06);color:var(--slate-200)}
+    .nav-item.active{background:rgba(255,255,255,.08);color:#fff}
+    .nav-item i{font-size:16px;width:20px;text-align:center}
+    .nav-badge{margin-left:auto;font-size:10px;font-weight:600;background:var(--brand);color:#fff;padding:2px 7px;border-radius:10px;font-family:var(--mono)}
+    .sidebar-footer{margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,.06)}
+    .sidebar-user{display:flex;align-items:center;gap:10px}
+    .sidebar-avatar{width:30px;height:30px;background:var(--slate-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--slate-300)}
+    .sidebar-user-name{font-size:13px;color:var(--slate-200);font-weight:500}
+    .sidebar-user-role{font-size:11px;color:var(--slate-500)}
+
+    .main{margin-left:var(--sidebar-w);flex:1;min-height:100vh}
+    .topbar{height:var(--topbar-h);background:var(--white);border-bottom:1px solid var(--slate-200);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50}
+    .topbar-title{font-size:14px;font-weight:600;color:var(--slate-900)}
+    .topbar-role{font-size:11px;font-weight:500;color:var(--slate-500);background:var(--slate-100);padding:4px 12px;border-radius:20px}
+    .content{padding:28px 32px;max-width:1360px}
+
+    .page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .page-header h1{font-size:22px;font-weight:700;letter-spacing:-.02em}
+    .page-header p{font-size:14px;color:var(--slate-500)}
+    .btn-sm{
+      display:inline-flex;align-items:center;gap:6px;
+      background:var(--brand);color:#fff;border:none;
+      padding:8px 16px;border-radius:8px;font-family:var(--font);
+      font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .15s;
+    }
+    .btn-sm:hover{background:var(--brand-hover);color:#fff}
+
+    /* ── Stats ── */
+    .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+    .stat-item{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);padding:16px 20px}
+    .stat-item-label{font-size:11px;color:var(--slate-500);margin-bottom:4px}
+    .stat-item-value{font-family:var(--mono);font-size:20px;font-weight:600}
+    .stat-item-sub{font-size:11px;color:var(--slate-400);margin-top:4px}
+
+    /* ── Filter bar ── */
+    .filter-bar{
+      display:flex;align-items:center;gap:10px;
+      background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);
+      padding:12px 16px;margin-bottom:20px;
+    }
+    .filter-input{
+      font-family:var(--font);font-size:12px;padding:6px 12px;
+      border:1px solid var(--slate-200);border-radius:6px;color:var(--slate-800);
+      background:var(--white);transition:border-color .15s;min-width:180px;
+    }
+    .filter-input:focus{outline:none;border-color:var(--slate-400)}
+    .filter-select{
+      font-family:var(--font);font-size:12px;padding:6px 12px;
+      border:1px solid var(--slate-200);border-radius:6px;color:var(--slate-600);
+      background:var(--white);cursor:pointer;
+    }
+    .filter-label{font-size:11px;font-weight:600;color:var(--slate-400);text-transform:uppercase;letter-spacing:.04em}
+
+    /* ── Card + table ── */
+    .card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);overflow:hidden}
+    .data-table{width:100%;border-collapse:collapse}
+    .data-table th{font-size:11px;font-weight:600;color:var(--slate-400);text-transform:uppercase;letter-spacing:.04em;padding:10px 20px;text-align:left;border-bottom:1px solid var(--slate-100)}
+    .data-table td{font-size:13px;padding:11px 20px;border-bottom:1px solid var(--slate-50);color:var(--slate-700)}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--slate-50)}
+
+    .ref{font-weight:500;color:var(--brand);text-decoration:none}
+    .ref:hover{color:var(--brand-hover);text-decoration:underline}
+    .amount{font-family:var(--mono);font-weight:500;font-size:12px}
+
+    .status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
+    .status-dot{width:6px;height:6px;border-radius:50%}
+    .status-pending{background:var(--warning-soft);color:var(--warning)}
+    .status-pending .status-dot{background:var(--warning)}
+    .status-approved{background:var(--success-soft);color:var(--success)}
+    .status-approved .status-dot{background:var(--success)}
+    .status-rejected{background:rgba(220,38,38,.08);color:#dc2626}
+    .status-rejected .status-dot{background:#dc2626}
+
+    .type-badge{
+      font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;
+      text-transform:uppercase;letter-spacing:.04em;
+    }
+    .type-booking{background:var(--info-soft);color:var(--info)}
+    .type-manual{background:var(--slate-100);color:var(--slate-600)}
+
+    .action-btn{
+      font-family:var(--font);font-size:11px;font-weight:600;
+      padding:4px 10px;border-radius:6px;border:none;cursor:pointer;transition:all .15s;
+    }
+    .btn-approve-sm{background:var(--success-soft);color:var(--success)}
+    .btn-approve-sm:hover{background:var(--success);color:#fff}
+    .btn-reject-sm{background:rgba(220,38,38,.08);color:#dc2626;margin-left:4px}
+    .btn-reject-sm:hover{background:#dc2626;color:#fff}
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <a href="#" class="sidebar-brand">
+      <div class="sidebar-brand-icon"><i class="bi bi-airplane-engines"></i></div>
+      <span class="sidebar-brand-text">TravelMo</span>
+    </a>
+    <div class="nav-label">Main</div>
+    <a href="#" class="nav-item"><i class="bi bi-grid-1x2"></i> Dashboard</a>
+    <a href="#" class="nav-item"><i class="bi bi-journal-text"></i> Bookings</a>
+    <a href="#" class="nav-item"><i class="bi bi-cash-stack"></i> Fund Requests <span class="nav-badge">5</span></a>
+    <a href="#" class="nav-item"><i class="bi bi-wallet2"></i> Wallets</a>
+    <a href="#" class="nav-item active"><i class="bi bi-receipt"></i> Payments</a>
+    <a href="#" class="nav-item"><i class="bi bi-arrow-left-right"></i> Payouts</a>
+    <a href="#" class="nav-item"><i class="bi bi-sliders"></i> Reconciliations</a>
+    <a href="#" class="nav-item"><i class="bi bi-people"></i> HR</a>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">SD</div>
+        <div><div class="sidebar-user-name">Sanduni D.</div><div class="sidebar-user-role">Accountant</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="topbar-title">Payments Overview</span>
+      <span class="topbar-role">Accountant</span>
+    </div>
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <h1>Payments Overview</h1>
+          <p>All booking payment slips and manual payment receipts.</p>
+        </div>
+        <a href="#" class="btn-sm"><i class="bi bi-plus-lg"></i> New Manual Payment</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-item-label">Total Received</div>
+          <div class="stat-item-value" style="color:var(--success);">LKR 4.8M</div>
+          <div class="stat-item-sub">Approved payments</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-label">Pending Approval</div>
+          <div class="stat-item-value" style="color:var(--warning);">LKR 290K</div>
+          <div class="stat-item-sub">4 payments</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-label">This Month</div>
+          <div class="stat-item-value">LKR 1.2M</div>
+          <div class="stat-item-sub">18 payments</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-label">Total Payments</div>
+          <div class="stat-item-value">62</div>
+          <div class="stat-item-sub">All time</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar">
+        <input type="text" class="filter-input" placeholder="Search customer...">
+        <select class="filter-select">
+          <option>All Types</option>
+          <option>Booking Slips</option>
+          <option>Manual Payments</option>
+        </select>
+        <select class="filter-select">
+          <option>All Statuses</option>
+          <option>Pending</option>
+          <option>Approved</option>
+          <option>Rejected</option>
+        </select>
+        <input type="date" class="filter-input" style="min-width:140px;" placeholder="From">
+        <input type="date" class="filter-input" style="min-width:140px;" placeholder="To">
+      </div>
+
+      <!-- Table -->
+      <div class="card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Customer</th>
+              <th>Purpose / Booking</th>
+              <th style="text-align:right;">Amount</th>
+              <th>Method</th>
+              <th>Date</th>
+              <th>Uploaded By</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="type-badge type-booking">Booking</span></td>
+              <td>Kumara Perera</td>
+              <td><a href="#" class="ref">BK-20260329-A1</a></td>
+              <td style="text-align:right;" class="amount">LKR 200,000</td>
+              <td style="color:var(--slate-500);">Bank Transfer</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">29 Mar</td>
+              <td style="color:var(--slate-500);">Nimal K.</td>
+              <td><span class="status status-pending"><span class="status-dot"></span>Pending</span></td>
+              <td>
+                <button class="action-btn btn-approve-sm">Approve</button>
+                <button class="action-btn btn-reject-sm">Reject</button>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="type-badge type-manual">Manual</span></td>
+              <td>Dilshan Fernando</td>
+              <td style="color:var(--slate-500);">Advance deposit</td>
+              <td style="text-align:right;" class="amount">LKR 50,000</td>
+              <td style="color:var(--slate-500);">Cash</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">28 Mar</td>
+              <td style="color:var(--slate-500);">Kamal S.</td>
+              <td><span class="status status-pending"><span class="status-dot"></span>Pending</span></td>
+              <td>
+                <button class="action-btn btn-approve-sm">Approve</button>
+                <button class="action-btn btn-reject-sm">Reject</button>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="type-badge type-booking">Booking</span></td>
+              <td>Anushka Silva</td>
+              <td><a href="#" class="ref">BK-20260327-B3</a></td>
+              <td style="text-align:right;" class="amount">LKR 180,500</td>
+              <td style="color:var(--slate-500);">Bank Transfer</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">27 Mar</td>
+              <td style="color:var(--slate-500);">Kamal S.</td>
+              <td><span class="status status-approved"><span class="status-dot"></span>Approved</span></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="type-badge type-booking">Booking</span></td>
+              <td>Ruwan Bandara</td>
+              <td><a href="#" class="ref">BK-20260327-E4</a></td>
+              <td style="text-align:right;" class="amount">LKR 425,000</td>
+              <td style="color:var(--slate-500);">Bank Transfer</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">27 Mar</td>
+              <td style="color:var(--slate-500);">Nimal K.</td>
+              <td><span class="status status-approved"><span class="status-dot"></span>Approved</span></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="type-badge type-manual">Manual</span></td>
+              <td>Sachini Jayawardena</td>
+              <td style="color:var(--slate-500);">Group booking deposit</td>
+              <td style="text-align:right;" class="amount">LKR 75,000</td>
+              <td style="color:var(--slate-500);">Cheque</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">26 Mar</td>
+              <td style="color:var(--slate-500);">Nimal K.</td>
+              <td><span class="status status-approved"><span class="status-dot"></span>Approved</span></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="type-badge type-booking">Booking</span></td>
+              <td>Priyanka Ranasinghe</td>
+              <td><a href="#" class="ref">BK-20260326-F2</a></td>
+              <td style="text-align:right;" class="amount">LKR 156,000</td>
+              <td style="color:var(--slate-500);">Bank Transfer</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">26 Mar</td>
+              <td style="color:var(--slate-500);">Supun R.</td>
+              <td><span class="status status-approved"><span class="status-dot"></span>Approved</span></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="type-badge type-manual">Manual</span></td>
+              <td>Chaminda Wijesinghe</td>
+              <td style="color:var(--slate-500);">Visa fee payment</td>
+              <td style="text-align:right;" class="amount">LKR 35,000</td>
+              <td style="color:var(--slate-500);">Cash</td>
+              <td style="color:var(--slate-500);font-family:var(--mono);font-size:12px;">25 Mar</td>
+              <td style="color:var(--slate-500);">Kamal S.</td>
+              <td><span class="status status-rejected"><span class="status-dot"></span>Rejected</span></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
