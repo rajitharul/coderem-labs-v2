@@ -58,6 +58,29 @@ export default function UIShowcase({
   );
   const step = useCallback((dir: number) => setActive((a) => (a + dir + n) % n), [n]);
 
+  // horizontal swipe to move between screens on touch devices
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const swiped = useRef(false);
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+    swiped.current = false;
+    setPaused(true);
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStart.current;
+    touchStart.current = null;
+    setPaused(false);
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swiped.current = true; // so the trailing tap doesn't open the lightbox
+      step(dx < 0 ? 1 : -1);
+    }
+  };
+
   // lightbox keyboard + scroll lock
   useEffect(() => {
     if (open === null) return;
@@ -114,7 +137,7 @@ export default function UIShowcase({
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="ui-cstage">
+          <div className="ui-cstage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
             {screens.map((s, i) => {
               // signed distance from the active slide, wrapped to the shorter way round
               let d = i - active;
@@ -136,7 +159,10 @@ export default function UIShowcase({
                   style={style}
                   aria-hidden={hidden}
                   tabIndex={hidden ? -1 : 0}
-                  onClick={() => (abs === 0 ? setOpen(i) : setActive(i))}
+                  onClick={() => {
+                    if (swiped.current) { swiped.current = false; return; }
+                    if (abs === 0) setOpen(i); else setActive(i);
+                  }}
                   aria-label={abs === 0 ? `Open ${s.title}` : `Show ${s.title}`}
                 >
                   {framedScreen(s)}
