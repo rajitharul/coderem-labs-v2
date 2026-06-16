@@ -18,7 +18,7 @@ export default function Page() {
             </div>
           </section>
 
-          <section style={{ background: "var(--bg-2)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" } as React.CSSProperties}>
+          <section className="bg-tint" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" } as React.CSSProperties}>
             <div className="container">
               <div className="section-head reveal"><p className="eyebrow">Why CodeREM</p><h2>A place to do your best work</h2></div>
               <div className="cs-caps" data-stagger>

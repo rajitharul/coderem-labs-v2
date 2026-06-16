@@ -180,7 +180,7 @@ export default function Page() {
           </section>
 
           {/* FAQ */}
-          <section style={{ background: "var(--bg-2)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" } as React.CSSProperties}>
+          <section className="bg-tint" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" } as React.CSSProperties}>
             <div className="container">
               <div className="section-head reveal"><p className="eyebrow">FAQs</p><h2>Good questions, straight answers</h2></div>
               <div className="grid cols-2" data-stagger>
