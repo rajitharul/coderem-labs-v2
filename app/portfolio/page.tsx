@@ -21,7 +21,7 @@ export default function Page() {
             </div>
           </section>
 
-          <section style={{ paddingTop: "10px" } as React.CSSProperties}>
+          <section style={{ paddingTop: "60px" } as React.CSSProperties}>
             <div className="container">
               <div className="work" data-stagger>
 

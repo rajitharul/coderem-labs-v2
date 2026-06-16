@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "How It Works: CodeREM Labs",
+  title: "How We Work: CodeREM Labs",
   description: "The CodeREM process: analytical precision, vision to prototype in 14 days, concept to launch, and the finest attention to detail.",
 };
 
