@@ -15,7 +15,7 @@ export default function Page() {
             <div className="container">
               <p className="eyebrow">Enterprise Software · AI Automation · AI Innovation</p>
               <h1 className="reveal hero-2line">Medical Grade <span className="h-word">Precision.</span><br />F1 Grade <span className="h-word">Performance.</span></h1>
-              <p className="sub">We are a <span className="rotate-wrap"><span data-rotate="precise, relentless, exacting, fast">precise</span></span> team, turning the right problems into production-grade software.</p>
+              <p className="sub hero-tagline">We solve the right problems with software that&apos;s <span className="rotate-wrap rotate-lg"><span data-rotate="precise, relentless, resilient, scalable, built to last">precise</span></span></p>
               <div className="hero-actions">
                 <Link href="/get-started" className="btn btn-primary">Start Your Project <span className="btn-arrow">→</span></Link>
                 <Link href="/portfolio" className="btn btn-ghost">View Our Work</Link>
@@ -325,7 +325,7 @@ export default function Page() {
                 <p>Free consultation · No commitment required · Response within 24h · Global availability</p>
                 <div className="cta-actions">
                   <Link href="/get-started" className="btn btn-primary">Start Your Project <span className="btn-arrow">→</span></Link>
-                  <Link href="/how-it-works" className="btn btn-ghost">How It Works</Link>
+                  <Link href="/how-it-works" className="btn btn-ghost">How We Work</Link>
                 </div>
               </div>
             </div>

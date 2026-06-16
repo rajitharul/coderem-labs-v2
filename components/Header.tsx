@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
 const MENU_LINKS = [
-  { href: "/how-it-works", label: "How It Works" },
+  { href: "/how-it-works", label: "How We Work" },
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/insights", label: "Insights" },
@@ -95,6 +95,13 @@ export default function Header() {
               </Link>
             ))}
           </div>
+          <Link
+            href="/get-started"
+            className="btn btn-primary menu-cta"
+            onClick={() => setOpen(false)}
+          >
+            Get Started <span className="btn-arrow">→</span>
+          </Link>
         </nav>
       </header>
       <div className="menu-backdrop" onClick={() => setOpen(false)} />
