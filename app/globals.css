@@ -647,7 +647,7 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
 
 /* coverflow carousel — one screen centred, neighbours peeking & tilted */
 .ui-carousel { position: relative; }
-.ui-cstage { position: relative; height: clamp(300px, 42vw, 560px); perspective: 2200px; transform-style: preserve-3d; }
+.ui-cstage { position: relative; height: clamp(300px, 42vw, 560px); perspective: 2200px; transform-style: preserve-3d; touch-action: pan-y; }
 .ui-cslide { position: absolute; top: 50%; left: 50%; width: min(64%, 820px); transform-origin: center; will-change: transform, opacity; transition: transform .65s var(--ease), opacity .55s var(--ease), filter .55s, box-shadow .4s; }
 .ui-cslide.is-active { box-shadow: 0 18px 40px rgba(12,16,22,.14), 0 44px 90px rgba(12,16,22,.18); }
 .ui-cslide:not(.is-active) { cursor: pointer; }
@@ -776,6 +776,8 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
   .svc-row, .svc-list .svc-row { grid-template-columns: 1fr; gap: 32px; }
   .svc-text, .svc-row.rev .svc-text { order: 1; }
   .svc-demo, .svc-row.rev .svc-demo { order: 2; }
+  /* centre the demo windows (text stays full-width/left) when rows stack */
+  .svc-list .svc-demo { justify-self: center; width: 100%; max-width: 480px; }
   .svc-scroll { display: none; }
   .svc-pin-stage { min-height: 0; display: block; }
   .svc-pin { padding-bottom: 80px; }
@@ -829,6 +831,9 @@ html:not(.lenis) .reveal { } /* GSAP handles when present */
   .menu-inner a { font-size: 1.5rem; padding: 11px 16px; }
   /* keep the macOS-window demos compact & legible on phones */
   .mac-body { height: clamp(208px, 54vw, 290px); padding: 14px; }
+  /* on phones the 16:9 desktop ratio gets too short and clips the scene —
+     give the How We Work / Services windows a workable height instead */
+  .svc-list .mac-body { aspect-ratio: auto; height: clamp(240px, 62vw, 300px); min-height: 0; }
   .mac-bar { padding: 8px 11px; gap: 7px; }
   .mac-dots i { width: 9px; height: 9px; }
   .mac-title { font-size: 0.74rem; padding-right: 22px; }
