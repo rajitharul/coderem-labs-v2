@@ -14,7 +14,7 @@ export default function Page() {
             <div className="container">
               <p className="eyebrow reveal">Our services · What we do</p>
               <h1 className="reveal" data-delay="80">Consultation. Software. <span className="h-word">Automation.</span></h1>
-              <p className="lede reveal" data-delay="160">Three primary offerings, engineered with the discipline of medicine and the speed of motorsport.</p>
+              <p className="lede reveal" data-delay="160">Three primary offerings.</p>
             </div>
           </section>
 

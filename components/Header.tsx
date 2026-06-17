@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
 const MENU_LINKS = [
-  { href: "/how-it-works", label: "How We Work" },
+  { href: "/how-we-work", label: "How We Work" },
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/insights", label: "Insights" },
