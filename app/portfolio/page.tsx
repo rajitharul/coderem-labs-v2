@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Portfolio: CodeREM Labs",
-  description: "Value beyond what you think you need. FlightSmart, CareFlow, ClaimBrain, LexiMatch AI and Bad Streams.",
+  description: "Value beyond what you think you need. Courtside, FlightSmart, CareFlow, ClaimBrain, LexiMatch AI and Bad Streams.",
 };
 
 export default function Page() {
@@ -24,6 +24,15 @@ export default function Page() {
           <section style={{ paddingTop: "60px" } as React.CSSProperties}>
             <div className="container">
               <div className="work" data-stagger>
+
+                <Link href="/portfolio/courtside" className="work-item">
+                  <div className="work-visual"><span className="tag">Product · Sports Tech</span><span className="big">Courtside</span></div>
+                  <div className="work-body">
+                    <p>A multi-sided sports-venue booking platform where players discover and reserve courts across six sports, venue owners manage availability and bookings from a dedicated dashboard, and a super-admin portal onboards venues and assigns owners. Real-time slot booking with pay-to-confirm checkout through a live payment gateway.</p>
+                    <div className="chips"><span className="chip">Next.js 16</span><span className="chip">React 19</span><span className="chip">Supabase</span><span className="chip">Tailwind v4</span><span className="chip">+3</span></div>
+                    <span className="card-link">Read the case study <span className="btn-arrow">→</span></span>
+                  </div>
+                </Link>
 
                 <Link href="/portfolio/flightsmart" className="work-item">
                   <div className="work-visual"><span className="tag">Product</span><span className="big">FlightSmart Travel</span></div>
