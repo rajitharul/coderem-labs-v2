@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "CodeREM Labs: Medical Grade Precision. F1 Grade Performance.",
-  description: "Enterprise software, AI automation and AI innovation. A problem is never truly solved until it's met with the optimal solution.",
+  description: "Enterprise software, AI automation and AI innovation. A problem is never truly solved until it meets the optimal solution.",
 };
 
 export default function Page() {
@@ -27,7 +27,7 @@ export default function Page() {
           <section className="statement">
             <div className="container">
               <p className="eyebrow">The belief we build on</p>
-              <p className="big" data-scroll-fill>A problem is never truly solved until it's met with the optimal solution.</p>
+              <p className="big" data-scroll-fill>A problem is never truly solved until it meets the optimal solution.</p>
             </div>
           </section>
 
@@ -37,7 +37,7 @@ export default function Page() {
               <div className="section-head">
                 <p className="eyebrow">What we do</p>
                 <h2>Maximize results while <span className="h-word">minimizing work.</span></h2>
-                <p>Three primary offerings, consultation, software and automation, engineered with the discipline of medicine and the speed of motorsport.</p>
+                <p>Three primary offerings, consultation, software and automation.</p>
               </div>
             </div>
             <div className="svc-pin-stage">
@@ -325,7 +325,7 @@ export default function Page() {
                 <p>Free consultation · No commitment required · Response within 24h · Global availability</p>
                 <div className="cta-actions">
                   <Link href="/get-started" className="btn btn-primary">Start Your Project <span className="btn-arrow">→</span></Link>
-                  <Link href="/how-it-works" className="btn btn-ghost">How We Work</Link>
+                  <Link href="/how-we-work" className="btn btn-ghost">How We Work</Link>
                 </div>
               </div>
             </div>

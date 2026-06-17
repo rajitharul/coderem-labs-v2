@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://coderemlabs.com"),
   title: "CodeREM Labs: Medical Grade Precision. F1 Grade Performance.",
   description:
-    "Enterprise software, AI automation and AI innovation. A problem is never truly solved until it's met with the optimal solution.",
+    "Enterprise software, AI automation and AI innovation. A problem is never truly solved until it meets the optimal solution.",
   openGraph: {
     siteName: "CodeREM Labs",
     images: ["/logo-1024.png"],

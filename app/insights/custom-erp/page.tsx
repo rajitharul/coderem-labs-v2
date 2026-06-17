@@ -70,7 +70,7 @@ export default function Page() {
                   <h2 style={{ margin: "0 0 18px" } as React.CSSProperties}>We'll help you decide, before you build.</h2>
                   <div className="cta-actions">
                     <Link href="/get-started" className="btn btn-primary">Start Your Project <span className="btn-arrow">→</span></Link>
-                    <Link href="/how-it-works" className="btn btn-ghost">How We Work</Link>
+                    <Link href="/how-we-work" className="btn btn-ghost">How We Work</Link>
                   </div>
                 </div>
               </div>

@@ -54,9 +54,31 @@ export default function Footer() {
             © {new Date().getFullYear()} CodeREM Labs. All rights reserved.
           </span>
           <span>
-            Sri Lanka / Global ·{" "}
-            <a href="#" className="accent">
+            <a
+              href="https://www.linkedin.com/company/coderem-labs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="accent"
+            >
               LinkedIn
+            </a>{" "}
+            ·{" "}
+            <a
+              href="https://www.instagram.com/coderemlabs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="accent"
+            >
+              Instagram
+            </a>{" "}
+            ·{" "}
+            <a
+              href="https://web.facebook.com/profile.php?id=61588807522927"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="accent"
+            >
+              Facebook
             </a>
           </span>
         </div>
