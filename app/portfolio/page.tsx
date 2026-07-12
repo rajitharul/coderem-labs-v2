@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Portfolio: CodeREM Labs",
-  description: "Value beyond what you think you need. Werk, Courtside, FlightSmart, CareFlow, LexiMatch AI and Bad Streams.",
+  description: "Value beyond what you think you need. remWERK, Courtside, FlightSmart, CareFlow, LexiMatch AI and Bad Streams.",
 };
 
 export default function Page() {
@@ -26,7 +26,7 @@ export default function Page() {
               <div className="work" data-stagger>
 
                 <Link href="/portfolio/werk" className="work-item">
-                  <div className="work-visual"><span className="tag">Platform · Business Management</span><span className="big">Werk</span></div>
+                  <div className="work-visual"><span className="tag">Platform · Business Management</span><span className="big">remWERK</span></div>
                   <div className="work-body">
                     <p>A secure, multi-tenant business management platform where owners register and run their business with bank-grade security, exact financial tracking, and an append-only, tamper-proof audit trail. A super-admin control plane audits all activity, blocks users, and securely &quot;views as&quot; any user — engineered to run lean today and scale horizontally on demand.</p>
                     <div className="chips"><span className="chip">Next.js 15</span><span className="chip">TypeScript</span><span className="chip">PostgreSQL</span><span className="chip">Redis</span><span className="chip">+3</span></div>

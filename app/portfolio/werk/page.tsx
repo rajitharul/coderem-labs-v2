@@ -4,8 +4,8 @@ import Link from "next/link";
 const LIVE_URL = "https://remwerk.coderemlabs.com";
 
 export const metadata: Metadata = {
-  title: "Werk: A secure, multi-tenant business management & audit platform | CodeREM Labs",
-  description: "Case study: Werk lets business owners register and run their business with bank-grade security, exact decimal financial tracking, and an append-only, tamper-proof audit trail — backed by a super-admin control plane and architected to scale horizontally.",
+  title: "remWERK: A secure, multi-tenant business management & audit platform | CodeREM Labs",
+  description: "Case study: remWERK lets business owners register and run their business with bank-grade security, exact decimal financial tracking, and an append-only, tamper-proof audit trail — backed by a super-admin control plane and architected to scale horizontally.",
 };
 
 export default function Page() {
@@ -16,7 +16,7 @@ export default function Page() {
             <div className="orbs"><span className="orb a"></span><span className="orb b"></span></div>
             <div className="container">
               <p className="cs-breadcrumb reveal"><Link href="/portfolio">Portfolio</Link> <span>/</span> Case study</p>
-              <h1 className="reveal" data-delay="60">We<span className="h-word">rk</span></h1>
+              <h1 className="reveal" data-delay="60">rem<span className="h-word">WERK</span></h1>
               <p className="cs-lead reveal" data-delay="120">A secure, multi-tenant platform where business owners manage their operations, finances, and records — backed by a tamper-proof activity log and full platform oversight, engineered to run lean today and scale horizontally on demand.</p>
 
               <div className="cta-actions reveal" data-delay="150" style={{ marginTop: "28px" } as React.CSSProperties}>
@@ -37,7 +37,7 @@ export default function Page() {
             <div className="container">
               <div className="cs-abstract reveal">
                 <span className="k">Abstract</span>
-                <p>Werk is a secure, multi-tenant business management platform that gives business owners a single place to register their business, maintain their business and personal records, track finances, and manage day-to-day operations — while keeping a complete, tamper-proof history of every action taken. Every business operates in its own isolated <strong>tenant</strong>, and a dedicated <strong>super-admin control plane</strong> sits above the platform to audit all activity, block or unblock users and businesses, securely &quot;view as&quot; any user for support, and respond to in-app support messages — all without ever touching a user&apos;s password.</p>
+                <p>remWERK is a secure, multi-tenant business management platform that gives business owners a single place to register their business, maintain their business and personal records, track finances, and manage day-to-day operations — while keeping a complete, tamper-proof history of every action taken. Every business operates in its own isolated <strong>tenant</strong>, and a dedicated <strong>super-admin control plane</strong> sits above the platform to audit all activity, block or unblock users and businesses, securely &quot;view as&quot; any user for support, and respond to in-app support messages — all without ever touching a user&apos;s password.</p>
               </div>
             </div>
           </section>
@@ -105,7 +105,7 @@ export default function Page() {
               <div className="section-head reveal" style={{ marginBottom: "40px" } as React.CSSProperties}>
                 <p className="eyebrow">Product view</p>
                 <h2>The <span className="h-word">live product.</span></h2>
-                <p>Werk is deployed and running in production. Explore the real app below, or open it in a new tab.</p>
+                <p>remWERK is deployed and running in production. Explore the real app below, or open it in a new tab.</p>
               </div>
               <div className="mac-window reveal" style={{ maxWidth: "1040px", margin: "0 auto" } as React.CSSProperties}>
                 <div className="mac-bar">
@@ -115,7 +115,7 @@ export default function Page() {
                 <div style={{ height: "clamp(440px, 62vh, 700px)", overflow: "hidden" } as React.CSSProperties}>
                   <iframe
                     src={LIVE_URL}
-                    title="Werk — live site"
+                    title="remWERK — live site"
                     loading="lazy"
                     style={{ width: "100%", height: "100%", border: 0, display: "block" } as React.CSSProperties}
                   />
@@ -135,7 +135,7 @@ export default function Page() {
                 <h2>Lean today, horizontal tomorrow.</h2>
               </div>
               <div className="cs-body reveal" data-delay="100">
-                <p>Werk is a <strong>Next.js 15</strong> + TypeScript app with a deliberately <strong>stateless, horizontally scalable</strong> app tier — all session, rate-limit and cache state lives in <strong>Redis</strong>, so any instance can serve any request. The audit trail is an append-only, partitioned table protected by database triggers and least-privilege role grants, so the activity log can&apos;t be silently altered, even by the app.</p>
+                <p>remWERK is a <strong>Next.js 15</strong> + TypeScript app with a deliberately <strong>stateless, horizontally scalable</strong> app tier — all session, rate-limit and cache state lives in <strong>Redis</strong>, so any instance can serve any request. The audit trail is an append-only, partitioned table protected by database triggers and least-privilege role grants, so the activity log can&apos;t be silently altered, even by the app.</p>
                 <p>Records use <strong>time-ordered UUID v7</strong> identifiers for index-friendly, shard-ready data, while <strong>pooled database access</strong> (PgBouncer / serverless pooling) keeps the system within connection limits under load. Least-privilege database roles separate runtime access from migrations, and exact money math runs on <strong>decimal.js</strong>. It&apos;s built to run cheaply on a single machine today, yet scales horizontally by adding infrastructure rather than rewriting code.</p>
                 <div className="chips">
                   <span className="chip">Next.js 15</span><span className="chip">TypeScript</span><span className="chip">Tailwind CSS</span><span className="chip">PostgreSQL (Prisma)</span>
@@ -153,7 +153,7 @@ export default function Page() {
                 <h2>A trustworthy platform, live in production.</h2>
               </div>
               <div className="cs-body reveal" data-delay="100">
-                <p>Werk ships a complete, multi-tenant business management platform where owners run their operations and finances in an isolated workspace, every action is recorded in a history that can&apos;t be silently rewritten, and a super-admin control plane keeps the whole system auditable and supportable.</p>
+                <p>remWERK ships a complete, multi-tenant business management platform where owners run their operations and finances in an isolated workspace, every action is recorded in a history that can&apos;t be silently rewritten, and a super-admin control plane keeps the whole system auditable and supportable.</p>
                 <p>With bank-grade security defaults, exact decimal bookkeeping and a stateless architecture that scales by adding infrastructure, it&apos;s a platform that holds up where it matters — <strong>at the intersection of real money and complete, tamper-proof trust.</strong></p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function Page() {
             <div className="container">
               <div className="cs-cite reveal">
                 <span className="k">Cite this case study</span>
-                <b>CodeREM Labs (2026).</b> Werk: A secure, multi-tenant business management &amp; audit platform. <i>CodeREM Labs Product Case Studies.</i> Available at coderemlabs.com/portfolio.
+                <b>CodeREM Labs (2026).</b> remWERK: A secure, multi-tenant business management &amp; audit platform. <i>CodeREM Labs Product Case Studies.</i> Available at coderemlabs.com/portfolio.
               </div>
             </div>
           </section>
