@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Portfolio: CodeREM Labs",
-  description: "Value beyond what you think you need. Courtside, FlightSmart, CareFlow, ClaimBrain, LexiMatch AI and Bad Streams.",
+  description: "Value beyond what you think you need. Werk, Courtside, FlightSmart, CareFlow, LexiMatch AI and Bad Streams.",
 };
 
 export default function Page() {
@@ -24,6 +24,15 @@ export default function Page() {
           <section style={{ paddingTop: "60px" } as React.CSSProperties}>
             <div className="container">
               <div className="work" data-stagger>
+
+                <Link href="/portfolio/werk" className="work-item">
+                  <div className="work-visual"><span className="tag">Platform · Business Management</span><span className="big">Werk</span></div>
+                  <div className="work-body">
+                    <p>A secure, multi-tenant business management platform where owners register and run their business with bank-grade security, exact financial tracking, and an append-only, tamper-proof audit trail. A super-admin control plane audits all activity, blocks users, and securely &quot;views as&quot; any user — engineered to run lean today and scale horizontally on demand.</p>
+                    <div className="chips"><span className="chip">Next.js 15</span><span className="chip">TypeScript</span><span className="chip">PostgreSQL</span><span className="chip">Redis</span><span className="chip">+3</span></div>
+                    <span className="card-link">Read the case study <span className="btn-arrow">→</span></span>
+                  </div>
+                </Link>
 
                 <Link href="/portfolio/courtside" className="work-item">
                   <div className="work-visual"><span className="tag">Product · Sports Tech</span><span className="big">Courtside</span></div>
@@ -48,15 +57,6 @@ export default function Page() {
                   <div className="work-body">
                     <p>A management services organization platform automating healthcare provider operations, credentialing, payer contracts, scheduling, prior authorization, coding, billing, and denial management. Reduced staffing requirements by 80% while improving care coordination.</p>
                     <div className="chips"><span className="chip">React</span><span className="chip">Python</span><span className="chip">FastAPI</span><span className="chip">PostgreSQL</span><span className="chip">+4</span></div>
-                    <span className="card-link">Read the case study <span className="btn-arrow">→</span></span>
-                  </div>
-                </Link>
-
-                <Link href="/portfolio/claimbrain" className="work-item">
-                  <div className="work-visual"><span className="tag">AI · Healthcare</span><span className="big">ClaimBrain</span></div>
-                  <div className="work-body">
-                    <p>An AI-powered medical claims processing system using OCR and LLMs to extract data from claim documents and physician notes. Achieves close to 97% accuracy in claims data extraction while automatically flagging edge cases for human review.</p>
-                    <div className="chips"><span className="chip">Python</span><span className="chip">FastAPI</span><span className="chip">OpenAI GPT-4</span><span className="chip">LangChain</span><span className="chip">+4</span></div>
                     <span className="card-link">Read the case study <span className="btn-arrow">→</span></span>
                   </div>
                 </Link>
