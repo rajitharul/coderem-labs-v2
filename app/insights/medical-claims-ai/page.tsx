@@ -22,7 +22,7 @@ export default function Page() {
             <div className="container">
               <div className="prose reveal">
                 <p>Medical claims processing is one of the most automatable workflows in healthcare, and one of the riskiest to automate carelessly. The documents are messy, the rules are payer-specific, and a wrong code can mean a denied claim or a compliance problem. The goal isn't to remove humans; it's to <strong>remove the repetitive work that wastes them</strong>, while keeping a human accountable for the decisions that matter.</p>
-                <p>This guide lays out the pattern we use in production (it powers our <Link href="/portfolio/claimbrain">ClaimBrain</Link> system): a pipeline of <strong>OCR → guardrailed LLM understanding → code &amp; rule validation → human-in-the-loop review</strong>. Each stage does one job well, and each stage knows when to ask for help.</p>
+                <p>This guide lays out the pattern we use in production: a pipeline of <strong>OCR → guardrailed LLM understanding → code &amp; rule validation → human-in-the-loop review</strong>. Each stage does one job well, and each stage knows when to ask for help.</p>
 
                 <h2>Why manual processing is so expensive</h2>
                 <p>A typical claims operation spends thousands of hours a year reviewing scanned forms, verifying diagnosis and procedure codes, cross-referencing policy coverage and catching billing errors. The work demands experienced adjusters who can interpret nuanced clinical language, yet most of their time goes to <strong>data entry, not judgement</strong>. Error rates stay high because humans tire; throughput stays low because every claim is handled by hand.</p>
@@ -72,7 +72,7 @@ export default function Page() {
                   <h2 style={{ margin: "0 0 18px" } as React.CSSProperties}>Let's automate the boring 80%.</h2>
                   <div className="cta-actions">
                     <Link href="/get-started" className="btn btn-primary">Start Your Project <span className="btn-arrow">→</span></Link>
-                    <Link href="/portfolio/claimbrain" className="btn btn-ghost">See ClaimBrain</Link>
+                    <Link href="/portfolio" className="btn btn-ghost">See our work</Link>
                   </div>
                 </div>
               </div>

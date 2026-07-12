@@ -303,14 +303,6 @@ export default function Page() {
                     <Link href="/portfolio/flightsmart" className="card-link">View case study <span className="btn-arrow">→</span></Link>
                   </div>
                 </div>
-                <div className="work-item">
-                  <div className="work-visual"><span className="tag">Healthcare · AI</span><span className="big">ClaimBrain</span></div>
-                  <div className="work-body">
-                    <p>An AI-powered medical claims processing system using OCR and LLMs to extract data from claim documents and physician notes, flagging edge cases for human review.</p>
-                    <div className="work-metrics"><div className="m"><div className="v">90%</div><div className="k">Processing time reduced</div></div><div className="m"><div className="v">97%</div><div className="k">Extraction accuracy</div></div></div>
-                    <Link href="/portfolio/claimbrain" className="card-link">View case study <span className="btn-arrow">→</span></Link>
-                  </div>
-                </div>
               </div>
               <div className="center" style={{ marginTop: "44px" } as React.CSSProperties}><Link href="/portfolio" className="btn btn-ghost">See all projects <span className="btn-arrow">→</span></Link></div>
             </div>
