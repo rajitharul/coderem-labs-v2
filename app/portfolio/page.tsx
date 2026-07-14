@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Portfolio: CodeREM Labs",
-  description: "Value beyond what you think you need. remWERK, Courtside, FlightSmart, CareFlow, LexiMatch AI and Bad Streams.",
+  description: "Value beyond what you think you need. remOPS, remWERK, Courtside, FlightSmart, CareFlow, LexiMatch AI and Bad Streams.",
 };
 
 export default function Page() {
@@ -24,6 +24,15 @@ export default function Page() {
           <section style={{ paddingTop: "60px" } as React.CSSProperties}>
             <div className="container">
               <div className="work" data-stagger>
+
+                <Link href="/portfolio/remops" className="work-item">
+                  <div className="work-visual"><span className="tag">Product · Agentic WhatsApp</span><span className="big">remOPS</span></div>
+                  <div className="work-body">
+                    <p>An agentic WhatsApp platform that runs sales, operations and supply chain in the app your customers and staff already have open. Customers place and track orders; managers ask the business anything, approve in-thread, and get pushed exceptions before a customer has to call — wired straight into your ERP, WMS and TMS. Tailor-made per customer, with a dedicated engineer and free setup.</p>
+                    <div className="chips"><span className="chip">WhatsApp Business Platform</span><span className="chip">Agentic AI</span><span className="chip">ERP · WMS · TMS</span><span className="chip">Free setup</span></div>
+                    <span className="card-link">Explore the product <span className="btn-arrow">→</span></span>
+                  </div>
+                </Link>
 
                 <Link href="/portfolio/werk" className="work-item">
                   <div className="work-visual"><span className="tag">Platform · Business Management</span><span className="big">remWERK</span></div>

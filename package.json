@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "video": "remotion studio remotion/index.ts",
+    "render:remops": "node scripts/render-remops.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^15.5.20",
@@ -17,10 +19,13 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@remotion/cli": "^4.0.489",
+    "@remotion/google-fonts": "^4.0.489",
     "@types/node": "^22",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "remotion": "^4.0.489",
     "typescript": "^5"
   }
 }
