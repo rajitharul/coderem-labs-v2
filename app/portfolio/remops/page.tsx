@@ -35,16 +35,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ABSTRACT */}
-      <section style={{ padding: "50px 0 20px" } as React.CSSProperties}>
-        <div className="container">
-          <div className="cs-abstract reveal">
-            <span className="k">Abstract</span>
-            <p>remOPS turns WhatsApp into the operating surface of your business. <strong>Outside</strong>, your customers place and reorder, track shipments, pull invoices and raise problems — in the app they already have open. <strong>Inside</strong>, your team asks the business anything (&quot;where is container MSKU-4471?&quot;, &quot;which POs slip this week?&quot;), approves in-thread, and gets pushed the exceptions that matter before a customer has to call. It is not a chatbot bolted onto an FAQ: every remOPS agent is built against <strong>your</strong> systems, <strong>your</strong> rules and <strong>your</strong> vocabulary — and a dedicated engineer sets the whole thing up with you, at no cost, before you pay for a single message.</p>
-          </div>
-        </div>
-      </section>
-
       {/* 01 THE CHALLENGE */}
       <section className="cs-section">
         <div className="container cs-grid">
