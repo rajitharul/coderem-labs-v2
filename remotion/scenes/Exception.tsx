@@ -3,7 +3,7 @@ import { AbsoluteFill, interpolate, useCurrentFrame, Easing } from "remotion";
 import { C, num } from "../theme";
 import { Backdrop, Label, useIn, useOutro, rise, Caption } from "../ui";
 
-/* Scene 2 — "The exception co-pilot".
+/* Scene 2: "The exception co-pilot".
 
    The agent speaks first. A container stalls in customs; the ETA rolls forward
    140 minutes and two of the three orders riding on it flip to at-risk.
@@ -52,7 +52,7 @@ export const Exception: React.FC = () => {
     easing: Easing.bezier(0.22, 1, 0.36, 1),
   });
 
-  // The ETA rolls rather than cuts — 14:20 → 16:40.
+  // The ETA rolls rather than cuts: 14:20 → 16:40.
   const mins = interpolate(frame, [T.roll[0], T.roll[1]], [860, 1000], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -67,7 +67,7 @@ export const Exception: React.FC = () => {
   return (
     <Backdrop>
       <AbsoluteFill style={{ padding: 72, opacity: outro, flexDirection: "row", gap: 64 }}>
-        {/* LEFT — the unprompted alert */}
+        {/* LEFT: the unprompted alert */}
         <div style={{ width: 620, display: "flex", flexDirection: "column", justifyContent: "center", ...rise(panel, 12) }}>
           <Label size={17} color={C.muted}>Exception · unprompted</Label>
           <div style={{ fontSize: 46, fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.12, margin: "18px 0 34px" }}>
@@ -97,7 +97,7 @@ export const Exception: React.FC = () => {
           </div>
         </div>
 
-        {/* RIGHT — the route and what it's carrying */}
+        {/* RIGHT: the route and what it's carrying */}
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 40 }}>
           <div style={{ ...rise(rail, 10) }}>
             <Label size={16} color={C.muted} style={{ marginBottom: 10 }}>Container MSKU-4471</Label>

@@ -3,14 +3,14 @@ import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { C, fontFamily, num } from "../theme";
 import { Backdrop, Label } from "../ui";
 
-/* Scene 3 — "The integration weave".
+/* Scene 3: "The integration weave".
 
    Deliberately built as a TRUE seamless loop: no entrance, no outro. Every
    moving thing has a period that divides evenly into the duration (300 frames /
    100-frame cycle = 3), so the loop point is mathematically invisible. An
    entrance animation would re-fire every 10 seconds and read as a glitch. */
 
-const PERIOD = 100; // frames per packet cycle — 300 / 100 = 3 whole cycles
+const PERIOD = 100; // frames per packet cycle: 300 / 100 = 3 whole cycles
 const CORE = { x: 960, y: 540 };
 const IN_X = 470; // right edge of the system nodes
 const OUT_X = 1450; // left edge of the WhatsApp node
@@ -23,7 +23,7 @@ const SYSTEMS = [
   { t: "Google Sheets", s: "The spreadsheet", y: 780 },
 ];
 
-/* Cubic bezier evaluated by hand — no DOM measurement, so every frame is
+/* Cubic bezier evaluated by hand: no DOM measurement, so every frame is
    deterministic and identical across render threads. */
 const bez = (t: number, p: number[][]) => {
   const u = 1 - t;

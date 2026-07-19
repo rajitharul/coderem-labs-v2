@@ -21,8 +21,8 @@ export const C = {
   line: "rgba(12,16,22,0.12)", // --border
   lineStrong: "rgba(12,16,22,0.24)", // --border-strong
   frost: "rgba(255,255,255,0.55)", // --frost
-  live: "#25d366", // the one green — "online", same as the page
-  risk: "#dc2626", // the one red — reserved for at-risk / exception
+  live: "#25d366", // the one green, "online", same as the page
+  risk: "#dc2626", // the one red, reserved for at-risk / exception
 } as const;
 
 /* --grain: the spray-paint speckle used across the site. */

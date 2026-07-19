@@ -156,7 +156,7 @@ export default function SignupForm() {
             <label>What&apos;s broken today? <span className="req">*</span></label>
             <textarea
               required
-              placeholder="What are your customers and your team constantly chasing you for? Where does it fall apart — order taking, tracking, approvals, someone re-typing things into the ERP?"
+              placeholder="What are your customers and your team constantly chasing you for? Where does it fall apart: order taking, tracking, approvals, someone re-typing things into the ERP?"
               value={data.challenge}
               onChange={set("challenge")}
             ></textarea>

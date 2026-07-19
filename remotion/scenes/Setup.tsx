@@ -3,7 +3,7 @@ import { AbsoluteFill, interpolate, useCurrentFrame, Easing } from "remotion";
 import { C, fontFamily, num } from "../theme";
 import { Backdrop, Label, useIn, useOutro, rise, money } from "../ui";
 
-/* Scene 4 — "The setup sequence".
+/* Scene 4: "The setup sequence".
 
    Five phases of work complete while two counters run side by side: engineer
    hours climbing to 140, and the amount you've paid holding at $0.00. The whole
@@ -37,7 +37,7 @@ export const Setup: React.FC = () => {
   return (
     <Backdrop>
       <AbsoluteFill style={{ padding: 72, opacity: outro, flexDirection: "row", gap: 72 }}>
-        {/* LEFT — the claim, and the two numbers that prove it */}
+        {/* LEFT: the claim, and the two numbers that prove it */}
         <div style={{ width: 640, display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <div style={rise(head, 12)}>
             <Label size={17} color={C.muted}>Setup</Label>
@@ -68,7 +68,7 @@ export const Setup: React.FC = () => {
           </div>
         </div>
 
-        {/* RIGHT — the work itself */}
+        {/* RIGHT: the work itself */}
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 26 }}>
           {PHASES.map((ph) => {
             const p = interpolate(frame, [ph.at, ph.at + FILL], [0, 1], {

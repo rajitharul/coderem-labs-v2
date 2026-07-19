@@ -5,7 +5,7 @@ import SignupForm from "./SignupForm";
 export const metadata: Metadata = {
   title: "Sign up for remOPS: Free setup, dedicated engineer | CodeREM Labs",
   description:
-    "Tell us how your business actually runs. A dedicated setup engineer will build, integrate and tailor your remOPS WhatsApp agent with you — free. You only pay for usage once it's live.",
+    "Tell us how your business actually runs. A dedicated setup engineer will build, integrate and tailor your remOPS WhatsApp agent with you, free. You only pay for usage once it's live.",
 };
 
 export default function Page() {
@@ -19,7 +19,7 @@ export default function Page() {
             <Link href="/portfolio/remops">remOPS</Link> <span>/</span> Sign up
           </p>
           <h1 className="reveal" data-delay="80">Get set up. <span className="h-word">Free.</span></h1>
-          <p className="lede reveal" data-delay="160">Tell us how your business actually runs. A dedicated setup engineer — a real person, not a sales rep — will reach out within 24 hours and build your remOPS agent with you.</p>
+          <p className="lede reveal" data-delay="160">Tell us how your business actually runs. A dedicated setup engineer (a real person, not a sales rep) will reach out within 24 hours and build your remOPS agent with you.</p>
         </div>
       </section>
 
@@ -55,7 +55,7 @@ export default function Page() {
                   <li>You go live before you pay us anything</li>
                 </ul>
                 <p className="muted" style={{ marginTop: "16px", fontSize: ".92rem" } as React.CSSProperties}>
-                  After that, you pay only for usage — on demand. No seat licences, no platform fee, no lock-in.
+                  After that, you pay only for usage, on demand. No seat licences, no platform fee, no lock-in.
                 </p>
               </div>
 
@@ -75,7 +75,7 @@ export default function Page() {
                   <div className="step" style={{ padding: "18px" } as React.CSSProperties}>
                     <span className="role">Step 03</span>
                     <h3 style={{ fontSize: "1.05rem", margin: "6px 0" } as React.CSSProperties}>We build it with you</h3>
-                    <p style={{ marginTop: "0" } as React.CSSProperties}>Integration, tailoring, training and go-live — at no cost. Then you pay per use.</p>
+                    <p style={{ marginTop: "0" } as React.CSSProperties}>Integration, tailoring, training and go-live, at no cost. Then you pay per use.</p>
                   </div>
                 </div>
               </div>

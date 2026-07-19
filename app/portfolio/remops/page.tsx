@@ -7,7 +7,7 @@ const SIGNUP = "/portfolio/remops/signup";
 export const metadata: Metadata = {
   title: "remOPS: An agentic WhatsApp platform, tailor-made for your business | CodeREM Labs",
   description:
-    "remOPS turns WhatsApp into the operating surface of your business. Customers place and track orders; your team asks, approves and gets alerted — wired straight into your ERP, WMS and TMS. Free setup with a dedicated engineer. Pay only for usage.",
+    "remOPS turns WhatsApp into the operating surface of your business. Customers place and track orders; your team asks, approves and gets alerted, wired straight into your ERP, WMS and TMS. Free setup with a dedicated engineer. Pay only for usage.",
 };
 
 export default function Page() {
@@ -19,10 +19,10 @@ export default function Page() {
         <div className="container">
           <p className="cs-breadcrumb reveal"><Link href="/portfolio">Portfolio</Link> <span>/</span> Product</p>
           <h1 className="reveal" data-delay="60">rem<span className="h-word">OPS</span></h1>
-          <p className="cs-lead reveal" data-delay="120">An agentic WhatsApp platform that runs your business where your customers and your team already are. They place orders, chase shipments, approve POs and ask anything — in a thread wired straight into the systems you already run. Tailor-made for how <em>you</em> work, and set up for you by a real engineer, free.</p>
+          <p className="cs-lead reveal" data-delay="120">An agentic WhatsApp platform that runs your business where your customers and your team already are. They place orders, chase shipments, approve POs and ask anything, in a thread wired straight into the systems you already run. Tailor-made for how <em>you</em> work, and set up for you by a real engineer, free.</p>
 
           <div className="cta-actions reveal" data-delay="150" style={{ marginTop: "28px" } as React.CSSProperties}>
-            <Link href={SIGNUP} className="btn btn-primary">Get set up — free <span className="btn-arrow">→</span></Link>
+            <Link href={SIGNUP} className="btn btn-primary">Get set up, free <span className="btn-arrow">→</span></Link>
             <a href="#demo" className="btn btn-ghost">See it work</a>
           </div>
 
@@ -44,8 +44,8 @@ export default function Page() {
           </div>
           <div className="cs-body reveal" data-delay="100">
             <p>You have probably already been shown a WhatsApp agent. It greeted the customer by name, answered three questions off a help page, and then collapsed the moment someone asked the only question that mattered: <em>what&apos;s my price on SKU-4471, am I over my credit limit, where is my container, can you approve this discount.</em></p>
-            <p>Generic agents fail for a boring reason. They are not connected to the systems where those answers live, and they know nothing about how your business actually decides things — your price tiers, your minimum order quantities, your credit terms, your delivery windows, your approval chains, the fact that your warehouse team calls it a &quot;pallet note&quot; and your ERP calls it a delivery advice.</p>
-            <p>So they guess. And a system that guesses about stock, price or an ETA is <strong>worse than no system at all</strong> — because now someone has to check its work.</p>
+            <p>Generic agents fail for a boring reason. They are not connected to the systems where those answers live, and they know nothing about how your business actually decides things: your price tiers, your minimum order quantities, your credit terms, your delivery windows, your approval chains, the fact that your warehouse team calls it a &quot;pallet note&quot; and your ERP calls it a delivery advice.</p>
+            <p>So they guess. And a system that guesses about stock, price or an ETA is <strong>worse than no system at all</strong>, because now someone has to check its work.</p>
           </div>
         </div>
       </section>
@@ -53,17 +53,17 @@ export default function Page() {
       {/* THE ANTI-GENERIC STATEMENT */}
       <section className="cs-section">
         <div className="container">
-          <p className="cs-callout reveal">If you&apos;re fed up with generic agents that demo beautifully and die on the first <em>real</em> question — that is the entire reason remOPS exists.</p>
+          <p className="cs-callout reveal">If you&apos;re fed up with generic agents that demo beautifully and die on the first <em>real</em> question: that is the entire reason remOPS exists.</p>
         </div>
       </section>
 
-      {/* 02 OUTSIDE — the customer */}
+      {/* 02 OUTSIDE: the customer */}
       <section className="cs-section" id="demo">
         <div className="container">
           <div className="section-head reveal">
             <p className="eyebrow">02 · Outside</p>
             <h2>Your customer <span className="h-word">just types.</span></h2>
-            <p>No portal, no app, no phone call, no waiting for your sales desk to open. They order in the thread they already have open — and the answer they get is the one your systems would have given them.</p>
+            <p>No portal, no app, no phone call, no waiting for your sales desk to open. They order in the thread they already have open, and the answer they get is the one your systems would have given them.</p>
           </div>
 
           <div className="scene-split">
@@ -73,13 +73,13 @@ export default function Page() {
                 width={1080}
                 height={1350}
                 className="portrait"
-                alt="A customer messages: 200 units of SKU-4471 to the Colombo warehouse by Friday. The agent replies with their own tier price of LKR 412 per unit, 1,340 in stock at the Colombo DC, a confirmed Friday delivery window and an order total of LKR 82,400 — then places the order and attaches the invoice."
-                caption="Their price, their credit limit, their delivery window — checked live, in the thread."
+                alt="A customer messages: 200 units of SKU-4471 to the Colombo warehouse by Friday. The agent replies with their own tier price of LKR 412 per unit, 1,340 in stock at the Colombo DC, a confirmed Friday delivery window and an order total of LKR 82,400, then places the order and attaches the invoice."
+                caption="Their price, their credit limit, their delivery window: checked live, in the thread."
               />
             </div>
 
             <div className="cs-body reveal" data-delay="100">
-              <p>Nothing in that reply is invented. The <strong>tier price</strong> is the one on their account, the <strong>stock figure</strong> comes from the warehouse, the <strong>delivery window</strong> is one your fleet can actually hit, and the credit check happened before the order was offered — not after your finance team caught it.</p>
+              <p>Nothing in that reply is invented. The <strong>tier price</strong> is the one on their account, the <strong>stock figure</strong> comes from the warehouse, the <strong>delivery window</strong> is one your fleet can actually hit, and the credit check happened before the order was offered, not after your finance team caught it.</p>
               <ul className="feature-list">
                 <li>Order and reorder from a live catalogue</li>
                 <li>Track a shipment without calling anyone</li>
@@ -92,13 +92,13 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 03 INSIDE — the co-pilot */}
+      {/* 03 INSIDE: the co-pilot */}
       <section className="cs-section">
         <div className="container">
           <div className="section-head reveal">
             <p className="eyebrow">03 · Inside</p>
             <h2>Your team gets a <span className="h-word">co-pilot.</span></h2>
-            <p>The same channel, a completely different job. It answers on demand — and it speaks first when something is going wrong.</p>
+            <p>The same channel, a completely different job. It answers on demand, and it speaks first when something is going wrong.</p>
           </div>
 
           <div className="reveal">
@@ -108,7 +108,7 @@ export default function Page() {
               height={1080}
               className="wide"
               alt="At 07:02 the co-pilot messages, unprompted: container MSKU-4471 is held in customs at Colombo. It carries stock for three open orders. The revised ETA rolls from 14:20 to 16:40 and two of the three orders flip to at-risk."
-              caption="Nobody asked it. It noticed — and it worked out which orders were about to break."
+              caption="Nobody asked it. It noticed, and it worked out which orders were about to break."
             />
           </div>
 
@@ -118,7 +118,7 @@ export default function Page() {
             </div>
             <div className="cs-body reveal" data-delay="100">
               <p>&quot;Where is container MSKU-4471?&quot; is not a question a help page can answer. It requires reading your TMS, knowing which purchase orders are riding on that container, knowing what each customer was promised, and doing the arithmetic on who is about to be let down.</p>
-              <p>That is the difference between a chatbot and a co-pilot — and it is why remOPS has to be <strong>built against your systems</strong> rather than configured in a dashboard.</p>
+              <p>That is the difference between a chatbot and a co-pilot, and it is why remOPS has to be <strong>built against your systems</strong> rather than configured in a dashboard.</p>
             </div>
           </div>
         </div>
@@ -136,17 +136,17 @@ export default function Page() {
             <div className="cs-cap">
               <span className="n">01</span>
               <h3>Ordering that knows your rules</h3>
-              <p>Customer-specific price lists, credit limits, minimum order quantities, substitutions and delivery windows — enforced at the point of order, not discovered later by your sales desk.</p>
+              <p>Customer-specific price lists, credit limits, minimum order quantities, substitutions and delivery windows: enforced at the point of order, not discovered later by your sales desk.</p>
             </div>
             <div className="cs-cap">
               <span className="n">02</span>
               <h3>Live shipment intelligence</h3>
-              <p>&quot;Where is it?&quot; answered from your TMS and carrier feeds — real legs, real ETAs, real exceptions. Including the ones nobody has noticed yet.</p>
+              <p>&quot;Where is it?&quot; answered from your TMS and carrier feeds: real legs, real ETAs, real exceptions. Including the ones nobody has noticed yet.</p>
             </div>
             <div className="cs-cap">
               <span className="n">03</span>
               <h3>In-chat approvals</h3>
-              <p>POs, discounts, credit extensions and write-offs approved from the thread — with real role checks, real authority limits, and an audit entry for every decision.</p>
+              <p>POs, discounts, credit extensions and write-offs approved from the thread, with real role checks, real authority limits, and an audit entry for every decision.</p>
             </div>
             <div className="cs-cap">
               <span className="n">04</span>
@@ -156,7 +156,7 @@ export default function Page() {
             <div className="cs-cap">
               <span className="n">05</span>
               <h3>Voice, photos and paperwork</h3>
-              <p>A voice note in Sinhala, a photo of a damaged carton, a PDF purchase order dropped into the chat — all understood and turned into a record in your system.</p>
+              <p>A voice note in Sinhala, a photo of a damaged carton, a PDF purchase order dropped into the chat, all understood and turned into a record in your system.</p>
             </div>
             <div className="cs-cap">
               <span className="n">06</span>
@@ -175,8 +175,8 @@ export default function Page() {
             <h2>It plugs into what you already run.</h2>
           </div>
           <div className="cs-body reveal" data-delay="100">
-            <p>The agent is only as good as its reach into your business. remOPS connects to your ERP, WMS, TMS and CRM — and where there is no clean API, we do the unglamorous work anyway: a database view, a scheduled export, an SFTP drop, a screen-scraped legacy screen. <strong>Your fifteen-year-old system is not a blocker.</strong> It is just an integration.</p>
-            <p>It runs on the <strong>official WhatsApp Business Platform</strong> — a verified business sender, proper opt-in, template messages, and a number your customers can trust. Not an unofficial bridge that gets your account banned the week you scale.</p>
+            <p>The agent is only as good as its reach into your business. remOPS connects to your ERP, WMS, TMS and CRM, and where there is no clean API, we do the unglamorous work anyway: a database view, a scheduled export, an SFTP drop, a screen-scraped legacy screen. <strong>Your fifteen-year-old system is not a blocker.</strong> It is just an integration.</p>
+            <p>It runs on the <strong>official WhatsApp Business Platform</strong>: a verified business sender, proper opt-in, template messages, and a number your customers can trust. Not an unofficial bridge that gets your account banned the week you scale.</p>
             <div className="chips">
               <span className="chip">SAP</span><span className="chip">Odoo</span><span className="chip">Zoho</span><span className="chip">Microsoft Dynamics</span><span className="chip">NetSuite</span><span className="chip">Salesforce</span><span className="chip">HubSpot</span><span className="chip">QuickBooks · Xero</span><span className="chip">WMS · TMS</span><span className="chip">Google Sheets</span><span className="chip">REST · GraphQL · SOAP</span><span className="chip">SQL · SFTP · CSV</span><span className="chip">Custom / in-house</span>
             </div>
@@ -199,23 +199,23 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 05 SETUP — the core promise */}
+      {/* 05 SETUP: the core promise */}
       <section className="cs-section">
         <div className="container">
           <div className="section-head reveal">
             <p className="eyebrow">06 · Setup</p>
             <h2>You don&apos;t get a login. <span className="h-word">You get an engineer.</span></h2>
-            <p>Software like this doesn&apos;t fail at the demo. It fails at the setup — which is exactly the part everyone else leaves to you.</p>
+            <p>Software like this doesn&apos;t fail at the demo. It fails at the setup, which is exactly the part everyone else leaves to you.</p>
           </div>
 
           <div className="cs-grid" style={{ alignItems: "start" } as React.CSSProperties}>
             <div className="cs-body reveal">
-              <p>We assign you a <strong>dedicated setup engineer</strong> — a named person, not a ticket queue and not a sales rep. They learn how your business actually works, wire remOPS into your systems, teach it your vocabulary and your edge cases, train your team on it, and stay with you after you go live.</p>
-              <p><strong>That setup is free.</strong> You go live before you pay us anything. After that you pay only for what the agent actually does — usage, on demand. No seat licences, no platform fee, no annual lock-in.</p>
+              <p>We assign you a <strong>dedicated setup engineer</strong>: a named person, not a ticket queue and not a sales rep. They learn how your business actually works, wire remOPS into your systems, teach it your vocabulary and your edge cases, train your team on it, and stay with you after you go live.</p>
+              <p><strong>That setup is free.</strong> You go live before you pay us anything. After that you pay only for what the agent actually does: usage, on demand. No seat licences, no platform fee, no annual lock-in.</p>
             </div>
 
             <ol className="cs-steps reveal" data-delay="100">
-              <li><span><strong>Discovery.</strong> Your engineer maps how you really operate — the SKUs, the approval chains, the exceptions, the workarounds nobody documented.</span></li>
+              <li><span><strong>Discovery.</strong> Your engineer maps how you really operate: the SKUs, the approval chains, the exceptions, the workarounds nobody documented.</span></li>
               <li><span><strong>Integration.</strong> We connect the agent to your ERP, WMS, TMS and CRM. Whatever you run, however old it is.</span></li>
               <li><span><strong>Tailoring.</strong> We teach it your rules, your pricing, your language and the edge cases that break generic bots. Tuned on your data, not a template.</span></li>
               <li><span><strong>Go live.</strong> Your official WhatsApp business number, your verified sender, your team trained on it.</span></li>
@@ -242,7 +242,7 @@ export default function Page() {
             <div className="cs-metric">
               <div className="big">Pay per use</div>
               <h3>On demand</h3>
-              <p>You pay for what the agent does — nothing before it&apos;s working.</p>
+              <p>You pay for what the agent does, nothing before it&apos;s working.</p>
             </div>
           </div>
 
@@ -252,7 +252,7 @@ export default function Page() {
               width={1920}
               height={1080}
               className="wide"
-              alt="Five phases of setup complete — discovery, integration, tailoring, go-live and ongoing support — while the engineer hours invested climb to 140 and the amount you have paid stays at $0.00."
+              alt="Five phases of setup complete: discovery, integration, tailoring, go-live and ongoing support, while the engineer hours invested climb to 140 and the amount you have paid stays at $0.00."
               caption="140 engineer hours in. Nothing paid. That is what free setup actually means."
             />
           </div>

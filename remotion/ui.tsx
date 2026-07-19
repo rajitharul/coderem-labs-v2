@@ -26,7 +26,7 @@ export const useIn = (at: number, dur = 18) => {
   });
 };
 
-/* Fade+rise from a progress value. Small travel — 14px, not 60px. */
+/* Fade+rise from a progress value. Small travel: 14px, not 60px. */
 export const rise = (p: number, px = 14): React.CSSProperties => ({
   opacity: p,
   transform: `translateY(${(1 - p) * px}px)`,
@@ -89,7 +89,7 @@ export const Label: React.FC<{
   <div style={{ ...label, fontSize: size, color, ...style }}>{children}</div>
 );
 
-/* Hairline rule — 1px at render scale, which is what keeps the frames feeling
+/* Hairline rule: 1px at render scale, which is what keeps the frames feeling
    drawn rather than blurred. */
 export const Rule: React.FC<{ style?: React.CSSProperties }> = ({ style }) => (
   <div style={{ height: 1, background: C.line, width: "100%", ...style }} />

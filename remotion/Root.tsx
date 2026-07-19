@@ -13,7 +13,7 @@ import { Setup } from "./scenes/Setup";
 
 export const RemotionRoot: React.FC = () => (
   <>
-    {/* Portrait — sits beside the copy in the hero. */}
+    {/* Portrait: sits beside the copy in the hero. */}
     <Composition
       id="remops-thread"
       component={Thread}
@@ -23,7 +23,7 @@ export const RemotionRoot: React.FC = () => (
       height={1350}
     />
 
-    {/* Landscape — full-bleed section breaks. */}
+    {/* Landscape: full-bleed section breaks. */}
     <Composition
       id="remops-exception"
       component={Exception}

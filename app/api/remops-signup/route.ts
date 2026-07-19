@@ -5,7 +5,7 @@ import {
   type RemOpsSignup,
 } from "@/lib/email";
 
-/* POST /api/remops-signup — receives the remOPS signup form, validates it, then
+/* POST /api/remops-signup: receives the remOPS signup form, validates it, then
    fires the welcome + internal notification emails in parallel. Same shape as
    /api/contact: no persistence, the emails (plus a server log) are the only
    record of a signup. */

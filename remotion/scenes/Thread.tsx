@@ -3,7 +3,7 @@ import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { C, GRAIN, MESH, fontFamily, num } from "../theme";
 import { Backdrop, useIn, useOutro, rise, money, int } from "../ui";
 
-/* Scene 1 — "The live thread".
+/* Scene 1: "The live thread".
 
    A customer orders 200 units; the agent answers with the customer's own tier
    price, live stock, a confirmed delivery window and the total, then places the
@@ -11,7 +11,7 @@ import { Backdrop, useIn, useOutro, rise, money, int } from "../ui";
 
    Layout note: every bubble is mounted from frame 0 and revealed with opacity,
    so the column never reflows. The "agent is thinking" beat is carried by the
-   header subtitle flipping to "typing…" — which is what WhatsApp actually does,
+   header subtitle flipping to "typing…", which is what WhatsApp actually does,
    and costs zero layout shift. */
 
 const T = {
@@ -196,7 +196,7 @@ export const Thread: React.FC = () => {
             </div>
           </div>
 
-          {/* thread — mesh and grain as separate layers so the grain can sit low
+          {/* thread: mesh and grain as separate layers so the grain can sit low
               enough not to tile into visible blotches at this scale */}
           <div
             style={{
@@ -227,7 +227,7 @@ export const Thread: React.FC = () => {
               </Bubble>
 
               <Bubble at={T.a1} side="in">
-                <strong style={{ fontWeight: 700 }}>200 × SKU-4471</strong> — Hex Bolt
+                <strong style={{ fontWeight: 700 }}>200 × SKU-4471</strong>, Hex Bolt
                 M12, galvanised. Checked against your account:
                 <div
                   style={{
@@ -256,7 +256,7 @@ export const Thread: React.FC = () => {
               </Bubble>
 
               <Bubble at={T.a2} side="in">
-                Done — order <strong style={{ fontWeight: 700 }}>#SO-88213</strong> placed
+                Done. Order <strong style={{ fontWeight: 700 }}>#SO-88213</strong> placed
                 against PO <strong style={{ fontWeight: 700 }}>APX-2291</strong>.
                 <File at={T.file} />
                 <Time t="09:15" />
@@ -312,7 +312,7 @@ export const Thread: React.FC = () => {
   );
 };
 
-/* Three dots, pulsing on a stagger — the only "playful" motion in the set, and
+/* Three dots, pulsing on a stagger, the only "playful" motion in the set, and
    it earns it by being the universal signal that a reply is coming. */
 const Dots: React.FC = () => {
   const frame = useCurrentFrame();
@@ -334,7 +334,7 @@ const Dots: React.FC = () => {
   );
 };
 
-/* Its own row — inline-flex let it wrap into the sentence and mangled the line
+/* Its own row: inline-flex let it wrap into the sentence and mangled the line
    breaks. */
 const File: React.FC<{ at: number }> = ({ at }) => {
   const p = useIn(at, 16);
